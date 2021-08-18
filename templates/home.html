@@ -27,21 +27,23 @@
         
         <div class="collapsible-body">
             <strong>Full Setup Guides</strong><br>
-            {% for coach in coaches %}
             <ul class="collapsible">
+                {% for coach in coaches %}
                 <li>
-                    <div collapsible-header white-text text-shadow orange darken-4 tooltipped" data-position="left">
-                            <i class="fas fa-caret-down"></i>
-                            <strong>{{ coach.coach_name }}</strong><br>
+                    <div class="collapsible-header white-text text-shadow orange darken-4 tooltipped" data-position="left"
+                        data-tooltip="Click to expand">
+                        <i class="fas fa-caret-down"></i>
+                        <strong>{{ coach.coach_name }}</strong><br>
+            
                     </div>
                     <div class="collapsible-body">
                         <span>
-                            <h3>Tutorial.....</h3>
+                            
                         </span>
                     </div>
                 </li>
+                {% endfor %}
             </ul>
-            {% endfor %}
         </div>
     </li>
     
