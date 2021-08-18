@@ -5,3 +5,29 @@
 .flashes h4 {
     line-height: 2;
 }
+
+.centered {
+    text-align: center;
+}
+
+.side-by-side {
+    display:inline;
+}
+
+.fa-sign-in-alt:before, .fa-user-plus:before {
+    font-size: 17px;
+    padding-left: 6px;
+}
+
+.fa-user-plus:before {
+    font-size: 15px;
+    padding-left: 6px;
+}
+
+.login-section {
+    padding-top: 50px;
+}
+
+.home-page-login {
+    width: 100%;
+}

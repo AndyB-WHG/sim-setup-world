@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="centered">Home Page</h3>
+
+{% if not session.user %}
+    <div class="row login-section">
+        <div class="col m2 offset-m4">
+            <a href="{{ url_for('login') }}"  class="btn home-page-login">Login<i class="fas fa-sign-in-alt"></i></a>
+        </div>
+        <div class="col m2">
+            <a href="{{ url_for('register') }}"  class="btn home-page-login">Register<i class="fas fa-user-plus"></i></a>
+        </div>
+    </div>
+{% endif %}
+
+
+<div class="row">
+    <div class="col s12 m2 offset-m2 side-by-side">
+        <div class="card-panel centered">
+            <span class="flow-text light-blue-text text-darken-4">Login</span>
+        </div>
+        <div class="card-panel centered">
+            <span class="flow-text light-blue-text text-darken-4">Login</span>
+        </div>
+    </div>
+</div>
+
+<ul class="collapsible">
+    {% for tutorial in tutorials %}
+    <li>
+        <div class="collapsible-header white-text text-shadow orange darken-4 tooltipped" data-position="left"
+            data-tooltip="Click to expand">
+            <i class="fas fa-caret-down"></i>
+            <strong>{{ tutorial.coach_name }}</strong><br>
+
+        </div>
+        <div class="collapsible-body">
+            <span>
+                {{ tutorial.primary_sim }}<br>
+                {{ tutorial.component }}<br>
+            </span>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
