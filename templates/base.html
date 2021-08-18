@@ -28,6 +28,7 @@
                     <li><a href="#">Find Setup</a></li>
                     <li><a href="#">Edit Setup </a></li>
                     <li><a href="#">Submit Setup</a></li>
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a href="{{ url_for('get_tutorials') }}">Setup Tutorials</a></li>
                     <li><a href="{{ url_for('login') }}">Login</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
@@ -41,6 +42,7 @@
             <li><a href="#">Find Setup</a></li>
             <li><a href="#">Edit Setup </a></li>
             <li><a href="#">Submit Setup</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             <li><a href="{{ url_for('get_tutorials') }}">Setup Tutorials</a></li>
             <li><a href="{{ url_for('login') }}">Login</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
