@@ -22,7 +22,8 @@ mongo = PyMongo(app)
 def home():
     tutorials = list(mongo.db.tutorials.find())
     coaches = list(mongo.db.coaches.find())
-    return render_template("home.html", tutorials=tutorials, coaches=coaches)
+    components = list(mongo.db.components.find())
+    return render_template("home.html", tutorials=tutorials, coaches=coaches, components=components)
 
 
 @app.route("/get_tutorials")

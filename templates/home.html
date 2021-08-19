@@ -4,41 +4,109 @@
 
 <h3 class="centered">Home Page</h3>
 
+<!-- Sign In and Register buttons (shown if not already logged in) -->
 {% if not session.user %}
-    <div class="row login-section">
-        <div class="col m2 offset-m4">
-            <a href="{{ url_for('login') }}"  class="btn home-page-login">Login<i class="fas fa-sign-in-alt"></i></a>
-        </div>
-        <div class="col m2">
-            <a href="{{ url_for('register') }}"  class="btn home-page-login">Register<i class="fas fa-user-plus"></i></a>
-        </div>
+<div class="row login-section">
+    <div class="col m2 offset-m4">
+        <a href="{{ url_for('login') }}" class="btn home-page-login">Login<i class="fas fa-sign-in-alt"></i></a>
     </div>
+    <div class="col m2">
+        <a href="{{ url_for('register') }}" class="btn home-page-login">Register<i class="fas fa-user-plus"></i></a>
+    </div>
+</div>
 {% endif %}
 
 
+<!-- Main Accordian/Collapsible Section -->
 <ul class="collapsible">
+    <!-- 1. Setup Tutorials option -->
     <li>
-        <div class="collapsible-header white-text text-shadow orange darken-4 tooltipped" data-position="left"
-            data-tooltip="Click to expand">
+        <div class="collapsible-header white-text text-shadow orange darken-4">
             <i class="fas fa-caret-down"></i>
             <strong>Setup Tutorials</strong><br>
 
         </div>
-        
+
+        <div class="collapsible-body">
+            <ul class="collapsible">
+                <!-- 1a. Full Setup Guides option -->
+                <li>
+                    <div class="collapsible-header white-text text-shadow orange darken-4">
+                        <i class="fas fa-caret-down"></i>
+                        <strong>Full Setup Guides (by Coach)</strong><br>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="collapsible">
+                            {% for coach in coaches %}
+                            <li>
+                                <div class="collapsible-header white-text text-shadow orange darken-4">
+                                    <i class="fas fa-caret-down"></i>
+                                    <strong>{{ coach.coach_name }}</strong><br>
+
+                                </div>
+                                <div class="collapsible-body">
+                                    <span>
+                                        Option to select
+                                    </span>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                
+                <!-- 1b. Setup Guides by Component option -->
+                <li>
+                    <div class="collapsible-header white-text text-shadow orange darken-4">    
+                        <i class="fas fa-caret-down"></i>
+                        <strong>Guides by Component</strong><br>
+                    </div>
+
+                    <div class="collapsible-body">
+                        <ul class="collapsible">
+                            {% for component in components %}
+                            <li>
+                                <div class="collapsible-header white-text text-shadow orange darken-4">
+                                    <i class="fas fa-caret-down"></i>
+                                    <strong>{{ component.subject }}</strong><br>
+
+                                </div>
+                                <div class="collapsible-body">
+                                    <span>
+
+                                    </span>
+                                </div>
+                            </li>
+                                    
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            </ul>  
+        </div>
+    </li>
+
+    <!-- 2. Get a Setup option -->
+    <li>
+        <div class="collapsible-header white-text text-shadow orange darken-4">
+            <i class="fas fa-caret-down"></i>
+            <strong>Get a Setup</strong><br>
+
+        </div>
+
         <div class="collapsible-body">
             <strong>Full Setup Guides</strong><br>
             <ul class="collapsible">
                 {% for coach in coaches %}
                 <li>
-                    <div class="collapsible-header white-text text-shadow orange darken-4 tooltipped" data-position="left"
-                        data-tooltip="Click to expand">
+                    <div class="collapsible-header white-text text-shadow orange darken-4">
                         <i class="fas fa-caret-down"></i>
                         <strong>{{ coach.coach_name }}</strong><br>
-            
+
                     </div>
                     <div class="collapsible-body">
                         <span>
-                            
+
                         </span>
                     </div>
                 </li>
@@ -46,45 +114,65 @@
             </ul>
         </div>
     </li>
-    
-</ul>
 
-
-<ul class="collapsible">
-    {% for coach in coaches %}
+    <!-- 3. Submit a Setup line-->
     <li>
-        <div class="collapsible-header white-text text-shadow orange darken-4 tooltipped" data-position="left"
-            data-tooltip="Click to expand">
+        <div class="collapsible-header white-text text-shadow orange darken-4">
             <i class="fas fa-caret-down"></i>
-            <strong>{{ coach.coach_name }}</strong><br>
+            <strong>Submit a Setup</strong><br>
 
         </div>
+
         <div class="collapsible-body">
-            <span>
-                
-            </span>
+            <strong>Full Setup Guides</strong><br>
+            <ul class="collapsible">
+                {% for coach in coaches %}
+                <li>
+                    <div class="collapsible-header white-text text-shadow orange darken-4">
+                        <i class="fas fa-caret-down"></i>
+                        <strong>{{ coach.coach_name }}</strong><br>
+
+                    </div>
+                    <div class="collapsible-body">
+                        <span>
+
+                        </span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </li>
-    {% endfor %}
-</ul>
 
-<ul class="collapsible">
-    {% for tutorial in tutorials %}
+    <!-- 4. Edit a Setup line -->
     <li>
-        <div class="collapsible-header white-text text-shadow orange darken-4 tooltipped" data-position="left"
-            data-tooltip="Click to expand">
+        <div class="collapsible-header white-text text-shadow orange darken-4">
             <i class="fas fa-caret-down"></i>
-            <strong>{{ tutorial.coach_name }}</strong><br>
+            <strong>Edit a Setup</strong><br>
 
         </div>
+
         <div class="collapsible-body">
-            <span>
-                {{ tutorial.primary_sim }}<br>
-                {{ tutorial.component }}<br>
-            </span>
+            <strong>Full Setup Guides</strong><br>
+            <ul class="collapsible">
+                {% for coach in coaches %}
+                <li>
+                    <div class="collapsible-header white-text text-shadow orange darken-4">
+                        <i class="fas fa-caret-down"></i>
+                        <strong>{{ coach.coach_name }}</strong><br>
+
+                    </div>
+                    <div class="collapsible-body">
+                        <span>
+
+                        </span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </li>
-    {% endfor %}
+
 </ul>
 
 {% endblock %}
