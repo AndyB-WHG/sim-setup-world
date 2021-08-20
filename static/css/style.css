@@ -29,6 +29,20 @@
     padding-bottom: 50px;
 }
 
+#hero-div {
+    height: 35em;
+    width: 100%;
+}
+
+#hero-image {
+    display: block;
+    text-align: center;
+    height: 35em;
+    width: 100%;
+    background: url("/static/img/pexels-albin-berlin-919073-minified.jpg") no-repeat center center;
+    background-size: cover;
+}
+
 .home-header {
     padding-top: 60px;
 }
