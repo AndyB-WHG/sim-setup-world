@@ -6,7 +6,7 @@
     <!-- 1a. Full Setup Guides option -->
     <li>
         <div class="collapsible-header white-text text-shadow orange darken-4">
-            <i class="fas fa-caret-down"></i>
+            <i class="fas fa-portrait"></i>
             <strong>Full Setup Guides (by Coach)</strong><br>
         </div>
         <div class="collapsible-body">
@@ -14,20 +14,28 @@
                 {% for coach in coaches %}
                 <li>
                     <div class="collapsible-header white-text text-shadow orange darken-4">
-                        <i class="fas fa-caret-down"></i>
+                        <i class="fas fa-graduation-cap"></i>
                         <strong>{{ coach.coach_name }}</strong><br>
 
                     </div>
                     <div class="collapsible-body">
-                        {% for coach in coaches %}
-                        <ul class="collapsible">
-                            <li>
-                                <div class="collapsible-header white-text text-shadow orange darken-4">
-                                    <i class="fas fa-caret-down"></i>
-                                    <strong>{{ coach.coach_name }}</strong><br>
-                                </div>
-                            </li>
-                        </ul>
+                        {% for tutorial in tutorials %}
+                            {% if tutorial.coach_name == coach.coach_name %}
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header white-text text-shadow orange darken-4">
+                                            <i class="fab fa-youtube"></i>
+                                            <strong>{% tutorial.component %}</strong><br>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <span>
+                                                <strong>{{ tutorials.component }}</strong><br>
+                                                <p>{{ tutorials.web_address }}</p>                    
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            {% endif %}
                         {% endfor %}                                         
                     </div>
                 </li>
@@ -39,7 +47,7 @@
     <!-- 1b. Setup Guides by Component option -->
     <li>
         <div class="collapsible-header white-text text-shadow orange darken-4">    
-            <i class="fas fa-caret-down"></i>
+            <i class="fas fa-cogs"></i>
             <strong>Guides by Component</strong><br>
         </div>
 
