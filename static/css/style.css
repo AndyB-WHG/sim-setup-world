@@ -29,6 +29,22 @@
     padding-bottom: 50px;
 }
 
+.home-header {
+    padding-top: 60px;
+}
+
 .home-page-login {
     width: 100%;
+}
+
+.home-page-card {
+    display:inline;
+}
+
+.home-page-card-padding {
+    padding-top: 100px;
+}
+
+.tutorials-header-padding {
+    padding-top: 200px;
 }

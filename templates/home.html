@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h3 class="centered">Home Page</h3>
+<h3 class="centered home-header">Home Page</h3>
 
 <!-- Sign In and Register buttons (shown if not already logged in) -->
 {% if not session.user %}
@@ -16,170 +16,77 @@
 </div>
 {% endif %}
 
+<div class="row home-page-card-padding">
 
-<!-- Main Accordian/Collapsible Section -->
-<ul class="collapsible">
-    <!-- 1. Setup Tutorials option -->
-    <li>
-        <div class="collapsible-header white-text text-shadow orange darken-4">
-            <i class="fas fa-caret-down"></i>
-            <strong>Setup Tutorials</strong><br>
-
+    <div class="col s12 m6 home-page-card">
+        <h4 class="header">Find a Setup</h4>
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="https://lorempixel.com/100/190/nature/6">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>Try a setup from our database. Just enter your car and track and take your choice.</p>
+                </div>
+                <div class="card-action">
+                    <a href="">Choose Setup</a>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div class="collapsible-body">
-            <ul class="collapsible">
-                <!-- 1a. Full Setup Guides option -->
-                <li>
-                    <div class="collapsible-header white-text text-shadow orange darken-4">
-                        <i class="fas fa-caret-down"></i>
-                        <strong>Full Setup Guides (by Coach)</strong><br>
-                    </div>
-                    <div class="collapsible-body">
-                        <ul class="collapsible">
-                            {% for coach in coaches %}
-                            <li>
-                                <div class="collapsible-header white-text text-shadow orange darken-4">
-                                    <i class="fas fa-caret-down"></i>
-                                    <strong>{{ coach.coach_name }}</strong><br>
-
-                                </div>
-                                <div class="collapsible-body">
-                                    {% for coach in coaches %}
-                                    <ul class="collapsible">
-                                        <li>
-                                            <div class="collapsible-header white-text text-shadow orange darken-4">
-                                                <i class="fas fa-caret-down"></i>
-                                                <strong>{{ coach.coach_name }}</strong><br>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    {% endfor %}                                         
-                                </div>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </li>
-                
-                <!-- 1b. Setup Guides by Component option -->
-                <li>
-                    <div class="collapsible-header white-text text-shadow orange darken-4">    
-                        <i class="fas fa-caret-down"></i>
-                        <strong>Guides by Component</strong><br>
-                    </div>
-
-                    <div class="collapsible-body">
-                        <ul class="collapsible">
-                            {% for component in components %}
-                            <li>
-                                <div class="collapsible-header white-text text-shadow orange darken-4">
-                                    <i class="fas fa-caret-down"></i>
-                                    <strong>{{ component.subject }}</strong><br>
-
-                                </div>
-                                <div class="collapsible-body">
-                                    <span>
-
-                                    </span>
-                                </div>
-                            </li>
-                                    
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </li>
-            </ul>  
+    <div class="col s12 m6 home-page-card">
+        <h4 class="header">Submit a Setup</h4>
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="https://lorempixel.com/100/190/nature/6">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>Created a race-winning setup you want to share with the community?  Save the details here and let fellow racers try it out for themselves.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">Submit Setup</a>
+                </div>
+            </div>
         </div>
-    </li>
+    </div>
 
-    <!-- 2. Get a Setup option -->
-    <li>
-        <div class="collapsible-header white-text text-shadow orange darken-4">
-            <i class="fas fa-caret-down"></i>
-            <strong>Get a Setup</strong><br>
-
+    <div class="col s12 m6 home-page-card">
+        <h4 class="header">Edit a Setup</h4>
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="https://lorempixel.com/100/190/nature/6">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>Want to make an improvement to a previous setup or delete an old setup?</p><br> 
+                    <p>Make your changes here</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">Edit Setup</a>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div class="collapsible-body">
-            <strong>Full Setup Guides</strong><br>
-            <ul class="collapsible">
-                {% for coach in coaches %}
-                <li>
-                    <div class="collapsible-header white-text text-shadow orange darken-4">
-                        <i class="fas fa-caret-down"></i>
-                        <strong>{{ coach.coach_name }}</strong><br>
-
-                    </div>
-                    <div class="collapsible-body">
-                        <span>
-
-                        </span>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
+    <div class="col s12 m6 home-page-card">
+        <h4 class="header">Setup Tutorials</h4>
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="https://lorempixel.com/100/190/nature/6">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>Learn everything you need to know about the art of car setup using these handy YouTube guides.</p>
+                </div>
+                <div class="card-action">
+                    <a href="{{ url_for('get_tutorials') }}">Tutorials</a>
+                </div>
+            </div>
         </div>
-    </li>
+    </div>
 
-    <!-- 3. Submit a Setup line-->
-    <li>
-        <div class="collapsible-header white-text text-shadow orange darken-4">
-            <i class="fas fa-caret-down"></i>
-            <strong>Submit a Setup</strong><br>
-
-        </div>
-
-        <div class="collapsible-body">
-            <strong>Full Setup Guides</strong><br>
-            <ul class="collapsible">
-                {% for coach in coaches %}
-                <li>
-                    <div class="collapsible-header white-text text-shadow orange darken-4">
-                        <i class="fas fa-caret-down"></i>
-                        <strong>{{ coach.coach_name }}</strong><br>
-
-                    </div>
-                    <div class="collapsible-body">
-                        <span>
-
-                        </span>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </li>
-
-    <!-- 4. Edit a Setup line -->
-    <li>
-        <div class="collapsible-header white-text text-shadow orange darken-4">
-            <i class="fas fa-caret-down"></i>
-            <strong>Edit a Setup</strong><br>
-
-        </div>
-
-        <div class="collapsible-body">
-            <strong>Full Setup Guides</strong><br>
-            <ul class="collapsible">
-                {% for coach in coaches %}
-                <li>
-                    <div class="collapsible-header white-text text-shadow orange darken-4">
-                        <i class="fas fa-caret-down"></i>
-                        <strong>{{ coach.coach_name }}</strong><br>
-
-                    </div>
-                    <div class="collapsible-body">
-                        <span>
-
-                        </span>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </li>
-
-</ul>
+</div>
 
 {% endblock %}

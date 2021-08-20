@@ -2,78 +2,83 @@
 
 {% block content %}
 
-<ul class="collapsible">
-    <!-- 1a. Full Setup Guides option -->
-    <li>
-        <div class="collapsible-header white-text text-shadow orange darken-4">
-            <i class="fas fa-portrait"></i>
-            <strong>Full Setup Guides (by Coach)</strong><br>
-        </div>
-        <div class="collapsible-body">
-            <ul class="collapsible">
-                {% for coach in coaches %}
-                <li>
-                    <div class="collapsible-header white-text text-shadow orange darken-4">
-                        <i class="fas fa-graduation-cap"></i>
-                        <strong>{{ coach.coach_name }}</strong><br>
+<section class="tutorials-header-padding">
 
-                    </div>
-                    <div class="collapsible-body">
-                        {% for tutorial in tutorials %}
-                            {% if tutorial.coach_name == coach.coach_name %}
-                                <ul class="collapsible">
-                                    <li>
-                                        <div class="collapsible-header white-text text-shadow orange darken-4">
-                                            <i class="fab fa-youtube"></i>
-                                            <strong>{% tutorial.component %}</strong><br>
-                                        </div>
-                                        <div class="collapsible-body">
+    <ul class="collapsible">
+        <!-- 1a. Full Setup Guides option -->
+        <li>
+            <div class="collapsible-header white-text text-shadow orange darken-4">
+                <i class="fas fa-portrait"></i>
+                <strong>Full Setup Guides (by Coach)</strong><br>
+            </div>
+            <div class="collapsible-body">
+                <ul class="collapsible">
+                    {% for coach in coaches %}
+                    <li>
+                        <div class="collapsible-header white-text text-shadow orange darken-4">
+                            <i class="fas fa-graduation-cap"></i>
+                            <strong>{{ coach.coach_name }}</strong><br>
+
+                        </div>
+                        <div class="collapsible-body">
+
+                            <ul class="collapsible">
+                                {% for tutorial in tutorials %}
+                                {% if tutorial.coach_name == coach.coach_name %}
+                                <li>
+                                    <a class="weblink collapsible-header white-text text-shadow orange darken-3"
+                                        href="{{ tutorial.web_address }}" target="_blank">
+                                        <i class="fab fa-youtube"></i>
+                                        <strong>{{ tutorial.component.capitalize() }}</strong><br>
+                                    </a>
+                                    <!-- <div class="collapsible-body">
                                             <span>
-                                                <strong>{{ tutorials.component }}</strong><br>
-                                                <p>{{ tutorials.web_address }}</p>                    
+                                                <strong>{{ tutorial.component.capitalize() }}</strong><br>
+                                                <a class="weblink" href="{{ tutorial.web_address }}" target="_blank">{{ tutorial.web_address }}</a>
                                             </span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            {% endif %}
-                        {% endfor %}                                         
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </li>
-    
-    <!-- 1b. Setup Guides by Component option -->
-    <li>
-        <div class="collapsible-header white-text text-shadow orange darken-4">    
-            <i class="fas fa-cogs"></i>
-            <strong>Guides by Component</strong><br>
-        </div>
+                                        </div> -->
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
 
-        <div class="collapsible-body">
-            <ul class="collapsible">
-                {% for component in components %}
-                <li>
-                    <div class="collapsible-header white-text text-shadow orange darken-4">
-                        <i class="fas fa-caret-down"></i>
-                        <strong>{{ component.subject }}</strong><br>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
 
-                    </div>
-                    <div class="collapsible-body">
-                        <span>
+        <!-- 1b. Setup Guides by Component option -->
+        <li>
+            <div class="collapsible-header white-text text-shadow orange darken-4">
+                <i class="fas fa-cogs"></i>
+                <strong>Guides by Component</strong><br>
+            </div>
 
-                        </span>
-                    </div>
-                </li>
-                        
-                {% endfor %}
-            </ul>
-        </div>
-    </li>
-</ul>
+            <div class="collapsible-body">
+                <ul class="collapsible">
+                    {% for component in components %}
+                    <li>
+                        <div class="collapsible-header white-text text-shadow orange darken-4">
+                            <i class="fas fa-caret-down"></i>
+                            <strong>{{ component.subject }}</strong><br>
 
+                        </div>
+                        <div class="collapsible-body">
+                            <span>
+
+                            </span>
+                        </div>
+                    </li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+</section>
 
 
 {% endblock %}
-
