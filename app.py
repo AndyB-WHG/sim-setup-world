@@ -23,13 +23,16 @@ def home():
     tutorials = list(mongo.db.tutorials.find())
     coaches = list(mongo.db.coaches.find())
     components = list(mongo.db.components.find())
+    
     return render_template("home.html", tutorials=tutorials, coaches=coaches, components=components)
 
 
 @app.route("/get_tutorials")
 def get_tutorials():
     tutorials = list(mongo.db.tutorials.find())
-    return render_template("tutorials.html", tutorials=tutorials)
+    coaches = list(mongo.db.coaches.find())
+    components = list(mongo.db.components.find())
+    return render_template("tutorials.html", tutorials=tutorials, coaches=coaches, components=components)
 
 
 @app.route("/register", methods=["GET", "POST"])
