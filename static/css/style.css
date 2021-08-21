@@ -29,7 +29,7 @@
     padding-bottom: 50px;
 }
 
-#hero-div {
+/* #hero-div {
     height: 35em;
     width: 100%;
 }
@@ -41,10 +41,10 @@
     width: 100%;
     background: url("/static/img/pexels-albin-berlin-919073-minified.jpg") no-repeat center center;
     background-size: cover;
-}
+} */
 
 .home-header {
-    padding-top: 60px;
+    padding-top: 50px;
 }
 
 .home-page-login {
@@ -56,9 +56,38 @@
 }
 
 .home-page-card-padding {
-    padding-top: 100px;
+    padding-top: 25px;
 }
 
 .tutorials-header-padding {
     padding-top: 200px;
 }
+
+.card-header {
+    padding-left: 25px;
+    font-size: 25px;
+}
+
+.card-title {
+    font-weight: 500;
+    position: relative;
+    /* top: 100px; */
+    /* text-decoration-color: darkorange; */
+}
+
+.card {
+    display: inline;
+}
+
+.card-image {
+    /* height: 10em;
+    width: 50%; */
+}
+
+/* @media (min-width: 820px) {
+    #quick-search-input-box {
+        width: 130%;
+        position: relative;
+        right: 100px;
+    }
+} */

@@ -7,10 +7,10 @@
 <!-- Sign In and Register buttons (shown if not already logged in) -->
 {% if not session.user %}
 <div class="row login-section">
-    <div class="col m2 offset-m4">
+    <div class="col s5 offset-s1 m3 offset-m3">
         <a href="{{ url_for('login') }}" class="btn home-page-login">Login<i class="fas fa-sign-in-alt"></i></a>
     </div>
-    <div class="col m2">
+    <div class="col s5 m3">
         <a href="{{ url_for('register') }}" class="btn home-page-login">Register<i class="fas fa-user-plus"></i></a>
     </div>
 </div>
@@ -18,7 +18,7 @@
 
 <div class="row home-page-card-padding">
 
-    <div class="col s12 m6 home-page-card">
+    <div class="col s12 m10 offset-m1 l6 home-page-card medium">
         <h4 class="header">Find a Setup</h4>
         <div class="card horizontal">
             <div class="card-image">
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="col s12 m6 home-page-card">
+    <div class="col s12 l6 m10 offset-m1 home-page-card medium">
         <h4 class="header">Submit a Setup</h4>
         <div class="card horizontal">
             <div class="card-image">
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div class="col s12 m6 home-page-card">
+    <div class="col s12 m10 offset-m1 l6 home-page-small medium">
         <h4 class="header">Edit a Setup</h4>
         <div class="card horizontal">
             <div class="card-image">
@@ -70,11 +70,11 @@
         </div>
     </div>
 
-    <div class="col s12 m6 home-page-card">
+    <div class="col s12 m10 offset-m1 l6 home-page-card medium">
         <h4 class="header">Setup Tutorials</h4>
         <div class="card horizontal">
             <div class="card-image">
-                <img src="https://lorempixel.com/100/190/nature/6">
+                <img src="static/img/pexels-pixabay-415071.jpg">
             </div>
             <div class="card-stacked">
                 <div class="card-content">
