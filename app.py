@@ -116,7 +116,8 @@ def logout():
 
 @app.route("/submit_setup")
 def submit_setup():
-    return render_template("submit_setup.html")
+    sims = list(mongo.db.sims.find())
+    return render_template("submit_setup.html", sims=sims)
 
 
 if __name__ == "__main__":

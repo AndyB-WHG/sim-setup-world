@@ -4,37 +4,40 @@
 
 <h3 class="centered page-title">Submit A Setup</h3>
 
+<div class="input-field col s12" method="POST" action="">
+  <select>
+    <option class="submit-option" value="" disabled selected>Select Sim</option>
+    <!-- 'count loop' code found at Stack Overflow  (https://stackoverflow.com/questions/7537439/how-to-increment-a-variable-on-a-for-loop-in-jinja-template) -->
+    {% set count = {'total': 0} %} 
+    {%- for sim in sims -%}
+      {% if count.update({'total': count.total + 1}) %}{% endif %} 
+      <option value="{{count.total}}">{{ sim.sim_name }}</option>
+    {%- endfor -%}
+  </select>
+  <label></label>
+</div>
+
 <div class="input-field col s12">
-    <select>
-      <option class="submit-option" value="" disabled selected>Select Sim</option>
-      <option value="1">Assetto Corsa Competizione</option>
-      <option value="2">iRacing</option>
-      <option value="3">Project Cars 2</option>
-      <option value="4">GT Sport</option>
-      <option value="5">Assetto Corsa</option>
-    </select>
-    <label></label>
-  </div>
+  <select>
+    <option value="" disabled selected></i>Select Car</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <label></label>
+</div>
 
-  <div class="input-field col s12">
-    <select>
-      <option value="" disabled selected></i>Select Car</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label></label>
-  </div>
+<div class="input-field col s12">
+  <select>
+    <option value="" disabled selected>Select Track</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <label></label>
+</div>
 
-  <div class="input-field col s12">
-    <select>
-      <option value="" disabled selected>Select Track</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label></label>
-  </div>
+
 
 
 {% endblock %}
