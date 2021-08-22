@@ -85,6 +85,10 @@
     width: 50%; */
 }
 
+option {
+    color: rgb(233, 99, 50);
+}
+
 /* @media (min-width: 820px) {
     #quick-search-input-box {
         width: 130%;
