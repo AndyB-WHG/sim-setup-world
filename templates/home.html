@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h3 class="centered home-header">Home Page</h3>
+<h3 class="centered page-title">Home Page</h3>
 
 <!-- Sign In and Register buttons (shown if not already logged in) -->
 {% if not session.user %}
@@ -46,7 +46,7 @@
                     <p>Created a race-winning setup you want to share with the community?  Save the details here and let fellow racers try it out for themselves.</p>
                 </div>
                 <div class="card-action">
-                    <a href="#">Submit Setup</a>
+                    <a href="{{ url_for('submit_setup') }}">Submit Setup</a>
                 </div>
             </div>
         </div>

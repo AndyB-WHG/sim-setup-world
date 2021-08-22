@@ -43,8 +43,9 @@
     background-size: cover;
 } */
 
-.home-header {
+.page-title {
     padding-top: 50px;
+    color: rgb(233, 99, 50);
 }
 
 .home-page-login {
