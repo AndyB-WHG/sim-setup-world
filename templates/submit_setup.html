@@ -20,6 +20,12 @@
 <div class="input-field col s12">
   <select>
     <option value="" disabled selected></i>Select Car</option>
+    {% set count = {'total': 0} %} 
+    {%- for car in cars -%}
+    {% if car.sim_name ==  %}
+      {% if count.update({'total': count.total + 1}) %}{% endif %}
+      <option value="{{count.total}}">{{ car.car_name }}</option>
+    {%- endfor -%}
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
