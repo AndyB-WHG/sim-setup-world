@@ -24,10 +24,7 @@
     {%- for car in cars -%}
       {% if car_count.update({'total': car_count.total + 1}) %}{% endif %}
       <option value="{{count.total}}">{{ car.car_name }}</option>
-    {%- endfor -%}
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
+    {%- endfor -%}    
   </select>
   <label></label>
 </div>
