@@ -5,7 +5,7 @@
 <h3 class="centered page-title">Submit A Setup</h3>
 
 <div class="input-field col s12" method="POST" action="">
-  <select>
+  <select id="sim-name">
     <option class="submit-option" value="" disabled selected>Select Sim</option>
     <!-- 'count loop' code found at Stack Overflow  (https://stackoverflow.com/questions/7537439/how-to-increment-a-variable-on-a-for-loop-in-jinja-template) -->
     {% set count = {'total': 0} %} 
@@ -18,12 +18,11 @@
 </div>
 
 <div class="input-field col s12">
-  <select>
+  <select id="car-name">
     <option value="" disabled selected></i>Select Car</option>
-    {% set count = {'total': 0} %} 
+    {% set car_count = {'total': 0} %} 
     {%- for car in cars -%}
-    {% if car.sim_name ==  %}
-      {% if count.update({'total': count.total + 1}) %}{% endif %}
+      {% if car_count.update({'total': car_count.total + 1}) %}{% endif %}
       <option value="{{count.total}}">{{ car.car_name }}</option>
     {%- endfor -%}
     <option value="1">Option 1</option>
@@ -34,7 +33,7 @@
 </div>
 
 <div class="input-field col s12">
-  <select>
+  <select id="track-name">
     <option value="" disabled selected>Select Track</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
