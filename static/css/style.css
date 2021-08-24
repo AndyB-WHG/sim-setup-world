@@ -89,6 +89,14 @@ option {
     color: rgb(233, 99, 50);
 }
 
+.submit-title {
+    padding-bottom: 3em;
+}
+
+.submit-icon {
+    font-size: 20px;
+}
+
 /* @media (min-width: 820px) {
     #quick-search-input-box {
         width: 130%;

@@ -2,43 +2,31 @@
 
 {% block content %}
 
-<h3 class="centered page-title">Submit A Setup</h3>
+<h3 class="centered page-title submit-title">Submit A Setup</h3>
 
-<div class="input-field col s12" method="POST" action="">
-  <select id="sim-name">
+<div class="input-field col s12 sim-selection" method="POST" action="">
+  <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
+  <select id="sim_name" name="sim_name" class="validate" required>
     <option class="submit-option" value="" disabled selected>Select Sim</option>
     <!-- 'count loop' code found at Stack Overflow  (https://stackoverflow.com/questions/7537439/how-to-increment-a-variable-on-a-for-loop-in-jinja-template) -->
-    {% set count = {'total': 0} %} 
-    {%- for sim in sims -%}
-      {% if count.update({'total': count.total + 1}) %}{% endif %} 
-      <option value="{{count.total}}">{{ sim.sim_name }}</option>
-    {%- endfor -%}
+    {% for sim in sims %}
+      <option value="{{ sim.sim_name }}">{{ sim.sim_name }}</option>
+    {% endfor %}
   </select>
-  <label></label>
+  <label for="sim_name"></label>
 </div>
 
+
 <div class="input-field col s12">
-  <select id="car-name">
+  <i class="fas fa-car prefix orange-text text-darken-4"></i>
+  <select id="car_name" name="car_name" class="validate" required>    
     <option value="" disabled selected></i>Select Car</option>
-    {% set car_count = {'total': 0} %} 
     {%- for car in cars -%}
-      {% if car_count.update({'total': car_count.total + 1}) %}{% endif %}
-      <option value="{{count.total}}">{{ car.car_name }}</option>
+      <option value="{{ car.car_name }}">{{ car.car_name }}</option>
     {%- endfor -%}    
   </select>
-  <label></label>
+  <label for="car_name"></label>
 </div>
-
-<div class="input-field col s12">
-  <select id="track-name">
-    <option value="" disabled selected>Select Track</option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-  </select>
-  <label></label>
-</div>
-
 
 
 

@@ -114,7 +114,7 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/submit_setup")
+@app.route("/submit_setup", methods=["GET", "POST"])
 def submit_setup():
     sims = list(mongo.db.sims.find().sort("sim_name"))
     cars = list(mongo.db.car_list.find().sort("car_name"))
