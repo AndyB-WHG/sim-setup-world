@@ -90,11 +90,16 @@ option {
 }
 
 .submit-title {
-    padding-bottom: 3em;
+    padding-bottom: 2.5em;
+    padding-top: 2.5em;
 }
 
 .submit-icon {
     font-size: 20px;
+}
+
+#submit-setup-button {
+    display: none;
 }
 
 /* @media (min-width: 820px) {

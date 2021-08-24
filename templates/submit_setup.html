@@ -4,29 +4,46 @@
 
 <h3 class="centered page-title submit-title">Submit A Setup</h3>
 
-<div class="input-field col s12 sim-selection" method="POST" action="">
-  <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
-  <select id="sim_name" name="sim_name" class="validate" required>
-    <option class="submit-option" value="" disabled selected>Select Sim</option>
-    <!-- 'count loop' code found at Stack Overflow  (https://stackoverflow.com/questions/7537439/how-to-increment-a-variable-on-a-for-loop-in-jinja-template) -->
-    {% for sim in sims %}
-      <option value="{{ sim.sim_name }}">{{ sim.sim_name }}</option>
-    {% endfor %}
-  </select>
-  <label for="sim_name"></label>
+<div class="row card-panel grey lighten-5">
+  <form class="col s12" method="POST" action="{{ url_for('submit_setup') }}">
+
+    <div class="row">
+      <div class="input-field col s12 sim-selection">
+        <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
+        <select id="sim_name" name="sim_name" class="validate" required>
+          <option class="submit-option" value="" disabled selected>Select Sim</option>
+          {% for sim in sims %}
+            <option value="{{ sim.sim_name }}">{{ sim.sim_name }}</option>
+          {% endfor %}
+        </select>
+        <label for="sim_name"></label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-car prefix orange-text text-darken-4"></i>
+        <select id="car_name" name="car_name" class="validate" required>    
+          <option value="" disabled selected></i>Select Car</option>
+          {%- for car in cars -%}
+            <option value="{{ car.car_name }}">{{ car.car_name }}</option>
+          {%- endfor -%}    
+        </select>
+        <label for="car_name"></label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 center-align">
+        <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Button</button>
+      </div>
+    </div>
+
+  </form>
 </div>
 
 
-<div class="input-field col s12">
-  <i class="fas fa-car prefix orange-text text-darken-4"></i>
-  <select id="car_name" name="car_name" class="validate" required>    
-    <option value="" disabled selected></i>Select Car</option>
-    {%- for car in cars -%}
-      <option value="{{ car.car_name }}">{{ car.car_name }}</option>
-    {%- endfor -%}    
-  </select>
-  <label for="car_name"></label>
-</div>
+
 
 
 
