@@ -98,9 +98,10 @@ option {
     font-size: 20px;
 }
 
-#submit-setup-button {
-    display: none;
-}
+/* #submit-setup-button {
+    height: 0px;
+    width: 0px;
+} */
 
 /* @media (min-width: 820px) {
     #quick-search-input-box {

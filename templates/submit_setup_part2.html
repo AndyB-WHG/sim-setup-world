@@ -11,7 +11,7 @@
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
         <select id="sim_name" name="sim_name" class="validate" required>
-          <option value="" disabled selected>Select Sim</option>
+          <option class="submit-option" value="" disabled selected>Select Sim</option>
           {% for sim in sims %}
             <option value="{{ sim.sim_name }}">{{ sim.sim_name }}</option>
           {% endfor %}
@@ -20,44 +20,26 @@
       </div>
     </div>
 
-
     <div class="row">
       <div class="input-field col s12">
         <i class="fas fa-car prefix orange-text text-darken-4"></i>
-        <select id="car_name" name="car_name" class="validate" required>
+        <select id="car_name" name="car_name" class="validate" required>    
           <option value="" disabled selected></i>Select Car</option>
           {%- for car in cars -%}
             <option value="{{ car.car_name }}">{{ car.car_name }}</option>
-          {%- endfor -%}
+          {%- endfor -%}    
         </select>
         <label for="car_name"></label>
       </div>
     </div>
 
-
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="fas fa-car prefix orange-text text-darken-4"></i>
-        <select id="track_name" name="track_name" class="validate" required>
-          <option value="" disabled selected></i>Select Car</option>
-          {%- for track in tracks -%}
-            <option value="{{ track.track_name }}">{{ track.track_name  }}</option>
-          {%- endfor -%}
-        </select>
-        <label for="track_name"></label>
-      </div>
-    </div>
-
     <div class="row">
       <div class="col s12 center-align">
-        <button id="submit-setup-button" type="submit" class="btn-large light-blue text-shadow">
-          Submit<i class="fas fa-plus-square right"></i>
-        </button>
+        <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Button</button>
       </div>
     </div>
+
   </form>
-
-
 </div>
 
 

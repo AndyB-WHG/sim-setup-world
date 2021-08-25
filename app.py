@@ -116,9 +116,24 @@ def logout():
 
 @app.route("/submit_setup", methods=["GET", "POST"])
 def submit_setup():
-    sims = list(mongo.db.sims.find().sort("sim_name"))
-    cars = list(mongo.db.car_list.find().sort("car_name"))
-    return render_template("submit_setup.html", sims=sims, cars=cars)
+    if request.method == "POST":
+        chosen_sim = request.form.get("sim_name")
+        chosen_car = request.form.get("car_name")
+        chosen_track = request.form.get("track_name")
+        if chosen_track != "" and chosen_sim == "":
+            flash("Please choose a 'Sim' option")
+        elif chosen_track != "" and chosen_car == "":
+            flash("Please choose a 'Car' option")
+        elif chosen_car != "" and chosen_sim == "":
+            flash("Please choose a 'Sim' option")
+        else:
+            flash("This kind of worked!")
+    else:
+        sims = list(mongo.db.sims.find().sort("sim_name"))
+        cars = list(mongo.db.car_list.find().sort("car_name"))
+        tracks = list(mongo.db.tracks.find().sort("track_name"))
+        return render_template(
+            "submit_setup.html", sims=sims, cars=cars, tracks=tracks)
 
 
 if __name__ == "__main__":

@@ -13,8 +13,7 @@ $("#sim_name").on('change', function() {
     // the following line of code was found at https://www.codegrepper.com/code-examples/javascript/how+to+get+the+option+text+from+dropdown+with+option+value+javascript
     var sim_name = this.options[this.selectedIndex].text;
     console.log(sim_name);
-    let submit_button = document.getElementById('submit-setup-button')
-    
+    document.getElementById('submit-setup-button').click() 
 });
 
 $("#car_name").on('change', function() {
