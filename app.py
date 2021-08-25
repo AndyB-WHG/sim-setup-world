@@ -118,11 +118,11 @@ def logout():
 def submit_setup():
     if request.method == "POST":
         chosen_sim = request.form.get("sim_name")
-        console.log(chosen_sim)
+        print(chosen_sim)
         chosen_car = request.form.get("car_name")
-        console.log(chosen_car)
+        print(chosen_car)
         chosen_track = request.form.get("track_name")
-        console.log(chosen_track)
+        print(chosen_track)
         if chosen_track != "" and chosen_sim == "":
             flash("Please choose a 'Sim' option")
         elif chosen_track != "" and chosen_car == "":
