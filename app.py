@@ -114,29 +114,32 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/submit_setup", methods=["GET", "POST"])
-def submit_setup():
+@app.route("/submit_setup_part1", methods=["GET", "POST"])
+def submit_setup_part1():
     if request.method == "POST":
-        chosen_sim = request.form.get("sim_name")
-        print(chosen_sim)
-        chosen_car = request.form.get("car_name")
-        print(chosen_car)
-        chosen_track = request.form.get("track_name")
-        print(chosen_track)
-        if chosen_track != "" and chosen_sim == "":
-            flash("Please choose a 'Sim' option")
-        elif chosen_track != "" and chosen_car == "":
-            flash("Please choose a 'Car' option")
-        elif chosen_car != "" and chosen_sim == "":
-            flash("Please choose a 'Sim' option")
-        else:
-            flash("This kind of worked!")
-    sims = list(mongo.db.sims.find().sort("sim_name"))
-    cars = list(mongo.db.car_list.find().sort("car_name"))
-    tracks = list(mongo.db.tracks.find().sort("track_name"))
-    return render_template(
-        "submit_setup.html", sims=sims, cars=cars, tracks=tracks)
+        sim_name = request.form.get("sim_name")
+        print(sim_name)
+        cars = list(mongo.db.car_list.find(
+            {"sim_name": request.form.get("sim_name")}).sort("car_name"))
+        return render_template(
+            "submit_setup_part2.html", sim_name=sim_name, cars=cars)
 
+    sims = list(mongo.db.sims.find().sort("sim_name"))
+    return render_template(
+        "submit_setup_part1.html", sims=sims)
+
+@app.route("/submit_setup_part2", methods=["GET", "POST"])
+def submit_setup_part2():
+    if request.method == "POST": 
+        sim_name = request.form.get("sim_name")   
+        car_name = request.form.get("car_name")
+        cars = list(mongo.db.car_list.find(
+            {"sim_name": request.form.get("sim_name")}).sort("car_name"))
+        return render_template(
+            "submit_setup_part3.html", sim_name=sim_name, cars=cars)
+
+
+tracks = list(mongo.db.tracks.find().sort("track_name"))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
