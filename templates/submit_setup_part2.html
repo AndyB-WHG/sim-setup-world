@@ -5,12 +5,12 @@
 <h3 class="centered page-title submit-title">Submit A Setup</h3>
 
 <div class="row card-panel grey lighten-5">
-  <form class="col s12" method="POST" action="{{ url_for('submit_setup_part1') }}">
+  <form class="col s12" method="POST" action="{{ url_for('submit_setup_part2') }}">
 
     <div class="row">
       <div class="input-field col s12 sim-selection name="{{ sim_name }}">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
-        {{ sim_name }}
+        <p class="selected-item">{{ sim_name }}</p>
       </div>
     </div>
 
@@ -28,8 +28,23 @@
     </div>
 
     <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-globe-americas prefix orange-text text-darken-4"></i>
+        <select id="track_name" name="track_name" class="validate" required>
+          <option value="unselected" disabled selected></i>Select Track</option>
+          {%- for track in tracks -%}
+            <option value="{{ track.track_name }}">{{ track.track_name  }}</option>
+          {%- endfor -%}
+        </select>
+        <label for="track_name"></label>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col s12 center-align">
-        <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Button</button>
+        <button id="submit-setup-button" type="submit" class="btn-large light-blue text-shadow">
+          Submit<i class="fas fa-plus-square right"></i>
+        </button>
       </div>
     </div>
 
