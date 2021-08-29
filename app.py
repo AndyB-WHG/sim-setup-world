@@ -124,7 +124,8 @@ def submit_setup_part1():
         tracks = list(mongo.db.tracks.find(
             {"sim_name": request.form.get("sim_name")}).sort("track_name"))
         return render_template(
-            "submit_setup_part2.html", sim_name=sim_name, cars=cars, tracks=tracks)
+            "submit_setup_part2.html",
+            sim_name=sim_name, cars=cars, tracks=tracks)
 
     sims = list(mongo.db.sims.find().sort("sim_name"))
     sim_name = request.form.get("sim_name")
@@ -134,9 +135,30 @@ def submit_setup_part1():
 
 @app.route("/submit_setup_part2", methods=["GET", "POST"])
 def submit_setup_part2():
-    return render_template(
-        "submit_setup_part2.html", sim_name=sim_name, cars=cars, tracks=tracks)
+    if request.method == "POST":
+        sim_name = request.form.get("sim_name")
+        print(sim_name)
+        car_name = request.form.get("car_name")
+        print(car_name)
+        track_name = request.form.get("track_name")
+        print(track_name)
+        return render_template(
+            "submit_setup_part3.html",
+            sim_name=sim_name, car_name=car_name, track_name=track_name)
 
+
+@app.route("/submit_setup_part3", methods=["GET", "POST"])
+def submit_setup_part():
+    if request.method == "POST":
+        sim_name = request.form.get("sim_name")
+        print(sim_name)
+        car_name = request.form.get("car_name")
+        print(car_name)
+        track_name = request.form.get("track_name")
+        print(track_name)
+        return render_template(
+            "submit_setup_part3.html",
+            sim_name=sim_name, car_name=car_name, track_name=track_name)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
