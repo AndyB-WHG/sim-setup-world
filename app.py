@@ -122,11 +122,12 @@ def submit_setup_part1():
         cars = list(mongo.db.car_list.find(
             {"sim_name": request.form.get("sim_name")}).sort("car_name"))
         tracks = list(mongo.db.tracks.find(
-        {"sim_name": request.form.get("sim_name")}).sort("track_name"))
-    return render_template(
-        "submit_setup_part2.html", sim_name=sim_name, cars=cars, tracks=tracks)
+            {"sim_name": request.form.get("sim_name")}).sort("track_name"))
+        return render_template(
+            "submit_setup_part2.html", sim_name=sim_name, cars=cars, tracks=tracks)
 
     sims = list(mongo.db.sims.find().sort("sim_name"))
+    sim_name = request.form.get("sim_name")
     return render_template(
         "submit_setup_part1.html", sims=sims)
 
