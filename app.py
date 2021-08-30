@@ -117,18 +117,19 @@ def logout():
 @app.route("/submit_setup_part1", methods=["GET", "POST"])
 def submit_setup_part1():
     if request.method == "POST":
-        sim_name = request.form.get("sim_name")
-        print(sim_name)
+        sim_name = request.form["sim_name"]
+        print("150: Selected Sim: ", sim_name)
         cars = list(mongo.db.car_list.find(
             {"sim_name": request.form.get("sim_name")}).sort("car_name"))
         tracks = list(mongo.db.tracks.find(
             {"sim_name": request.form.get("sim_name")}).sort("track_name"))
+        print("180: Car and Track options lists loaded - user needs to select car and track")
         return render_template(
             "submit_setup_part2.html",
             sim_name=sim_name, cars=cars, tracks=tracks)
 
     sims = list(mongo.db.sims.find().sort("sim_name"))
-    sim_name = request.form.get("sim_name")
+    print ("100: Select Sim")
     return render_template(
         "submit_setup_part1.html", sims=sims)
 
@@ -136,21 +137,21 @@ def submit_setup_part1():
 @app.route("/submit_setup_part2", methods=["GET", "POST"])
 def submit_setup_part2():
     if request.method == "POST":
-        sim_name = request.form.get("sim_name")
-        print(sim_name)
+        sim_name = request.args.get("sim_name")
+        print("210: Part 2: Sim Name is: ", sim_name)
         car_name = request.form.get("car_name")
-        print(car_name)
+        print("220: Part 2: Car Name is: ", car_name)
         track_name = request.form.get("track_name")
-        print(track_name)
+        print("230: Part 2: Track Name is: ", track_name)
         return render_template(
             "submit_setup_part3.html",
             sim_name=sim_name, car_name=car_name, track_name=track_name)
 
 
 @app.route("/submit_setup_part3", methods=["GET", "POST"])
-def submit_setup_part():
+def submit_setup_part3():
     if request.method == "POST":
-        sim_name = request.form.get("sim_name")
+        sim_name = request.args.get("sim_name")
         print(sim_name)
         car_name = request.form.get("car_name")
         print(car_name)
@@ -159,6 +160,7 @@ def submit_setup_part():
         return render_template(
             "submit_setup_part3.html",
             sim_name=sim_name, car_name=car_name, track_name=track_name)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
