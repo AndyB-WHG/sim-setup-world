@@ -137,7 +137,7 @@ def submit_setup_part1():
 @app.route("/submit_setup_part2", methods=["GET", "POST"])
 def submit_setup_part2():
     if request.method == "POST":
-        sim_name = request.args.get("sim_name")
+        sim_name = request.form.get("sim_name")
         print("210: Part 2: Sim Name is: ", sim_name)
         car_name = request.form.get("car_name")
         print("220: Part 2: Car Name is: ", car_name)
@@ -145,7 +145,7 @@ def submit_setup_part2():
         print("230: Part 2: Track Name is: ", track_name)
         return render_template(
             "submit_setup_part3.html",
-            sim_name=sim_name, car_name=car_name, track_name=track_name)
+            sim_name="Fake Racing Game", car_name=car_name, track_name=track_name)
 
 
 @app.route("/submit_setup_part3", methods=["GET", "POST"])

@@ -57,7 +57,7 @@
 }
 
 .home-page-card-padding {
-    padding-top: 25px;
+    padding-top: 45px;
 }
 
 .tutorials-header-padding {
@@ -104,6 +104,12 @@ option {
     margin-left: 3em;
 }
 
+.call-out {
+    text-align: center;
+    position: relative;
+    bottom: 20px;
+}
+
 /* #submit-setup-button {
     height: 0px;
     width: 0px;
@@ -116,3 +122,19 @@ option {
         right: 100px;
     }
 } */
+
+@media (min-width: 992px) {
+    .brand-logo {
+        text-align: left;
+        position: relative;
+        left: 7px;
+    }
+}
+
+@media (min-width: 992px) {
+    .call-out {
+        text-align: left;
+        position: relative;
+        left: 12px;
+    }
+}

@@ -22,6 +22,7 @@
         <nav class="nav-extended text-shadow orange darken-2">
             <div class="nav-wrapper">
                 <a href="#!" class="brand-logo">Sim Setup World</a>
+                
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -37,6 +38,10 @@
                         <li><a href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
                 </ul>
+               
+            </div>
+            <div>
+                <h5 class="call-out">Unleash your speed!</h5>
             </div>
         </nav>
 
@@ -57,6 +62,7 @@
                 <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
         </ul>
+        
     </header>
 
     <!-- <section id="hero-image" aria-label="Image of a sports car">
