@@ -43,6 +43,11 @@
     background-size: cover;
 } */
 
+/* .main-background {
+    background: url("/static/img/pexels-albin-berlin-919073-minified.jpg") no-repeat center center;
+    background-size: cover;
+} */
+
 .page-title {
     padding-top: 50px;
     color: rgb(233, 99, 50);
@@ -64,6 +69,11 @@
     padding-top: 200px;
 }
 
+.card-stacked {
+    width: 70%;
+    height: 15em;
+}
+
 .card-header {
     padding-left: 25px;
     font-size: 25px;
@@ -78,11 +88,6 @@
 
 .card {
     display: inline;
-}
-
-.card-image {
-    /* height: 10em;
-    width: 50%; */
 }
 
 option {
