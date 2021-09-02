@@ -143,3 +143,15 @@ option {
         left: 12px;
     }
 }
+
+@media (max-width: 736px) {
+    nav .brand-logo {
+        font-size: 1.7em;
+    }
+}
+
+@media (max-width: 736px) {
+    .call-out {
+        font-size: 1.4rem;
+    }
+}
