@@ -8,9 +8,9 @@
   <form class="col s12" method="POST" action="{{ url_for('submit_setup_part2') }}">
 
     <div class="row">
-      <div class="input-field col s12" name="sim_name">
+      <div class="input-field col s12">
         <i class="fas fa-gamepad prefix orange-text text-darken-4"></i>
-        <input value="{{ sim_name }}" type="text" class="validate">
+        <input value="{{ sim_name }}" type="text" class="validate" name="sim_name">
           <label for="sim_name">Disabled</label>
         
       </div>

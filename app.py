@@ -129,7 +129,7 @@ def submit_setup_part1():
             sim_name=sim_name, cars=cars, tracks=tracks)
 
     sims = list(mongo.db.sims.find().sort("sim_name"))
-    print ("100: Select Sim")
+    print("100: Select Sim")
     return render_template(
         "submit_setup_part1.html", sims=sims)
 
@@ -145,7 +145,8 @@ def submit_setup_part2():
         print("230: Part 2: Track Name is: ", track_name)
         return render_template(
             "submit_setup_part3.html",
-            sim_name="Fake Racing Game", car_name=car_name, track_name=track_name)
+            sim_name=sim_name, 
+            car_name=car_name, track_name=track_name)
 
 
 @app.route("/submit_setup_part3", methods=["GET", "POST"])
