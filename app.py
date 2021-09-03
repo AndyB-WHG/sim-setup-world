@@ -143,10 +143,13 @@ def submit_setup_part2():
         print("220: Part 2: Car Name is: ", car_name)
         track_name = request.form.get("track_name")
         print("230: Part 2: Track Name is: ", track_name)
-        return render_template(
-            "submit_setup_part3.html",
-            sim_name=sim_name, 
-            car_name=car_name, track_name=track_name)
+        if car_name == None or track_name == None:
+            return render_template(
+                "submit_setup_part3.html",
+                sim_name=sim_name, 
+                car_name=car_name, track_name=track_name)
+        else:
+            flash("Please ensure car and track are selected")
 
 
 @app.route("/submit_setup_part3", methods=["GET", "POST"])
