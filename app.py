@@ -143,13 +143,23 @@ def submit_setup_part2():
         print("220: Part 2: Car Name is: ", car_name)
         track_name = request.form.get("track_name")
         print("230: Part 2: Track Name is: ", track_name)
-        if car_name == None or track_name == None:
+        flash(track_name)
+        flash(car_name)
+        if track_name and car_name:
             return render_template(
                 "submit_setup_part3.html",
-                sim_name=sim_name, 
+                sim_name=sim_name,
                 car_name=car_name, track_name=track_name)
         else:
-            flash("Please ensure car and track are selected")
+            flash("Please select both a 'Car Name' and a 'Track Name")
+            cars = list(mongo.db.car_list.find(
+                {"sim_name": request.form.get("sim_name")}).sort("car_name"))
+            tracks = list(mongo.db.tracks.find(
+                {"sim_name": request.form.get("sim_name")}).sort("track_name"))
+            print("180: Car and Track options lists loaded - user needs to select car and track")
+            return render_template(
+                "submit_setup_part2.html", sim_name=sim_name, cars=cars,
+                tracks=tracks)
 
 
 @app.route("/submit_setup_part3", methods=["GET", "POST"])
