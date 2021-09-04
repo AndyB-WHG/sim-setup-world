@@ -156,7 +156,8 @@ def submit_setup_part2():
                 {"sim_name": request.form.get("sim_name")}).sort("car_name"))
             tracks = list(mongo.db.tracks.find(
                 {"sim_name": request.form.get("sim_name")}).sort("track_name"))
-            print("180: Car and Track options lists loaded - user needs to select car and track")
+            print("180: Car and Track options lists loaded - user needs" +
+                  " to select car and track")
             return render_template(
                 "submit_setup_part2.html", sim_name=sim_name, cars=cars,
                 tracks=tracks)

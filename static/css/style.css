@@ -120,6 +120,10 @@ option {
     width: 0px;
 }
 
+#sim-name {
+    border-bottom: 10px;
+}
+
 /* @media (min-width: 820px) {
     #quick-search-input-box {
         width: 130%;
