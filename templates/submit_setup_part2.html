@@ -44,12 +44,12 @@
 
     <div class="row">
       <div class="col s12 center-align">
-        <button id="submit-setup-button" type="submit" class="btn-large light-blue text-shadow">
-          Submit<i class="fas fa-plus-square right"></i>
+        <!-- Enter Settings Button -->
+        <button id="enter-settings-button" type="submit" class="btn-large light-blue text-shadow">
+          Enter Settings<i class="fas fa-plus-square right"></i>
         </button>
-        <button id="clear-setup-button" type="submit" class="btn-large light-blue text-shadow">
-          Restart<i class="fas fa-plus-square right"></i>
-        </button>
+        <!-- Clear/Restart Button -->
+        <a href="{{ url_for('submit_setup_part1') }}" id="clear-setup-button" type="button" class="btn-large light-blue text-shadow">Restart / Clear<i class="fas fa-backspace right"></i></a>
       </div>
     </div>
 
