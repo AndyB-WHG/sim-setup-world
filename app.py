@@ -166,12 +166,12 @@ def submit_setup_part2():
 @app.route("/submit_setup_part3", methods=["GET", "POST"])
 def submit_setup_part3():
     if request.method == "POST":
-        sim_name = request.args.get("sim_name")
-        print(sim_name)
+        sim_name = request.form.get("sim_name")
+        print("Part 3 : ", sim_name)
         car_name = request.form.get("car_name")
-        print(car_name)
+        print("Part 3 : ", car_name)
         track_name = request.form.get("track_name")
-        print(track_name)
+        print("Part 3 : ", track_name)
         return render_template(
             "submit_setup_part3.html",
             sim_name=sim_name, car_name=car_name, track_name=track_name)
