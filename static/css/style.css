@@ -1,3 +1,7 @@
+.logo2 {
+    display: none;
+}
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -65,6 +69,14 @@
     padding-top: 45px;
 }
 
+.tutorial-list {
+    margin-bottom: 0px;
+}
+
+.tutorial-choices {
+    display: inline-flex;
+}
+
 .tutorials-header-padding {
     padding-top: 200px;
 }
@@ -124,14 +136,14 @@ option {
     border-bottom: 10px;
 }
 
-#caret-placing-coaches:before {
+/* #caret-placing-coaches:before {
     margin-left: 360px;
 }
 
 #caret-placing-components:before {
     margin-left: 400px;
     
-}
+} */
 
 /* @media (min-width: 820px) {
     #quick-search-input-box {
@@ -161,15 +173,16 @@ option {
     nav .brand-logo {
         font-size: 1.7em;
     }
-    #caret-placing-coaches:before {
+    /* #caret-placing-coaches:before {
         margin-left: 81px;
     }
     
     #caret-placing-components:before {
         margin-left: 120px;
-}}
+} */
+}
 
-@media (max-width: 390px) {
+/* @media (max-width: 390px) {
     #caret-placing-coaches:before {
         margin-left: 9px;
     }
@@ -177,7 +190,7 @@ option {
     #caret-placing-components:before {
         margin-left: 50px;
     }
-}
+} */
 
 @media (max-width: 736px) {
     .call-out {
@@ -192,7 +205,21 @@ option {
     .tutorial-menu {
         font-size: 12px;
     }
-    #caret-placing-coaches:before {
+    /* #caret-placing-coaches:before {
         margin-left: 15px;
+    } */
+}
+
+@media (max-width: 310px) {
+    nav .brand-logo {
+        display: none;
+    }
+    .logo2 {
+        display: block;
+        text-align: center;
+        font-size: 1.8em;
+    }
+    .call-out {
+        margin-top: 50px;
     }
 }
