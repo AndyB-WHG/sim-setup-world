@@ -124,6 +124,15 @@ option {
     border-bottom: 10px;
 }
 
+#caret-placing-coaches:before {
+    margin-left: 360px;
+}
+
+#caret-placing-components:before {
+    margin-left: 400px;
+    
+}
+
 /* @media (min-width: 820px) {
     #quick-search-input-box {
         width: 130%;
@@ -152,6 +161,24 @@ option {
     nav .brand-logo {
         font-size: 1.7em;
     }
+    #caret-placing-coaches:before {
+        margin-left: 81px;
+    }
+    
+    #caret-placing-components:before {
+        margin-left: 120px;
+}
+
+@media (max-width: 390px) {
+    nav .brand-logo {
+        font-size: 1.7em;
+    }
+    #caret-placing-coaches:before {
+        margin-left: 0px;
+    }
+    
+    #caret-placing-components:before {
+        margin-left: 0px;
 }
 
 @media (max-width: 736px) {

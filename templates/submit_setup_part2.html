@@ -35,7 +35,7 @@
         <select id="track_name" name="track_name" minlength="1" class="validate" required>
           <option value="" disabled selected></i>Select Track</option>
           {%- for track in tracks -%}
-            <option value="{{ track.track_name }}">{{ track.track_name  }}</option>
+            <option value="{{ track.track_name }}">{{ track.track_name }}</option>
           {%- endfor -%}
         </select>
         <label for="track_name"></label>
@@ -53,6 +53,11 @@
       </div>
     </div>
 
+    <div id="settings-section">
+      
+
+    </div>
+    
   </form>
 </div>
 
