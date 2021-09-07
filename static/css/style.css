@@ -77,8 +77,15 @@
     display: inline-flex;
 }
 
-.tutorials-header-padding {
-    padding-top: 200px;
+.tutorials-header {
+    padding-top: 10px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.tutorials-callout {
+    font-size: 1.2em;
+    text-align: center;
 }
 
 .card-stacked {

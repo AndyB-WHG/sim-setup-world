@@ -11,7 +11,7 @@
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
         <input value="{{ sim_name }}" type="text" class="validate" name="sim_name">
-          <label class="active" for="sim_name"></label>
+        <label class="active" for="sim_name"></label>
       </div>
     </div>
 
@@ -19,7 +19,7 @@
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-car prefix orange-text text-darken-4 submit-icon"></i>
         <input value="{{ car_name }}" type="text" class="validate" name="car_name">
-          <label class="active" for="car_name"></label>
+        <label class="active" for="car_name"></label>
       </div>
     </div>
 
@@ -27,20 +27,39 @@
       <div class="input-field col s12">
         <i class="fas fa-globe-americas prefix orange-text text-darken-4"></i>
         <input value="{{ track_name }}" type="text" class="validate" name="track_name">
-          <label class="active "for="track_name"></label>
+        <label class="active" for="track_name"></label>
       </div>
     </div>
 
+    
     <div class="row">
-      <div class="col s12 center-align">
-        <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Button</button>
+      <div class="input-field col s6">
+        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+        <label for="first_name">First Name</label>
       </div>
-    </div>
 
-    <div id="settings-section">
-      
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          This is an inline input field:
+          <div class="input-field inline">
+            <input id="email_inline" type="email" class="validate">
+            <label for="email_inline">Email</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+          </div>
+        </div>
 
-    </div>
+
+        <div class="row">
+          <div class="col s12 center-align">
+            <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Button</button>
+          </div>
+        </div>
 
   </form>
 </div>
