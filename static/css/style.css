@@ -167,22 +167,32 @@ option {
     
     #caret-placing-components:before {
         margin-left: 120px;
-}
+}}
 
 @media (max-width: 390px) {
-    nav .brand-logo {
-        font-size: 1.7em;
-    }
     #caret-placing-coaches:before {
-        margin-left: 0px;
+        margin-left: 9px;
     }
     
     #caret-placing-components:before {
-        margin-left: 0px;
+        margin-left: 50px;
+    }
 }
 
 @media (max-width: 736px) {
     .call-out {
         font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 351px) {
+    nav .brand-logo {
+        font-size: 1.5em;
+    }
+    .tutorial-menu {
+        font-size: 12px;
+    }
+    #caret-placing-coaches:before {
+        margin-left: 15px;
     }
 }
