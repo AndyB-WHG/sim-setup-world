@@ -33,6 +33,22 @@
 
     
     <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-car prefix orange-text text-darken-4"></i>
+        <select id="" name="car_name" minlength="1" class="validate" required>    
+          <option value="" disabled selected></i>Select Car</option>
+          {%- for car in cars -%}
+            <option value="{{ car.car_name }}">{{ car.car_name }}</option>
+          {%- endfor -%}    
+        </select>
+        <label for="car_name"></label>
+      </div>
+    </div>
+
+
+
+    
+    <div class="row">
       <div class="input-field col s6">
         <input placeholder="Placeholder" id="first_name" type="text" class="validate">
         <label for="first_name">First Name</label>
