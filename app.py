@@ -123,7 +123,8 @@ def submit_setup_part1():
             {"sim_name": request.form.get("sim_name")}).sort("car_name"))
         tracks = list(mongo.db.tracks.find(
             {"sim_name": request.form.get("sim_name")}).sort("track_name"))
-        print("180: Car and Track options lists loaded - user needs to select car and track")
+        print("180: Car and Track options lists loaded - user needs to" +
+              "select car and track")
         return render_template(
             "submit_setup_part2.html",
             sim_name=sim_name, cars=cars, tracks=tracks)
@@ -145,14 +146,19 @@ def submit_setup_part2():
         print("230: Part 2: Track Name is: ", track_name)
         flash(track_name)
         flash(car_name)
-        headers = list(mongo.db.sim_settings_parameters.find({"sim_name": sim_name})).sort("heading_number")
-        setup_parameters = list(mongo.db.sim_headings.find({"sim_name": sim_name})).sort("order_number")
+        headers = list(mongo.db.sim_headings.find({"sim_name": sim_name}).sort("heading_number"))
+        setup_parameters = list(mongo.db.sim_settings_parameters.find({"sim_name": sim_name}).sort("order_number"))
+        print("")
+        print("Headers: ", headers)
+        print("")
+        print("Parameters: ", setup_parameters)
         if track_name and car_name:
             if sim_name == "Assetto Corsa Competizione":
                 return render_template(
                     "submit_setup_part3.html",
                     sim_name=sim_name,
-                    car_name=car_name, track_name=track_name, setup_parameters=setup_parameters, headers=headers)
+                    car_name=car_name, track_name=track_name,
+                    setup_parameters=setup_parameters, headers=headers)
         else:
             flash("Please select both a 'Car Name' and a 'Track Name")
             cars = list(mongo.db.car_list.find(
