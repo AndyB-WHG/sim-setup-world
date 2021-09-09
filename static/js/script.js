@@ -24,16 +24,6 @@ $("#car_name").on('change', function() {
 
 enterSettingsButton = document.getElementById('enter-settings-button');
 
-enterSettingsButton.addEventListener('click', function() {
-    console.log("'Enter Settings' button clicked")
-    car_name = document.getElementsByName('car_name')
-    track_name = document.getElementsByName('track_name')
-    console.log(car_name.text)
-    console.log(track_name.text)
-    if (car_name == "" || track_name == "") {
-        getElementById('settings-section').innerHTML = "<h2>Please enter both a car name and and a track name</h2>"
-    }
 
-}, false);
 
 
