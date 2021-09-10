@@ -34,25 +34,20 @@
 
     {% for header in headers %}
       <div class="row">
-        <div id="parameters-section" class="input-field col s12">
+        <div id="parameters-section" class="col s12">
           <h4 class="headings">{{ header.heading }}</h4>
         </div>
+
         <div class="row">
-          
             {% for parameter in setup_parameters %}
-              
-              
                 {% if parameter.heading.lower() == header.heading.lower() %}
-                <div class="input-field col s12 m6 l3">
+                <div class="input-field col s6 l3">
                 <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
                 <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text"
-                  class="validate">
+                  class="validate" required>
                 </div>
                 {% endif %}
-              
-              
             {% endfor %}
-          
         </div>
       </div>
     {% endfor %}
