@@ -153,12 +153,11 @@ def submit_setup_part2():
         print("")
         print("Parameters: ", setup_parameters)
         if track_name and car_name:
-            if sim_name == "Assetto Corsa Competizione":
-                return render_template(
-                    "submit_setup_part3.html",
-                    sim_name=sim_name,
-                    car_name=car_name, track_name=track_name,
-                    setup_parameters=setup_parameters, headers=headers)
+            return render_template(
+                "submit_setup_part3.html",
+                sim_name=sim_name,
+                car_name=car_name, track_name=track_name,
+                setup_parameters=setup_parameters, headers=headers)
         else:
             flash("Please select both a 'Car Name' and a 'Track Name")
             cars = list(mongo.db.car_list.find(
