@@ -1,3 +1,5 @@
+
+
 .logo2 {
     display: none;
 }
@@ -169,6 +171,31 @@ option {
 
 .input-field>label {
     font-size: 18px;
+    border-bottom: 50px;
+}
+
+#setup-type-label {
+    position:relative;
+    bottom: 3rem;
+    left: 5rem;
+    font-size: 15px;
+}
+
+#setup-type-radio {
+    position: relative;
+    right: 5rem;
+    top: 1rem;
+    /* width: 100%;
+    border: auto;
+    display: block; */
+}
+
+.radio-width {
+    margin-left: 3rem;
+}
+
+label {
+    font-style: ;
 }
 
 /* label::after {
@@ -262,3 +289,29 @@ option {
         margin-top: 50px;
     }
 }
+
+@media (max-width: 1264px) {
+#setup-type-radio span {
+    padding-left: 23px;
+    margin-left: 0px;
+    }
+}
+
+@media (max-width: 330px) {
+    #setup-type-radio label {
+        display: block;
+        padding-left: 5rem;
+        padding-bottom: 0.5rem;
+    } 
+    #setup-type-label {
+        position: relative;
+        left: 0px; 
+        top: -10px;
+        font-size: 15px;
+    }
+    .headings {
+        
+        width: 80%;
+}
+
+

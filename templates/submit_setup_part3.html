@@ -40,15 +40,57 @@
 
         <div class="row">
             {% for parameter in setup_parameters %}
-                {% if parameter.heading.lower() == header.heading.lower() %}
-                <div class="input-field col s6 l3">
-                <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
-                <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$"  type="text" min="1" max="5">
-                <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
-                <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
-                  class="validate" required>
-                </div>
+              {% if parameter.heading.lower() == header.heading.lower() %}
+                {% if parameter.param != "Rating (out of 5)" %}
+                  {% if parameter.heading == "Stats" %}
+                    {% if parameter.param == "Setup Type" %}
+                      <div id="setup-type-radio"  class="input-field col s12 l6">
+                        
+                        <p>
+                          <!-- <p> -->
+                            <label id="setup-type-label" class="label-size">Setup Type</label>
+                          <!-- </p> -->
+                          <label>
+                            <input class="with-gap" name="{{ parameter.param }}" type="radio" checked />
+                            <span>Base</span>
+                          </label>
+                        <!-- </p> -->
+                        <!-- <p> -->
+                          <label>
+                            <input class="with-gap" name="{{ parameter.param }}" type="radio" />
+                            <span class="radio-width">Qualifying</span>
+                          </label>
+                        <!-- </p> -->
+                        <!-- <p> -->
+                          <label>
+                            <input class="with-gap" name="{{ parameter.param }}" type="radio"  />
+                            <span class="radio-width">Race</span>
+                          </label>
+                        </p>
+                      </div>
+                    {% elif parameter.param == "Fastest Lap" %}
+                      <div class="input-field col s6">
+                        <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
+                        <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" pattern="^\d'\d\d.\d\d\d$"  type="text"
+                        class="validate" required>
+                      </div>
+                    {% else %}
+                      <div class="input-field col s12">
+                        <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
+                        <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" class="validate">
+                      </div>
+                    {% endif %}
+                  {% else %}
+                  <div class="input-field col s6 l3">
+                    <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
+                    <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$"  type="text" min="1" max="5"
+                    class="validate" required>
+                    <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
+                    <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
+                  </div>
+                  {% endif %}                  
                 {% endif %}
+              {% endif %}
             {% endfor %}
         </div>
       </div>
