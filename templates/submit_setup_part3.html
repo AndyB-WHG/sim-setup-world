@@ -31,7 +31,8 @@
       </div>
     </div>
 
-
+    <!-- Loop through Headings for the Chosen Sim/Game and display on screen, then within the headings loop through the parameters and display those -->
+    
     {% for header in headers %}
       <div class="row">
         <div id="parameters-section" class="col s12">
@@ -45,41 +46,44 @@
                   {% if parameter.heading == "Stats" %}
                     {% if parameter.param == "Setup Type" %}
                       <div id="setup-type-radio"  class="input-field col s12 l6">
-                        
+                        <!-- Radio Buttins for 'Type' of setup -->
                         <p>
-                          <!-- <p> -->
                             <label id="setup-type-label" class="label-size">Setup Type</label>
-                          <!-- </p> -->
                           <label>
                             <input class="with-gap" name="{{ parameter.param }}" type="radio" checked />
                             <span>Base</span>
                           </label>
-                        <!-- </p> -->
-                        <!-- <p> -->
                           <label>
                             <input class="with-gap" name="{{ parameter.param }}" type="radio" />
                             <span class="radio-width">Qualifying</span>
                           </label>
-                        <!-- </p> -->
-                        <!-- <p> -->
                           <label>
                             <input class="with-gap" name="{{ parameter.param }}" type="radio"  />
                             <span class="radio-width">Race</span>
                           </label>
                         </p>
                       </div>
+
+                      <!-- Set pattern requirements for Fastest Laptiime -->
+
                     {% elif parameter.param == "Fastest Lap" %}
                       <div class="input-field col s6">
                         <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
                         <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" pattern="^\d'\d\d.\d\d\d$"  type="text"
                         class="validate" required>
                       </div>
+
+                    <!-- Set requirements for 'Author Notes' section -->
+
                     {% else %}
                       <div class="input-field col s12">
                         <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
                         <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" class="validate">
                       </div>
                     {% endif %}
+
+                  <!-- Set accepted pattern and HTML for all of the remaining parameters -->
+
                   {% else %}
                   <div class="input-field col s6 l3">
                     <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
@@ -99,7 +103,7 @@
     <!-- Submit button -->
     <div class="row">
       <div class="col s12 center-align">
-        <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Button</button>
+        <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Submit Setup</button>
       </div>
     </div>
 

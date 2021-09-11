@@ -7,6 +7,7 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -174,8 +175,6 @@ def submit_setup_part2():
 @app.route("/submit_setup_part3", methods=["GET", "POST"])
 def submit_setup_part3():
     if request.method == "POST":
-        front_left_psi = request.form.get("Front Left PSI")
-        print("Front Left PSI from form is : ", front_left_psi)
         sim_name = request.form.get("sim_name")
         print("Part 3 : ", sim_name)
         car_name = request.form.get("car_name")
@@ -187,14 +186,22 @@ def submit_setup_part3():
         print("Part 3 Parameters : ", param_dict_list)
         print("Length of Parameters List is : ", len(param_dict_list))
         setup_dict = {}
+        dateTimeObj = datetime.now()
+        timestampStr = dateTimeObj.strftime("%H:%M:%S - %d %b %Y")
+        print('Current Timestamp : ', timestampStr)
         for param_dict in param_dict_list:
             parameter_name = param_dict["param"]
             print(parameter_name)
             setup_dict[parameter_name] = request.form.get(parameter_name)
-            print(setup_dict)
-        return render_template(
-            "submit_setup_part3.html",
-            sim_name=sim_name, car_name=car_name, track_name=track_name)
+        setup_dict["sim_name"] = request.form.get(sim_name)
+        setup_dict["car_name"] = request.form.get(car_name)
+        setup_dict["track_name"] = request.form.get(track_name)
+        setup_dict["created_by"] = session["user"]
+        setup_dict["date_created"] = timestampStr
+        print(timestampStr)
+        mongo.db.setups.insert_one(setup_dict)
+        flash("Setup Successfully Submitted")
+        return render_template("home.html")
 
 
 if __name__ == "__main__":
