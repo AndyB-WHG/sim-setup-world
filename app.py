@@ -193,9 +193,9 @@ def submit_setup_part3():
             parameter_name = param_dict["param"]
             print(parameter_name)
             setup_dict[parameter_name] = request.form.get(parameter_name)
-        setup_dict["sim_name"] = request.form.get(sim_name)
-        setup_dict["car_name"] = request.form.get(car_name)
-        setup_dict["track_name"] = request.form.get(track_name)
+        setup_dict["sim_name"] = sim_name
+        setup_dict["car_name"] = car_name
+        setup_dict["track_name"] = track_name
         setup_dict["created_by"] = session["user"]
         setup_dict["date_created"] = timestampStr
         print(timestampStr)
