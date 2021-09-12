@@ -1,4 +1,14 @@
+footer {
+    height: 5rem;
+    background-color: chocolate;
+    color: cornsilk;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
 
+}
 
 .logo2 {
     display: none;
@@ -196,6 +206,20 @@ option {
 
 label {
     font-style: ;
+}
+
+.submit-button-div {
+    margin-bottom: 3rem;
+    display: inline-block;
+    position: relative;
+
+}
+
+#submit-page-button-section {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
 }
 
 /* label::after {
