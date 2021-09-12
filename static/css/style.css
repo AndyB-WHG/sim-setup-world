@@ -2,12 +2,41 @@ footer {
     height: 5rem;
     background-color: chocolate;
     color: cornsilk;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
     z-index: 1;
+}
 
+.footer-fixed-to-bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(245 124 0);
+    color: white;
+    text-align: center;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+footer li {
+    
+    display: inline;
+    text-align: center;
+    margin: 10px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 23px;
+}
+
+footer a:hover{
+    color: white;
 }
 
 .logo2 {
