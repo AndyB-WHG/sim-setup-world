@@ -187,11 +187,12 @@ def submit_setup_part3():
         print("Length of Parameters List is : ", len(param_dict_list))
         setup_dict = {}
         dateTimeObj = datetime.now()
+        # the following line of code borrowed from "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+        # to get the current date and time.
         timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
         print('Current Timestamp : ', timestampStr)
         for param_dict in param_dict_list:
             parameter_name = param_dict["param"]
-            print(parameter_name)
             setup_dict[parameter_name] = request.form.get(parameter_name)
         setup_dict["sim_name"] = sim_name
         setup_dict["car_name"] = car_name
@@ -222,7 +223,7 @@ def edit_setup_part1():
     sims = list(mongo.db.sims.find().sort("sim_name"))
     user_setups = list(mongo.db.setups.find({"created_by": session["user"]})
                                       .sort("_id"))
-    print("100: Select Sim")
+    print("user_setups : ", user_setups)
     return render_template(
         "edit_setup_part1.html", sims=sims, user_setups=user_setups)
 
@@ -250,6 +251,43 @@ def edit_setup_part2():
                 sim_name=sim_name,
                 car_name=car_name, track_name=track_name,
                 setup_parameters=setup_parameters, headers=headers)
+
+
+@app.route("/edit_setup_part3", methods=["GET", "POST"])
+def edit_setup_part3():
+    if request.method == "POST":
+        sim_name = request.form.get("sim_name")
+        print("Part 3 : ", sim_name)
+        car_name = request.form.get("car_name")
+        print("Part 3 : ", car_name)
+        track_name = request.form.get("track_name")
+        print("Part 3 : ", track_name)
+        
+
+
+
+        param_dict_list = list(mongo.db.sim_settings_parameters.find(
+                           {"sim_name": sim_name}).sort("order_number"))
+        print("Part 3 Parameters : ", param_dict_list)
+        print("Length of Parameters List is : ", len(param_dict_list))
+        setup_dict = {}
+        dateTimeObj = datetime.now()
+        # the following line of code borrowed from "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+        # to get the current date and time.
+        timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
+        print('Current Timestamp : ', timestampStr)
+        for param_dict in param_dict_list:
+            parameter_name = param_dict["param"]
+            setup_dict[parameter_name] = request.form.get(parameter_name)
+        setup_dict["sim_name"] = sim_name
+        setup_dict["car_name"] = car_name
+        setup_dict["track_name"] = track_name
+        setup_dict["created_by"] = session["user"]
+        setup_dict["date_created"] = timestampStr
+        print(timestampStr)
+        mongo.db.setups.insert_one(setup_dict)
+        flash("Setup Successfully Submitted")
+        return render_template("home.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

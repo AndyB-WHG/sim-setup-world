@@ -73,10 +73,12 @@
       </tr>
       {% for user_setup in user_setups %}
         <tr>
-          <td>{ user_setup.created_by }</td>
-          <td>{ user_setup.Fastest Lap }</td>
-          <td>{ user_setup.Setup Type }</td>
-          <td>{ user_setup.Rating (out of 5) }</td>
+          <td>{{ user_setup.created_by }}</td>
+          <td>{{ user_setup.Fastest_Lap }}</td>
+          <td>{{ user_setup.Setup_Type }}</td>
+          <td>{{ user_setup.Rating_out_of_5 }}</td>
+          <td><button>Edit Setup</button></td>
+          <td><button>Delete</button></td>          
         </tr>
       {% endfor %}
     </table>
