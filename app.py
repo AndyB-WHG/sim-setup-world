@@ -187,7 +187,7 @@ def submit_setup_part3():
         print("Length of Parameters List is : ", len(param_dict_list))
         setup_dict = {}
         dateTimeObj = datetime.now()
-        timestampStr = dateTimeObj.strftime("%H:%M:%S - %d %b %Y")
+        timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
         print('Current Timestamp : ', timestampStr)
         for param_dict in param_dict_list:
             parameter_name = param_dict["param"]
@@ -203,6 +203,53 @@ def submit_setup_part3():
         flash("Setup Successfully Submitted")
         return render_template("home.html")
 
+
+@app.route("/edit_setup_part1", methods=["GET", "POST"])
+def edit_setup_part1():
+    if request.method == "POST":
+        sim_name = request.form["sim_name"]
+        print("150: Selected Sim: ", sim_name)
+        cars = list(mongo.db.car_list.find(
+            {"sim_name": request.form.get("sim_name")}).sort("car_name"))
+        tracks = list(mongo.db.tracks.find(
+            {"sim_name": request.form.get("sim_name")}).sort("track_name"))
+        print("180: Car and Track options lists loaded - user needs to" +
+              "select car and track")
+        return render_template(
+            "edit_setup_part2.html",
+            sim_name=sim_name, cars=cars, tracks=tracks)
+
+    sims = list(mongo.db.sims.find().sort("sim_name"))
+    user_setups = list(mongo.db.setups.find({"created_by": session["user"]})
+                                      .sort("_id"))
+    print("100: Select Sim")
+    return render_template(
+        "edit_setup_part1.html", sims=sims, user_setups=user_setups)
+
+
+@app.route("/edit_setup_part2", methods=["GET", "POST"])
+def edit_setup_part2():
+    if request.method == "POST":
+        sim_name = request.form.get("sim_name")
+        print("210: Part 2: Sim Name is: ", sim_name)
+        car_name = request.form.get("car_name")
+        print("220: Part 2: Car Name is: ", car_name)
+        track_name = request.form.get("track_name")
+        print("230: Part 2: Track Name is: ", track_name)
+        headers = list(mongo.db.sim_headings.find({"sim_name": sim_name})
+                                            .sort("heading_number"))
+        setup_parameters = list(mongo.db.sim_settings_parameters.find(
+                           {"sim_name": sim_name}).sort("order_number"))
+        print("")
+        print("Headers: ", headers)
+        print("")
+        print("Parameters: ", setup_parameters)
+        if track_name and car_name:
+            return render_template(
+                "edit_setup_part3.html",
+                sim_name=sim_name,
+                car_name=car_name, track_name=track_name,
+                setup_parameters=setup_parameters, headers=headers)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
