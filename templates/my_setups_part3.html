@@ -51,14 +51,14 @@
           </tr>
           {% for user_setup in user_setups %}
             <tr>
-              <td>{{ user_setup.car_name}}</td>
+              <td>{{ user_setup.car_name }}</td>
               <td>{{ user_setup.track_name }}</td>
               <td>{{ user_setup.Fastest_Lap }}</td>
               <td>{{ user_setup.Setup_Type }}</td>
               <td>{{ user_setup.Rating_out_of_5 }}</td>
               <td>{{ user_setup._id }}</td>
               <td>{{ user_setup.date_created }}</td>
-              <td><a class="btn-small light-blue accent-4">Edit</a></td>
+              <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a></td>
               <td><a class="btn-small dark-green accent-4">View</a></td>
               <td><a class="btn-small red accent-2">Delete</a></td>          
             </tr>
@@ -68,99 +68,6 @@
       </div>
     
     </section>
-
-    <!-- Loop through Headings for the Chosen Sim/Game and display on screen, then, within the headings, loop through the parameters and display those -->
-    
-    {% for header in headers %}
-      <div class="row">
-        <div id="parameters-section" class="col s12">
-          <h4 class="headings">{{ header.heading }}</h4>
-        </div>
-
-        <div class="row">
-            {% for parameter in setup_parameters %}
-              {% if parameter.heading.lower() == header.heading.lower() %}
-                {% if parameter.param != "Rating (out of 5)" %}
-                  {% if parameter.heading == "Stats" %}
-                    {% if parameter.param == "Setup Type" %}
-                      <div id="setup-type-radio"  class="input-field col s12 l6">
-                        <!-- Radio Buttins for 'Type' of setup -->
-                        <p>
-                            <label id="setup-type-label" class="label-size">Setup Type</label>
-                          <label>
-                            <input class="with-gap" name="{{ parameter.param }}" type="radio" checked />
-                            <span>Base</span>
-                          </label>
-                          <label>
-                            <input class="with-gap" name="{{ parameter.param }}" type="radio" />
-                            <span class="radio-width">Qualifying</span>
-                          </label>
-                          <label>
-                            <input class="with-gap" name="{{ parameter.param }}" type="radio"  />
-                            <span class="radio-width">Race</span>
-                          </label>
-                        </p>
-                      </div>
-
-                      <!-- Set pattern requirements for Fastest Laptiime -->
-
-                    {% elif parameter.param == "Fastest Lap" %}
-                      <div class="input-field col s6">
-                        <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
-                        <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" pattern="^\d'\d\d.\d\d\d$"  type="text"
-                        class="validate" required>
-                      </div>
-
-                    <!-- Set requirements for 'Author Notes' section -->
-
-                    {% else %}
-                      <div class="input-field col s12">
-                        <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
-                        <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" class="validate">
-                      </div>
-                    {% endif %}
-
-                  <!-- Set accepted pattern and HTML for all of the remaining parameters -->
-
-                  {% else %}
-                  <div class="input-field col s6 l3">
-                    <label class="label-size" for="{{ parameter.param }} :" >{{ parameter.param }}</label><br>
-                    <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$"  type="text" min="1" max="5"
-                    class="validate" required>
-                    <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
-                    <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
-                  </div>
-                  {% endif %}                  
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
-
-    <!-- Submit button -->
-    <div id="submit-page-button-section">
-
-      <div class="row submit-button-div">
-        <div class="col s12 center-align">
-          <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Submit Setup</button>
-        </div>
-      </div>
-
-      <div class="row submit-button-div">
-        <div class="col s12 center-align">
-          <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Restart</button>
-        </div>
-      </div>
-
-      <div class="row submit-button-div">
-        <div class="col s12 center-align">
-          <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Exit</button>
-        </div>
-      </div>
-
-  </div>
-
   </form>
 </div>
 

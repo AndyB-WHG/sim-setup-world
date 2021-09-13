@@ -5,29 +5,29 @@
 <h3 class="centered page-title submit-title">Edit A Setup</h3>
 
 <div class="row card-panel grey lighten-5">
-  <form id="submit-setup-form" class="col s12" method="POST" action="{{ url_for('edit_setup') }}">
+  <form id="submit-setup-form" class="col s12" method="POST" action="{{ url_for('edit_setup', setup_id=setup._id) }}">
 
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
-        <input value="{{ sim_name }}" type="text" class="validate" name="sim_name">
-        <label class="active" for="sim_name"></label>
+        <input value="{{ setup.sim_name }}" type="text" class="validate" name="{{ setup.sim_name }}">
+        <label class="active" for="{{ setup.sim_name }}"></label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-car prefix orange-text text-darken-4 submit-icon"></i>
-        <input value="{{ car_name }}" type="text" class="validate" name="car_name">
-        <label class="active" for="car_name"></label>
+        <input value="{{ setup.car_name }}" type="text" class="validate" name="{{ setup.car_name }}">
+        <label class="active" for="{{ setup.car_name }}"></label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
         <i class="fas fa-globe-americas prefix orange-text text-darken-4"></i>
-        <input value="{{ track_name }}" type="text" class="validate" name="track_name">
-        <label class="active" for="track_name"></label>
+        <input value="{{ setup.track_name }}" type="text" class="validate" name="{{ setup.track_name }}">
+        <label class="active" for="{{ setup.track_name }}"></label>
       </div>
     </div>
 
@@ -41,59 +41,66 @@
 
       <div class="row">
       {% for parameter in setup_parameters %}
+      
         {% if parameter.heading.lower() == header.heading.lower() %}
           {% if parameter.param != "Rating_out_of_5" %}
             {% if parameter.heading == "Stats" %}
               {% if parameter.param == "Setup_Type" %}
-              <div id="setup-type-radio" class="input-field col s12 l6">
-                <!-- Radio Buttins for 'Type' of setup -->
-                <p>
-                  <label id="setup-type-label" class="label-size">Setup Type</label>
-                  <label for="base">
-                    <input id="base" class="with-gap" name="{{ parameter.param }}" type="radio" checked />
-                    <span>Base</span>
-                  </label>
-                  <label for="qualifying">
-                    <input id="qualifying" class="with-gap" name="{{ parameter.param }}" type="radio" />
-                    <span class="radio-width">Qualifying</span>
-                  </label>
-                  <label for="race">
-                    <input id="race" class="with-gap" name="{{ parameter.param }}" type="radio" />
-                    <span class="radio-width">Race</span>
-                  </label>
+                {% for key in setup %}
+                  {% if key == parameter.param %}
+            
                   
-                </p>
-              </div>
 
+                    <label>Setup Type</label>
+                      <select class="browser-default">
+                        <option value="{{ setup[key] }}" disabled selected>Select setup type</option>
+                        <option value="1">Qualifying</option>
+                        <option value="2">Race</option>
+                        <option value="3">Base</option>
+                      </select>
+
+                
+                  {% endif %}
+                {% endfor%}
               <!-- Set pattern requirements for Fastest Laptiime -->
-
               {% elif parameter.param == "Fastest_Lap" %}
-              <div class="input-field col s6">
-                <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
-                <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}"
-                  pattern="^\d'\d\d.\d\d\d$" type="text" class="validate" required>
-              </div>
-
+                {% for key in setup %}
+                  {% if key == parameter.param %}
+                    <div class="input-field col s6">
+                      <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
+                      <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}"
+                        pattern="^\d'\d\d.\d\d\d$" type="text" class="validate" required>
+                    </div>
+                  {% endif %}
+                {% endfor%}
               <!-- Set requirements for 'Author Notes' section -->
 
               {% else %}
-              <div class="input-field col s12">
-                <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
-                <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text"
-                  class="validate">
-              </div>
+                {% for key in setup %}
+                  {% if key == parameter.param %}
+                    <div class="input-field col s12">
+                      <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
+                      <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" value="{{ setup[key] }}"
+                        class="validate">
+                    </div>
+                  {% endif %}
+                {% endfor%}
               {% endif %}
 
             <!-- Set accepted pattern and HTML for all of the remaining parameters -->
 
             {% else %}
-            <div class="input-field col s6 l3">
-              <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
-              <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}"
-                pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="validate" required>
-              <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
-              <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
-            </div>
+              {% for key in setup %}
+                {% if key == parameter.param %}
+                  <div class="input-field col s6 l3">
+                    <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
+                    <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}"
+                      pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="validate" required>
+                    <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
+                    <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
+                  </div>
+                {% endif %}
+              {% endfor %}
             {% endif %}
           {% endif %}
         {% endif %}
@@ -107,7 +114,7 @@
 
       <div class="row submit-button-div">
         <div class="col s12 center-align">
-          <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Submit Setup</button>
+          <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Submit Changes</button>
         </div>
       </div>
 
@@ -119,7 +126,7 @@
 
       <div class="row submit-button-div">
         <div class="col s12 center-align">
-          <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Exit</button>
+          <button id="submit-setup-button" type="submit" class="waves-effect btn-large light-blue">Cancel</button>
         </div>
       </div>
 

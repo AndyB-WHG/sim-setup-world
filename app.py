@@ -299,8 +299,21 @@ def my_setups_part3():
         # flash("Setup Successfully Submitted")
         # return render_template("home.html")
 
+
 @app.route("/edit_setup/<setup_id>", methods=["GET", "POST"])
-def my_setups_part3():
+def edit_setup(setup_id):
+    setup = mongo.db.setups.find_one({"_id": ObjectId(setup_id)})
+    print("400 : Setup = : ", setup)
+    sim_name = setup["sim_name"]
+    print("410 : sim_name = : ", sim_name)
+    headers = list(mongo.db.sim_headings.find({"sim_name": sim_name})
+                   .sort("heading_number"))
+    setup_parameters = list(mongo.db.sim_settings_parameters.find(
+                           {"sim_name": sim_name}).sort("order_number"))
+    return render_template("edit_setup.html",
+                           setup=setup, headers=headers,
+                           setup_parameters=setup_parameters)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
