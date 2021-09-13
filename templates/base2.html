@@ -28,7 +28,7 @@
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     {% if session.user %}
                         <li><a href="#">Find Setup</a></li>
-                        <li><a href="#">Edit Setup </a></li>
+                        <li><a href="#">My Setups </a></li>
                         <li><a href="{{ url_for('submit_setup_part1') }}">Submit Setup</a></li>
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         <li><a href="{{ url_for('get_tutorials') }}">Setup Tutorials</a></li>
@@ -57,7 +57,7 @@
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}
                 <li><a href="#">Find Setup</a></li>
-                <li><a href="#">Edit Setup </a></li>
+                <li><a href="#">My Setups</a></li>
                 <li><a href="{{ url_for('submit_setup_part1') }}">Submit Setup</a></li>
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('get_tutorials') }}">Setup Tutorials</a></li>

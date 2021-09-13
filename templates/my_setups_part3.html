@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<h3 class="centered page-title submit-title">Submit A Setup</h3>
+<h3 class="centered page-title submit-title">View / Edit / Delete your Setups</h3>
 
 <div class="row card-panel grey lighten-5">
-  <form id="submit-setup-form" class="col s12" method="POST" action="{{ url_for('edit_setup_part3') }}">
+  <form id="submit-setup-form" class="col s12" method="POST" action="{{ url_for('my_setups_part3') }}">
 
     <div class="row">
       <div class="input-field col s12 sim-selection">
@@ -30,6 +30,44 @@
         <label class="active" for="track_name"></label>
       </div>
     </div>
+
+    <section id="user-setups_list"> 
+      <div>
+        <h4 class="headings user-list-heading">Found the following Setups</h4>
+      </div>  
+    
+      <div id="users-setup-list" class="row card-panel grey lighten-5">
+        <!-- User Setup List Headings -->
+    
+        <table>
+          <tr>
+            <th>Car</th>
+            <th>Track</th>
+            <th>Lap Time</th>
+            <th>Type</th>
+            <th>Rating</th>
+            <th>Setup Id</th>
+            <th>Last Save Date</th>
+          </tr>
+          {% for user_setup in user_setups %}
+            <tr>
+              <td>{{ user_setup.car_name}}</td>
+              <td>{{ user_setup.track_name }}</td>
+              <td>{{ user_setup.Fastest_Lap }}</td>
+              <td>{{ user_setup.Setup_Type }}</td>
+              <td>{{ user_setup.Rating_out_of_5 }}</td>
+              <td>{{ user_setup._id }}</td>
+              <td>{{ user_setup.date_created }}</td>
+              <td><a class="btn-small light-blue accent-4">Edit</a></td>
+              <td><a class="btn-small dark-green accent-4">View</a></td>
+              <td><a class="btn-small red accent-2">Delete</a></td>          
+            </tr>
+          {% endfor %}
+        </table>
+        
+      </div>
+    
+    </section>
 
     <!-- Loop through Headings for the Chosen Sim/Game and display on screen, then, within the headings, loop through the parameters and display those -->
     
