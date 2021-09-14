@@ -31,47 +31,133 @@
       </div>
     </div>
 
-    <section id="user-setups_list"> 
+    <section id="user-setups_list">
       <div>
         <h4 class="headings user-list-heading">Found the following Setups</h4>
-      </div>  
-    
-      <div id="users-setup-list" class="row card-panel grey lighten-5">
-        <!-- User Setup List Headings -->
-    
-        <table>
+      </div>
+
+      <!-- User Setup List Headings -->
+
+        <!-- Table 1 - Large Screens  -->
+
+        <table id="my-setups-large-screen">
           <tr>
+            <th>Car</th>
+            <th>Track</th>
             <th>Lap Time</th>
             <th>Type</th>
             <th>Rating</th>
-            <!-- <th>Save Date</th> -->
+            <th>Date</th>
           </tr>
           {% for user_setup in user_setups %}
-            <tr>
-              <td>{{ user_setup.Fastest_Lap }}</td>
-              <td>{{ user_setup.Setup_Type }}</td>
-              <td>{{ user_setup.Rating_out_of_5 }}</td>
-              <!-- <td>{{ user_setup.date_created }}</td> -->
-              <!-- <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a></td>
-              <td><a class="btn-small dark-green accent-4">View</a></td>
-              <td><a class="btn-small red accent-2">Delete</a></td>           -->
-            </tr>
-            <tr>
-              <td>
-                <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a>
-              </td>
-              <td>
-                <a class="btn-small dark-green accent-4">View</a>
-              </td>
-              <td>
-                <a class="btn-small red accent-2">Delete</a>
-              </td>       
-            </tr>
+          <tr>
+            <td>{{ user_setup.car_name }}</td>
+            <td>{{ user_setup.track_name }}</td>
+            <td>{{ user_setup.Fastest_Lap }}</td>
+            <td>{{ user_setup.Setup_Type }}</td>
+            <td>{{ user_setup.Rating_out_of_5 }}</td>
+            <td>{{ user_setup.date_created }}</td>
+            <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}"
+                class="btn-small light-blue accent-4">Edit</a></td>
+            <td><a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a></td>
+            <td><a class="btn-small red accent-2">Delete</a></td>
+          </tr>
+
+
+          <!-- <tr>
+          <td>
+            <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a>
+            <a class="btn-small dark-green accent-4">View</a>
+            <a class="btn-small red accent-2">Delete</a>
+          </td>       
+        </tr> -->
           {% endfor %}
         </table>
-        
-      </div>
-    
+
+        <!-- Table 2 - Medium Screens -->
+
+        <table id="my-setups-medium-screen">
+          <tr>
+            <th>Car</th>
+            <th>Track</th>
+            <th>Lap Time</th>
+            <th>Type</th>
+            <th>Rating</th>
+            <!-- <th>Last Save Date</th> -->
+          </tr>
+          {% for user_setup in user_setups %}
+
+
+
+          </tr>
+          <tr>
+            <td>{{ user_setup.car_name}}</td>
+            <td>{{ user_setup.track_name }}</td>
+            <td>{{ user_setup.Fastest_Lap }}</td>
+            <td>{{ user_setup.Setup_Type }}</td>
+            <td>{{ user_setup.Rating_out_of_5 }}</td>
+            <!-- <td>{{ user_setup.date_created }}</td> -->
+
+            <!-- <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a></td>
+        <td><a class="btn-small dark-green accent-4">View</a></td>
+        <td><a class="btn-small red accent-2">Delete</a></td>           -->
+          </tr>
+          <tr>
+            <td>
+              <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}"
+                class="btn-small light-blue accent-4">Edit</a>
+                <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
+              <a class="btn-small red accent-2">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+
+        <!-- Table 3 - Small Screens -->
+
+        <table id="my-setups-small-screen">
+          <tr>
+            <th>Car</th>
+            <th>Track</th>
+            <th>Lap Time</th>
+            <!-- <th>Type</th> -->
+            <th>Rating</th>
+            <!-- <th>Last Save Date</th> -->
+          </tr>
+          {% for user_setup in user_setups %}
+
+
+
+          </tr>
+          <tr>
+            <td>{{ user_setup.car_name}}</td>
+            <td>{{ user_setup.track_name }}</td>
+            <td>{{ user_setup.Fastest_Lap }}</td>
+            <!-- <td>{{ user_setup.Setup_Type }}</td> -->
+            <td>{{ user_setup.Rating_out_of_5 }}</td>
+            <!-- <td>{{ user_setup.date_created }}</td> -->
+
+            <!-- <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a></td>
+        <td><a class="btn-small dark-green accent-4">View</a></td>
+        <td><a class="btn-small red accent-2">Delete</a></td>           -->
+          </tr>
+          <tr>
+            <td>
+              <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}"
+                class="btn-small light-blue accent-4">Edit</a>
+            </td>
+            <td>
+              <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
+            </td>
+            <td>
+              <a class="btn-small red accent-2">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+
+
+
     </section>
   </form>
 </div>

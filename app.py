@@ -302,6 +302,72 @@ def my_setups_part3():
 
 @app.route("/edit_setup/<setup_id>", methods=["GET", "POST"])
 def edit_setup(setup_id):
+    if request.method == "POST":
+        sim_name = request.args.get('sim_name', None)
+        car_name = request.args.get('car_name', None)
+        track_name = request.args.get('track_name', None)
+
+        # print("600 : Setup Id = : ", setup_id)
+        # current_setup = mongo.db.setups.find_one({"_id": ObjectId(setup_id)})
+        # print("610 : Current_setup is :  ", current_setup)
+        # # sim_list = list(mongo.db.sims.find().sort("sim_name"))
+        # print("600 : Sim List is : ", sim_list)
+        # for sim in sim_list:
+        #     sim.sim_name = request.form.get(sim)
+        #     print("610 : Sim is : ", sim_name)
+        #     if sim:
+        # param_dict_list = list(mongo.db.sim_settings_parameters.find(
+        #                 {"sim_name": sim_name}).sort("order_number"))
+        # print("Part 3 Parameters : ", param_dict_list)
+        # print("Length of Parameters List is : ", len(param_dict_list))
+        # edit_dict = {}
+        # dateTimeObj = datetime.now()
+        # the following line of code borrowed from "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+        # to get the current date and time.
+        # timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
+        # print('Current Timestamp : ', timestampStr)
+        # for param_dict in param_dict_list:
+        #     parameter_name = param_dict["param"]
+        #     edit_dict[parameter_name] = request.form.get(
+        #         parameter_name)
+        # edit_dict["sim_name"] = sim_name
+        # edit_dict["car_name"] = car_name
+        # edit_dict["track_name"] = track_name
+        # edit_dict["created_by"] = session["user"]
+        # edit_dict["date_created"] = timestampStr
+        # print(timestampStr)
+        # mongo.db.setups.update_one({"_.id": ObjectId(setup_id)}, edit_dict)
+        # flash("Setup Successfully Updated")
+        # return render_template("home.html")
+
+        # sim_name = sim_name
+        print("Part 6 : ", sim_name)
+        # car_name = car_name
+        print("Part 6 : ", car_name)
+        # track_name = track_name
+        print("Part 6 : ", track_name)
+        param_dict_list = list(mongo.db.sim_settings_parameters.find(
+                           {"sim_name": sim_name}).sort("order_number"))
+        print("Part 6 Parameters : ", param_dict_list)
+        print("Length of Parameters List is : ", len(param_dict_list))
+        update_dict = {}
+        dateTimeObj = datetime.now()
+        # the following line of code borrowed from "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+        # to get the current date and time.
+        timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
+        print('Current Timestamp PT6 : ', timestampStr)
+        for param_dict in param_dict_list:
+            parameter_name = param_dict["param"]
+            update_dict[parameter_name] = request.form.get(parameter_name)
+        update_dict["sim_name"] = sim_name
+        update_dict["car_name"] = car_name
+        update_dict["track_name"] = track_name
+        update_dict["created_by"] = session["user"]
+        update_dict["date_created"] = timestampStr
+        print(timestampStr)
+        mongo.db.setups.insert_one(update_dict)
+        flash("Setup Successfully Submitted")
+        return render_template("home.html")
     setup = mongo.db.setups.find_one({"_id": ObjectId(setup_id)})
     print("400 : Setup = : ", setup)
     sim_name = setup["sim_name"]
@@ -311,6 +377,21 @@ def edit_setup(setup_id):
     setup_parameters = list(mongo.db.sim_settings_parameters.find(
                            {"sim_name": sim_name}).sort("order_number"))
     return render_template("edit_setup.html",
+                           setup=setup, headers=headers,
+                           setup_parameters=setup_parameters)
+
+
+@app.route("/view_setup/<setup_id>", methods=["GET", "POST"])
+def view_setup(setup_id):
+    setup = mongo.db.setups.find_one({"_id": ObjectId(setup_id)})
+    print("500 : Setup = : ", setup)
+    sim_name = setup["sim_name"]
+    print("510 : sim_name = : ", sim_name)
+    headers = list(mongo.db.sim_headings.find({"sim_name": sim_name})
+                   .sort("heading_number"))
+    setup_parameters = list(mongo.db.sim_settings_parameters.find(
+                           {"sim_name": sim_name}).sort("order_number"))
+    return render_template("view_setup.html",
                            setup=setup, headers=headers,
                            setup_parameters=setup_parameters)
 

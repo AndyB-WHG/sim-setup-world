@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<h3 class="centered page-title submit-title">Edit A Setup</h3>
+<h3 class="centered page-title submit-title">View A Setup</h3>
 
 <div class="row card-panel grey lighten-5">
-  <form id="submit-setup-form" class="col s12" method="POST" action="{{ url_for('edit_setup', setup_id=setup._id, sim_name = setup.sim_name, car_name=setup.car_name, track_name=setup.track_name) }}">
+  <form id="submit-setup-form" class="col s12" method="POST" action="{{ url_for('view_setup', setup_id=setup._id) }}">
 
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
-        <input value="{{ setup.sim_name }}" type="text" class="validate" name="{{ setup.sim_name }}">
+        <input value="{{ setup.sim_name }}" type="text" class="" name="{{ setup.sim_name }}" readonly>
         <label class="active" for="{{ setup.sim_name }}"></label>
       </div>
     </div>
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-car prefix orange-text text-darken-4 submit-icon"></i>
-        <input value="{{ setup.car_name }}" type="text" class="validate" name="{{ setup.car_name }}">
+        <input value="{{ setup.car_name }}" type="text" class="" name="{{ setup.car_name }}" readonly>
         <label class="active" for="{{ setup.car_name }}"></label>
       </div>
     </div>
@@ -26,7 +26,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="fas fa-globe-americas prefix orange-text text-darken-4"></i>
-        <input value="{{ setup.track_name }}" type="text" class="validate" name="{{ setup.track_name }}">
+        <input value="{{ setup.track_name }}" type="text" class="" name="{{ setup.track_name }}" readonly>
         <label class="active" for="{{ setup.track_name }}"></label>
       </div>
     </div>
@@ -52,7 +52,7 @@
                   
 
                     <label>Setup Type</label>
-                      <select class="browser-default">
+                      <select class="browser-default" readonly>
                         <option value="{{ setup[key] }}" disabled selected>Select setup type</option>
                         <option value="1">Qualifying</option>
                         <option value="2">Race</option>
@@ -68,8 +68,8 @@
                   {% if key == parameter.param %}
                     <div class="input-field col s6">
                       <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
-                      <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}"
-                        pattern="^\d'\d\d.\d\d\d$" type="text" class="validate" required>
+                      <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}" readonly
+                        pattern="^\d'\d\d.\d\d\d$" type="text" class="" required>
                     </div>
                   {% endif %}
                 {% endfor%}
@@ -80,8 +80,8 @@
                   {% if key == parameter.param %}
                     <div class="input-field col s12">
                       <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
-                      <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" value="{{ setup[key] }}"
-                        class="validate">
+                      <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" value="{{ setup[key] }}" readonly
+                        class="">
                     </div>
                   {% endif %}
                 {% endfor%}
@@ -94,8 +94,8 @@
                 {% if key == parameter.param %}
                   <div class="input-field col s6 l3">
                     <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
-                    <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}"
-                      pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="validate" required>
+                    <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}" readonly
+                      pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="" required>
                     <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
                     <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
                   </div>
@@ -114,34 +114,26 @@
 
     
     <!-- Submit button -->
-    <div id="edit-page-button-section">
+    <div id="view-setup-page-buttons">
 
       <div class="row submit-button-div">
-        <div class="col s12 center-align edit-page-buttons">
-          <button id="edit-submit" type="submit" class="waves-effect btn-large light-blue">Submit Changes</button>
+        <div class="col s12 center-align">
+          <a href="{{ url_for('my_setups_part1') }}" type="submit" class="waves-effect btn-small light-blue">Search Again</a>
+        </div>
+      </div>
+    
+      <div class="row submit-button-div">
+        <div class="col s12 center-align">
+          <a href="{{ url_for('home') }}" type="submit" class="waves-effect btn-small light-blue">Home</a>
         </div>
       </div>
 
-      <div class="row submit-button-div">
-        <div class="col s12 center-align edit-page-buttons">
-          <button type="submit" class="waves-effect btn-large light-blue">Restart</button>
-        </div>
-      </div>
-
-      <div class="row submit-button-div">
-        <div class="col s12 center-align edit-page-buttons">
-          <button type="submit" class="waves-effect btn-large light-blue">Cancel</button>
-        </div>
-      </div>
-
+      
+    
     </div>
 
   </form>
+
 </div>
-
-
-
-
-
 
 {% endblock %}
