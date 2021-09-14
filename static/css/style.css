@@ -392,8 +392,30 @@ label {
         font-size: 15px;
     }
     .headings {
-        
         width: 80%;
+    }
 }
 
+@media (max-width: 1199px) {
+    #my-setups-large-screen {
+        display: none;
+    }
+}
 
+@media (min-width: 595px) {
+    #my-setups-small-screen {
+        display: none;
+    }
+}
+
+@media (max-width: 596px) {
+    #my-setups-medium-screen {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    #my-setups-medium-screen {
+        display: none;
+    }
+}
