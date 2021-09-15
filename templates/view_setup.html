@@ -5,7 +5,7 @@
 <h3 class="centered page-title submit-title">View A Setup</h3>
 
 <div class="row card-panel grey lighten-5">
-  <form id="submit-setup-form" class="col s12" method="POST" action="{{ url_for('view_setup', setup_id=setup._id) }}">
+  <form id="submit-setup-form" class="col s12" method="POST" action="{{ url_for('rate_setup', setup_id=setup._id) }}">
 
     <div class="row">
       <div class="input-field col s12 sim-selection">
@@ -67,7 +67,7 @@
                 {% for key in setup %}
                   {% if key == parameter.param %}
                     <div class="input-field col s6">
-                      <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
+                      <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
                       <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}" readonly
                         pattern="^\d'\d\d.\d\d\d$" type="text" class="" required>
                     </div>
@@ -79,7 +79,7 @@
                 {% for key in setup %}
                   {% if key == parameter.param %}
                     <div class="input-field col s12">
-                      <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
+                      <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
                       <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" value="{{ setup[key] }}" readonly
                         class="">
                     </div>
@@ -93,7 +93,7 @@
               {% for key in setup %}
                 {% if key == parameter.param %}
                   <div class="input-field col s6 l3">
-                    <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
+                    <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
                     <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}" readonly
                       pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="" required>
                     <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
@@ -128,7 +128,11 @@
         </div>
       </div>
 
-      
+      <div class="row submit-button-div">
+        <div class="col s12 center-align">
+          <a type="submit" class="waves-effect btn-small light-blue">Rate</a>
+        </div>
+      </div>
     
     </div>
 

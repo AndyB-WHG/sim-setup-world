@@ -447,6 +447,9 @@ label {
         text-align: center;
         font-size: larger;
     }
+    .param-input {
+        padding-top: 30px !important;  /* Note: '!important' only used on this occasion as was necessary to override a Materialize '!important' rule. */
+    }
 }
 
 @media (max-width: 325px) {
@@ -457,3 +460,11 @@ label {
         margin: 2px;
     }
 }
+
+@media (max-width: 450px) {
+    #my-setups-small-screen .btn-small {
+        float: left;
+    }
+    .input-field .validate {
+        padding-top: 40px;
+}}

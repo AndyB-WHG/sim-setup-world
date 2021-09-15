@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<h3 class="centered page-title submit-title">View / Edit / Delete your Setups</h3>
+<h3 class="centered page-title submit-title">Find a Setup</h3>
 
-<h6 class="centered edit-setup-directions">Select your Combination below to narrow down the list or choose directly from your setup list at the bottom of the page.....</h6>
+<h6 class="centered edit-setup-directions">Select your Combination below to narrow down the list or choose directly from this list at the bottom of the page.....</h6>
 
 <div class="row card-panel grey lighten-5">
   <form class="col s12" method="POST" action="{{ url_for('my_setups_part1') }}">
@@ -58,7 +58,7 @@
 
 <section id="user-setups_list"> 
   <div>
-    <h4 class="headings user-list-heading">Your Setups</h4>
+    <h4 class="headings user-list-heading">Setup List</h4>
   </div>  
 
   <div id="users-setup-list" class="row card-panel grey lighten-5">
@@ -83,9 +83,8 @@
           <td>{{ user_setup.Setup_Type }}</td>
           <td>{{ user_setup.Rating_out_of_5 }}</td>
           <td>{{ user_setup.date_created }}</td>
-          <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a></td>
           <td><a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a></td>
-          <td><a href="{{ url_for('delete_setup', setup_id=user_setup._id) }}" class="btn-small red accent-2">Delete</a></td>          
+          <td><a href="{{ url_for('rate_setup', setup_id=user_setup._id) }}" class="btn-small orange accent-2">Rate</a></td>          
         </tr>
       
       
@@ -129,9 +128,8 @@
       </tr>
       <tr>
         <td>
-          <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a>
           <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
-          <a href="{{ url_for('delete_setup', setup_id=user_setup._id) }}" class="btn-small dark-red accent-2">Delete</a>
+          <a href="{{ url_for('rate_setup', setup_id=user_setup._id) }}" class="btn-small oran accent-2">Rate</a>
         </td>       
       </tr>
       {% endfor %}
@@ -175,13 +173,10 @@
       </tr>
       <tr>
         <td>
-          <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a>
-        </td>
-        <td>
           <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
         </td>
         <td>
-          <a href="{{ url_for('delete_setup', setup_id=user_setup._id) }}" class="btn-small red accent-2">Delete</a>
+          <a href="{{ url_for('rate_setup', setup_id=user_setup._id) }}" class="btn-small red accent-2">Rate</a>
         </td>       
       </tr>
       {% endfor %}

@@ -1,0 +1,70 @@
+{% extends "base2.html" %}
+
+{% block content %}
+
+<h3 class="centered page-title submit-title">Edit A Setup</h3>
+
+<div class="row card-panel grey lighten-5">
+  <form class="col s12" method="POST" action="{{ url_for('my_setups_part2') }}">
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-gamepad prefix orange-text text-darken-4"></i>
+        <input value="{{ sim_name }}" type="text" class="validate" name="sim_name">
+          <label class="active "for="sim_name"></label>
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-car prefix orange-text text-darken-4"></i>
+        <select id="car_name" name="car_name" minlength="1" class="validate" required>    
+          <option value="" disabled selected></i>Select Car</option>
+          {%- for car in cars -%}
+            <option value="{{ car.car_name }}">{{ car.car_name }}</option>
+          {%- endfor -%}    
+        </select>
+        <label for="car_name"></label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-globe-americas prefix orange-text text-darken-4"></i>
+        <select id="track_name" name="track_name" minlength="1" class="validate" required>
+          <option value="" disabled selected></i>Select Track</option>
+          {%- for track in tracks -%}
+            <option value="{{ track.track_name }}">{{ track.track_name }}</option>
+          {%- endfor -%}
+        </select>
+        <label for="track_name"></label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 center-align">
+        <!-- Enter Settings Button -->
+        <button id="list-my-filtertered-setups-button" type="submit" class="btn-small light-blue text-shadow">
+          Show Setups<i class="fas fa-plus-square right"></i>
+        </button>
+        <!-- Clear/Restart Button -->
+        <a href="{{ url_for('my_setups_part1') }}" id="clear-setup-button" type="button" class="btn-small light-blue text-shadow">Restart<i class="fas fa-sync-alt right"></i></a>
+        <a href="{{ url_for('home') }}" id="clear-setup-button" type="button" class="btn-small light-blue text-shadow">Cancel<i class="fas fa-times-circle right"></i></a>
+      </div>
+    </div>
+
+    
+      
+
+    </div>
+    
+  </form>
+</div>
+
+
+
+
+
+
+{% endblock %}

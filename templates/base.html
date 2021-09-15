@@ -27,7 +27,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     {% if session.user %}
-                        <li><a href="#">Find Setup</a></li>
+                        <li><a href="{{ url_for('find_setups_part1') }}">Find Setup</a></li>
                         <li><a href="{{ url_for('my_setups_part1') }}">My Setups</a></li>
                         <li><a href="{{ url_for('submit_setup_part1') }}">Submit Setup</a></li>
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
@@ -56,7 +56,7 @@
             </li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}
-                <li><a href="#">Find Setup</a></li>
+                <li><a href="{{ url_for('find_setups_part1') }}">Find Setup</a></li>
                 <li><a href="{{ url_for('my_setups_part1') }}">My Setups</a></li>
                 <li><a href="{{ url_for('submit_setup_part1') }}">Submit Setup</a></li>
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
