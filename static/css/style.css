@@ -288,6 +288,50 @@ label {
 }
 
 
+.admin-icons {
+    font-size: 3rem;
+    padding-top: 2.5rem;
+}
+
+.admin-choices {
+    padding-left: 0px;
+    font-weight: 600;
+}
+
+.admin-card {
+    margin-bottom: 30px;
+}
+
+.large-admin-page p {
+    font-weight: 600;
+    font-size: 2rem;
+    border-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.large-admin-page i {
+    padding: 0px;
+}
+
+.mobile-admin-choices .card-title {
+    font-weight: 400;
+}
+
+.mobile-admin-choices .admin-card {
+    padding-left: 65px;
+}
+
+.large-admin-page .card-action {
+    text-align: center;
+    padding-left: 69px;
+}
+
+.large-admin-page .card-action a {
+    font-weight: 700;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 
 /* label::after {
     font-size: large;
@@ -450,24 +494,6 @@ label {
     .param-input {
         padding-top: 30px !important;  /* Note: '!important' only used on this occasion as was necessary to override a Materialize '!important' rule. */
     }
-}
-
-.admin-icons {
-    font-size: 3rem;
-    padding-top: 2.5rem;
-}
-
-.admin-choices {
-    padding-left: 20px;
-    font-weight: 600;
-}
-
-.admin-card {
-    margin-bottom: 30px;
-}
-
-.mobile-admin-choices .card-title {
-    font-weight: 400;
 }
 
 @media (max-width: 325px) {

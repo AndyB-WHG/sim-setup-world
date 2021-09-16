@@ -444,6 +444,31 @@ def admin_tasks():
         return redirect(url_for("home"))
 
 
+@app.route("/add_sim", methods=["GET", "POST"])
+def ():
+    admin_type = mongo.db.users.find_one(
+      {"username": session["user"]})["admin"]
+    if admin_type is True:
+        flash("User is an Admin")
+        if request.method == "POST":
+            sim_name = request.form["sim_name"]
+            print("150: Selected Sim: ", sim_name)
+            cars = list(mongo.db.car_list.find(
+                {"sim_name": request.form.get("sim_name")}).sort("car_name"))
+            tracks = list(mongo.db.tracks.find(
+                {"sim_name": request.form.get("sim_name")}).sort("track_name"))
+            print("180: Car and Track options lists loaded - user needs to" +
+                "select car and track")
+            return render_template(
+                "admin_actions.html",
+                sim_name=sim_name, cars=cars, tracks=tracks)
+
+    sims = list(mongo.db.sims.find().sort("sim_name"))
+    print("100: Select Sim")
+    return render_template(
+        "admin_actions.html", sims=sims)
+
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
