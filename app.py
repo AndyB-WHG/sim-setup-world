@@ -417,8 +417,12 @@ def find_setups_part3():
                                sims=sims, user_setups=user_setups)
 
 
-@app.route("/rate_setup/<setup_id>")
+@app.route("/rate_setup/<setup_id>", methods=["GET", "POST"])
 def rate_setup(setup_id):
+    if request.method == "POST":
+        print("900:  Rate Setup Id No:  ", setup_id)
+        flash("'Rate Setup' awaiting coding. Id = " + setup_id)
+        return redirect(url_for("find_setups_part1"))
     print("900:  Rate Setup Id No:  ", setup_id)
     flash("'Rate Setup' awaiting coding. Id = " + setup_id)
     return redirect(url_for("find_setups_part1"))
