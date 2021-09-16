@@ -79,6 +79,8 @@ def login():
             if check_password_hash(
               existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
+                session["admin"] = mongo.db.users.find_one(
+                  {"username": session["user"]})["admin"]
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
 
@@ -426,6 +428,20 @@ def rate_setup(setup_id):
     print("900:  Rate Setup Id No:  ", setup_id)
     flash("'Rate Setup' awaiting coding. Id = " + setup_id)
     return redirect(url_for("find_setups_part1"))
+
+
+@app.route("/admin_tasks", methods=["GET", "POST"])
+def admin_tasks():
+    if request.method == "POST":
+        print("1000 : Post Admin Task")
+    admin_type = mongo.db.users.find_one(
+      {"username": session["user"]})["admin"]
+    if admin_type is True:
+        flash("User is an Admin")
+        return render_template("admin_tasks.html")
+    else:
+        flash("Please request 'Admin' rights in order to access this function")
+        return redirect(url_for("home"))
 
 
 

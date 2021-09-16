@@ -33,8 +33,8 @@
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         <li><a href="{{ url_for('get_tutorials') }}">Setup Tutorials</a></li>
                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                        {% if session.user %}
-                            <li><a href="#">Admin Tasks</a></li>
+                        {% if session.admin %}
+                            <li><a href="{{ url_for('admin_tasks') }}">Admin Tasks</a></li>
                         {% endif %}
                     {% else %}
                         <li><a href="{{ url_for('login') }}">Login</a></li>
@@ -65,8 +65,8 @@
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('get_tutorials') }}">Setup Tutorials</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                {% if session.user %}
-                    <li><a href="#">Admin Tasks</a></li>
+                {% if session.admin %}
+                    <li><a href="{{ url_for('admin_tasks') }}">Admin Tasks</a></li>
                 {% endif %}
             {% else %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>

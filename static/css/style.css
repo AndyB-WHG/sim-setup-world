@@ -452,6 +452,24 @@ label {
     }
 }
 
+.admin-icons {
+    font-size: 3rem;
+    padding-top: 2.5rem;
+}
+
+.admin-choices {
+    padding-left: 20px;
+    font-weight: 600;
+}
+
+.admin-card {
+    margin-bottom: 30px;
+}
+
+.mobile-admin-choices .card-title {
+    font-weight: 400;
+}
+
 @media (max-width: 325px) {
     #edit-page-button-section .btn-large {
         font-size: 10px;
