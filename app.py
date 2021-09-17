@@ -445,28 +445,39 @@ def admin_tasks():
 
 
 @app.route("/add_sim", methods=["GET", "POST"])
-def ():
+def add_sim():
     admin_type = mongo.db.users.find_one(
       {"username": session["user"]})["admin"]
     if admin_type is True:
         flash("User is an Admin")
         if request.method == "POST":
-            sim_name = request.form["sim_name"]
-            print("150: Selected Sim: ", sim_name)
-            cars = list(mongo.db.car_list.find(
-                {"sim_name": request.form.get("sim_name")}).sort("car_name"))
-            tracks = list(mongo.db.tracks.find(
-                {"sim_name": request.form.get("sim_name")}).sort("track_name"))
-            print("180: Car and Track options lists loaded - user needs to" +
-                "select car and track")
-            return render_template(
-                "admin_actions.html",
-                sim_name=sim_name, cars=cars, tracks=tracks)
-
-    sims = list(mongo.db.sims.find().sort("sim_name"))
-    print("100: Select Sim")
-    return render_template(
-        "admin_actions.html", sims=sims)
+            existing_sim = mongo.db.sims.find_one(
+              {"sim_name": request.form.get("sim_name").lower()})
+            if not existing_sim:
+                for i in range(1, 21):
+                    expected_header_name = "header" + str(i)
+                    print("Expected Header Name : ", expected_header_name)
+                    retrieved_header_name = request.form.get(
+                        expected_header_name).lower()
+                    print("Header Name typed by User : ", retrieved_header_name)
+                    if retrieved_header_name:
+                        if i < 10:
+                            i *= 10
+                            i = "0" + str(i)
+                        elif i >= 10 and i < 100:
+                            i = "0" + str(i)
+                        header = {
+                          "sim_name": request.form.get("sim_name").lower(),
+                          "heading": retrieved_header_name,
+                          "heading_number": i
+                        }
+                        mongo.db.sim_headings.insert_one(header)
+                        flash("Sim submitted successfully")
+                
+        sims = list(mongo.db.sims.find().sort("sim_name"))
+        print("1100: Displaying 'Add Sim' page")
+        return render_template(
+            "add_sim.html", sims=sims)
 
 
 
