@@ -367,9 +367,8 @@ def find_setups_part1():
             sim_name=sim_name, cars=cars, tracks=tracks)
 
     sims = list(mongo.db.sims.find().sort("sim_name"))
-    user_setups = list(mongo.db.setups.find({"created_by": session["user"]})
+    user_setups = list(mongo.db.setups.find()
                                       .sort("_id"))
-    print("user_setups : ", user_setups)
     return render_template(
         "find_setups_part1.html", sims=sims, user_setups=user_setups)
 
@@ -551,6 +550,129 @@ def add_sim2():
         return render_template(
             "add_sim.html", sims=sims)
 
+
+@app.route("/manage_setups_part1/", methods=["GET", "POST"])
+def manage_setups_part1():
+    if request.method == "POST":
+        # if setup_id:
+        #     setup = mongo.db.setups.find_one({"_id": ObjectId(setup_id)})
+        # else:
+        sim_name = request.form["sim_name"]
+        print("150: Selected Sim: ", sim_name)
+        cars = list(mongo.db.car_list.find(
+            {"sim_name": request.form.get("sim_name")}).sort("car_name"))
+        tracks = list(mongo.db.tracks.find(
+            {"sim_name": request.form.get("sim_name")}).sort("track_name"))
+        print("180: Car and Track options lists loaded - user needs to" +
+            "select car and track")
+        return render_template(
+            "manage_setups_part2.html",
+            sim_name=sim_name, cars=cars, tracks=tracks)
+
+    sims = list(mongo.db.sims.find().sort("sim_name"))
+    user_setups = list(mongo.db.setups.find().sort("_id"))
+    return render_template(
+        "manage_setups_part1.html", sims=sims, user_setups=user_setups)
+
+
+@app.route("/manage_setups_part2", methods=["GET", "POST"])
+def manage_setups_part2():
+    if request.method == "POST":
+        sim_name = request.form.get("sim_name")
+        print("210: Part 2: Sim Name is: ", sim_name)
+        car_name = request.form.get("car_name")
+        print("220: Part 2: Car Name is: ", car_name)
+        track_name = request.form.get("track_name")
+        print("230: Part 2: Track Name is: ", track_name)
+        headers = list(mongo.db.sim_headings.find({"sim_name": sim_name})
+                                            .sort("heading_number"))
+        setup_parameters = list(mongo.db.sim_settings_parameters.find(
+                           {"sim_name": sim_name}).sort("order_number"))
+        print("")
+        print("Headers: ", headers)
+        print("")
+        print("Parameters: ", setup_parameters)
+        user_setups = list(mongo.db.setups.find({"created_by": session["user"],
+                           "sim_name": sim_name, "car_name": car_name})
+                           .sort("_id"))
+        if track_name and car_name:
+            return render_template(
+                "manage_setups_part3.html",
+                sim_name=sim_name,
+                car_name=car_name, track_name=track_name,
+                user_setups=user_setups)
+
+
+@app.route("/manage_setups_part3", methods=["GET", "POST"])
+def manage_setups_part3():
+    if request.method == "POST":
+        sim_name = request.form.get("sim_name")
+        print("Part 3 : ", sim_name)
+        car_name = request.form.get("car_name")
+        print("Part 3 : ", car_name)
+        track_name = request.form.get("track_name")
+        print("Part 3 : ", track_name)
+        sims = list(mongo.db.sims.find().sort("sim_name"))
+        user_setups = list(mongo.db.setups.find({"created_by": session["user"],
+                           "sim_name": sim_name, "car_name": car_name})
+                           .sort("_id"))
+        print("user_setups : ", user_setups)
+        return render_template("manage_setups_part3.html",
+                               sims=sims, user_setups=user_setups)
+
+
+@app.route("/edit_setup_admin/<setup_id>", methods=["GET", "POST"])
+def edit_setup_admin(setup_id):
+    if request.method == "POST":
+        sim_name = request.args.get('sim_name', None)
+        car_name = request.args.get('car_name', None)
+        track_name = request.args.get('track_name', None)
+        author = request.args.get('author', None)
+        print("Part 6 : ", sim_name)
+        print("Part 6 : ", car_name)
+        print("Part 6 : ", track_name)
+        param_dict_list = list(mongo.db.sim_settings_parameters.find(
+                           {"sim_name": sim_name}).sort("order_number"))
+        print("Part 6 Parameters : ", param_dict_list)
+        print("Length of Parameters List is : ", len(param_dict_list))
+        update_dict = {}
+        dateTimeObj = datetime.now()
+        # the following line of code borrowed from "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+        # to get the current date and time.
+        timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
+        print('Current Timestamp PT6 : ', timestampStr)
+        for param_dict in param_dict_list:
+            parameter_name = param_dict["param"]
+            update_dict[parameter_name] = request.form.get(parameter_name)
+        update_dict["created_by"] = author
+        update_dict["sim_name"] = sim_name
+        update_dict["car_name"] = car_name
+        update_dict["track_name"] = track_name
+        update_dict["date_created"] = timestampStr
+        print(timestampStr)
+        mongo.db.setups.update({"_id": ObjectId(setup_id)}, update_dict)
+        flash("Setup Successfully Updated")
+        return redirect(url_for("admin_tasks"))
+    setup = mongo.db.setups.find_one({"_id": ObjectId(setup_id)})
+    print("400 : Setup = : ", setup)
+    sim_name = setup["sim_name"]
+    print("410 : sim_name = : ", sim_name)
+    headers = list(mongo.db.sim_headings.find({"sim_name": sim_name})
+                   .sort("heading_number"))
+    setup_parameters = list(mongo.db.sim_settings_parameters.find(
+                           {"sim_name": sim_name}).sort("order_number"))
+    return render_template("edit_setup_admin.html",
+                           setup=setup, headers=headers,
+                           setup_parameters=setup_parameters)
+
+
+@app.route("/delete_setup_admin/<setup_id>")
+def delete_setup_admin(setup_id):
+    print(setup_id)
+    mongo.db.setups.remove({"_id": ObjectId(setup_id)})
+    flash("Setup Successfully Deleted")
+    # return render_template("home.html")
+    return redirect(url_for("admin_tasks"))
 
 
 if __name__ == "__main__":

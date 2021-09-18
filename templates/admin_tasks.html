@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base3.html" %}
 
 {% block content %}
 
@@ -8,66 +8,21 @@
 
     <div class="large-admin-page">
 
-        <div class="col hide-on-small-and-down m10 offset-m1 l6 home-page-card medium">
-            <h4 class="header"></h4>
-            <div class="card horizontal">
-                
-                <div class="card-stacked">
-                    <div class="center-align">
-                        <p>Manage Sims</p>
-                    </div>
-                    <div class="card-content center-align">
-                        <i class="fas fa-gamepad admin-icons prefix orange-text text-darken-4"></i>
-                    </div>
-                    <div class="card-action">
-                        <a href="{{ url_for('add_sim') }}">Add</a>
-                
-                        <a href="{{ url_for('home') }}">Edit</a>
-                
-                        <a href="{{ url_for('home') }}">Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col hide-on-small-and-down l6 m10 offset-m1 home-page-card medium">
-            <h4 class="header"></h4>
-            <div class="card horizontal">
-                
-                <div class="card-stacked">
-                    <div class="center-align">
-                        <p>Manage Cars</p>
-                    </div>
-                    <div class="card-content center-align">
-                        <i class="fas fa-car admin-icons prefix orange-text text-darken-4"></i>
-                    </div>
-                    <div class="card-action">
-                        <a href="{{ url_for('home') }}">Add</a>
-                
-                        <a href="{{ url_for('home') }}">Edit</a>
-                
-                        <a href="{{ url_for('home') }}">Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
 
         <div class="col hide-on-small-and-down m10 offset-m1 l6 home-page-small medium">
             <h4 class="header"></h4>
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="center-align">
-                        <p>Manage Tracks</p>
+                        <p>Manage Setups</p>
                     </div>
                     <div class="card-content center-align">
-                        <i class="fas fa-globe-americas admin-icons prefix orange-text text-darken-4"></i>
+                        <i class="fas fa-cogs admin-icons prefix orange-text text-darken-4"></i>
                     </div>
                     <div class="card-action">
-                        <a href="{{ url_for('home') }}">Add</a>
-                
-                        <a href="{{ url_for('home') }}">Edit</a>
-                
-                        <a href="{{ url_for('home') }}">Delete</a>
+                        <a href="{{ url_for('manage_setups_part1') }}">Start</a>
                     </div>
                 </div>
             </div>
@@ -84,8 +39,6 @@
                         <i class="fas fa-user admin-icons prefix orange-text text-darken-4"></i>
                     </div>
                     <div class="card-action">
-                        <a href="{{ url_for('home') }}">Add</a>
-                
                         <a href="{{ url_for('home') }}">Edit</a>
                 
                         <a href="{{ url_for('home') }}">Delete</a>
@@ -115,55 +68,13 @@
             <div class="col s12 m6 hide-on-med-and-up">
                 <div class="card center-align">
                     <div class="center-align card-content orange darken-2 white-text">
-                        <span class="card-title">Manage Sims</span>
-                        <i class="fas fa-gamepad admin-icons white-text"></i>
+                        <span class="card-title">Manage Setups</span>
+                        <i class="fas fa-cogs admin-icons white-text"></i>
                         <p></p>
                     </div>
                     <div class="card-action deep-orange darken-1 admin-card">
-                        <a class="white-text admin-choices" href="{{ url_for('add_sim') }}">Add</a>
-                        
-                        <a class="white-text admin-choices" href="{{ url_for('home') }}">Edit</a>
-                    
-                        <a class="white-text admin-choices" href="{{ url_for('home') }}">Delete</a>
+                        <a href="{{ url_for('manage_setups_part1') }}">Start (white?)</a>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12 m6 hide-on-med-and-up">
-                <div class="card center-align">
-                    <div class="center-align card-content orange darken-2 white-text">
-                        <span class="card-title">Manage Cars</span>
-                        <i class="fas fa-car admin-icons white-text"></i>
-                        <p></p>
-                    </div>
-                <div class="card-action deep-orange darken-1 admin-card">
-                    <a class="white-text admin-choices" href="{{ url_for('home') }}">Add</a>
-                    
-                    <a class="white-text admin-choices" href="{{ url_for('home') }}">Edit</a>
-                
-                    <a class="white-text admin-choices" href="{{ url_for('home') }}">Delete</a>
-                </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12 m6 hide-on-med-and-up">
-                <div class="card center-align">
-                    <div class="center-align card-content orange darken-2 white-text">
-                        <span class="card-title">Manage Tracks</span>
-                        <i class="fas fa-globe-americas admin-icons white-text"></i>
-                        <p></p>
-                    </div>
-                <div class="card-action deep-orange darken-1 admin-card">
-                    <a class="white-text admin-choices" href="{{ url_for('home') }}">Add</a>
-                    
-                    <a class="white-text admin-choices" href="{{ url_for('home') }}">Edit</a>
-                
-                    <a class="white-text admin-choices" href="{{ url_for('home') }}">Delete</a>
-                </div>
                 </div>
             </div>
         </div>
@@ -186,6 +97,8 @@
                 </div>
             </div>
         </div>
+
+        
     </div>
 </div>
 
