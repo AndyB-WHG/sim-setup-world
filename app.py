@@ -230,7 +230,7 @@ def my_setups_part1():
         tracks = list(mongo.db.tracks.find(
             {"sim_name": request.form.get("sim_name")}).sort("track_name"))
         print("180: Car and Track options lists loaded - user needs to" +
-            "select car and track")
+              "select car and track")
 
         # Inject relevant cars and tracks and render on page 2 for user
         # to select from.
@@ -241,9 +241,11 @@ def my_setups_part1():
     # Render initial 'User Setups' page, and inject 'Sim' list for user to
     # choose from if they so wish.
     sims = list(mongo.db.sims.find().sort("sim_name"))
+
+    # Get a list of all the user's setups to be placed at the bottom of the
+    # page ready for selection.
     user_setups = list(mongo.db.setups.find({"created_by": session["user"]})
                                       .sort("_id"))
-    print("user_setups : ", user_setups)
     return render_template(
         "my_setups_part1.html", sims=sims, user_setups=user_setups)
 
@@ -258,10 +260,11 @@ def my_setups_part2():
         car_name = request.form.get("car_name")
         track_name = request.form.get("track_name")
         user_setups = list(mongo.db.setups.find({"created_by": session["user"],
-                           "sim_name": sim_name, "car_name": car_name})
+                           "sim_name": sim_name, "car_name": car_name,
+                                                 "track_name": track_name})
                            .sort("_id"))
-        
-        # once car and track selected, inject selections to page 3.
+
+        # once car and track selected, inject selections to my_setups_page3.
         if track_name and car_name:
             return render_template(
                 "my_setups_part3.html",
@@ -270,26 +273,12 @@ def my_setups_part2():
                 user_setups=user_setups)
 
 
-# Render filtered list of user's own setups dependent upon previous
-# user selections.
+# Take variables injected from my_setups_page2 and generate filtered list.
 @app.route("/my_setups_part3", methods=["GET", "POST"])
 def my_setups_part3():
     if request.method == "POST":
-        # Get users choices sim, car and track choices
-        sim_name = request.form.get("sim_name")
-        car_name = request.form.get("car_name")
-        track_name = request.form.get("track_name")
-        print("Part 3 : ", sim_name)
-        print("Part 3 : ", car_name)
-        print("Part 3 : ", track_name)
-        sims = list(mongo.db.sims.find().sort("sim_name"))
-        user_setups = list(mongo.db.setups.find({"created_by": session["user"],
-                           "sim_name": sim_name, "car_name": car_name,
-                                                 "track_name": track_name})
-                           .sort("_id"))
-        print("user_setups : ", user_setups)
-        return render_template("my_setups_part3.html",
-                               sims=sims, user_setups=user_setups)
+        # Render the list using the variables received from my_setup_part2.
+        return render_template("my_setups_part3.html")
 
 
 @app.route("/edit_setup/<setup_id>", methods=["GET", "POST"])
