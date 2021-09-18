@@ -675,6 +675,40 @@ def delete_setup_admin(setup_id):
     return redirect(url_for("admin_tasks"))
 
 
+@app.route("/manage_users_delete", methods=["GET", "POST"])
+def manage_users_delete():
+    if request.method == "POST":
+        # check if user exists in 'sim_setup_world / users' database (MongoDB)
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        print(existing_user)
+        session["password"] = mongo.db.users.find_one(
+                  {"username": session["user"]})["password"]
+        # existing_user_id = existing_user("._id")
+        # print("ID of user to be deleted : ", existing_user_id)
+
+        if existing_user:
+            # check hashed password matches Admin's password
+            if check_password_hash(
+              session["password"], request.form.get("password")):
+                mongo.db.users.remove({"_id": ObjectId(existing_user_id)})
+                flash("User '{}' to be deleted deleted".format(request.form.get("username")))
+                return redirect(url_for('admin_tasks'))
+
+            else:
+                # if password does not match
+                flash("Incorrect username and/or password")
+                return redirect(url_for("manage_users_delete"))
+
+        else:
+            # username doesn't exist
+            flash("Incorrect username and/or password")
+            return redirect(url_for("manage_users_delete"))
+
+    return render_template("manage_users_delete.html")
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
