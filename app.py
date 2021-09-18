@@ -363,7 +363,7 @@ def find_setups_part1():
         print("180: Car and Track options lists loaded - user needs to" +
             "select car and track")
         return render_template(
-            "my_setups_part2.html",
+            "find_setups_part2.html",
             sim_name=sim_name, cars=cars, tracks=tracks)
 
     sims = list(mongo.db.sims.find().sort("sim_name"))
@@ -691,8 +691,8 @@ def manage_users_delete():
             # check hashed password matches Admin's password
             if check_password_hash(
               session["password"], request.form.get("password")):
-                mongo.db.users.remove({"_id": ObjectId(existing_user_id)})
-                flash("User '{}' to be deleted deleted".format(request.form.get("username")))
+                mongo.db.users.remove(existing_user)
+                flash("User '{}' to be deleted".format(request.form.get("username")))
                 return redirect(url_for('admin_tasks'))
 
             else:
