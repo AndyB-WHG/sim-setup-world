@@ -33,7 +33,8 @@ def get_tutorials():
     tutorials = list(mongo.db.tutorials.find())
     coaches = list(mongo.db.coaches.find())
     components = list(mongo.db.components.find())
-    return render_template("tutorials.html", tutorials=tutorials, coaches=coaches, components=components)
+    return render_template("tutorials.html", tutorials=tutorials,
+                           coaches=coaches, components=components)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -450,30 +451,101 @@ def add_sim():
       {"username": session["user"]})["admin"]
     if admin_type is True:
         flash("User is an Admin")
+        # if request.method == "POST":
+
+        # Initial page load with collapsible
+        sims = list(mongo.db.sims.find().sort("sim_name"))
+        print("1100: Displaying 'Add Sim' page")
+        return render_template(
+            "add_sim.html", sims=sims)
+
+
+
+
+@app.route("/add_sim2", methods=["GET", "POST"])
+def add_sim2():
+    admin_type = mongo.db.users.find_one(
+      {"username": session["user"]})["admin"]
+    if admin_type is True:
+        flash("User is an Admin")
         if request.method == "POST":
+            sim_text = request.form.get("sim_name")
+            sim_name = request.form.get("sim_name").lower()
+            print("Sim Name : ", sim_name)
             existing_sim = mongo.db.sims.find_one(
               {"sim_name": request.form.get("sim_name").lower()})
+            print("Existing sim : ", existing_sim)
             if not existing_sim:
                 for i in range(1, 21):
                     expected_header_name = "header" + str(i)
                     print("Expected Header Name : ", expected_header_name)
                     retrieved_header_name = request.form.get(
-                        expected_header_name).lower()
-                    print("Header Name typed by User : ", retrieved_header_name)
+                        expected_header_name)
+                    print("Header Name typed by User : ",
+                          retrieved_header_name)
                     if retrieved_header_name:
+                        print("i is : ", str(i))
                         if i < 10:
-                            i *= 10
-                            i = "0" + str(i)
+                            header_order = i * 10
+                            header_order = "0" + str(header_order)
                         elif i >= 10 and i < 100:
-                            i = "0" + str(i)
+                            header_order = "0" + str(header_order)
                         header = {
-                          "sim_name": request.form.get("sim_name").lower(),
+                          "sim_name": sim_name,
                           "heading": retrieved_header_name,
-                          "heading_number": i
+                          "heading_number": header_order
                         }
-                        mongo.db.sim_headings.insert_one(header)
-                        flash("Sim submitted successfully")
-                
+                        print("Header info dictionary : ", header)
+                        for j in range(1, 21):
+                            expected_parameter_name = (
+                                "parameter" + str(i) + "-" + str(j))
+                            print("Expected parameter name : ",
+                                  expected_parameter_name)
+                            retrieved_parameter_name = request.form.get(
+                                expected_parameter_name)
+                            print("Retrived parameter name : ",
+                                  retrieved_parameter_name)
+                            if retrieved_parameter_name != "":
+                                if j < 10:
+                                    param_order = j * 10
+                                    param_order = "0" + str(param_order)
+                                elif j >= 10 and j < 100:
+                                    param_order = "0" + str(param_order)
+                                print("Retrieved parameter name : ",
+                                      retrieved_parameter_name)
+                                try:
+                                    param_with_underscores = (
+                                        retrieved_parameter_name.replace(" ", "_"))
+                                except AttributeError:
+                                    param_with_underscores = retrieved_parameter_name
+                                    print("No underscores in parameters")
+                                sim_param_dict = {
+                                    "sim_name": sim_name,
+                                    "heading": retrieved_header_name,
+                                    "order_number": param_order,
+                                    "param": param_with_underscores,
+                                    "text": retrieved_parameter_name
+                                }
+                                mongo.db.sim_headings.insert_one(header)
+                                mongo.db.sim_settings_parameters.insert_one(
+                                    sim_param_dict)
+                            elif retrieved_parameter_name == "" and j > 1:
+                                break
+                            else:
+                                flash("Please enter at least one parameter for each 'Section' you add")
+                                return render_template("add_sim.html")
+
+                add_sim_name_to_db = {
+                    "sim_name": sim_name,
+                    "text": sim_text
+                }
+                mongo.db.sims.insert_one(add_sim_name_to_db)
+
+                flash("Sim submitted successfully")
+                return render_template("admin_tasks.html")
+
+            else:
+                flash("Sim already in database - please check")
         sims = list(mongo.db.sims.find().sort("sim_name"))
         print("1100: Displaying 'Add Sim' page")
         return render_template(

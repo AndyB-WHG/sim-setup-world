@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base3.html" %}
 
 {% block content %}
 
@@ -7,51 +7,157 @@
 <h6 class="centered edit-setup-directions">Please enter the name of the new Sim, then add the Headings and the
   'setup parameters' within those Headings...</h6>
 
-
-
-<div class="row">
-  <form class="col s12" method="POST" action="{{ url_for('add_sim') }}">
-    <div class="card-panel">
-      <!-- Username field -->
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-gamepad prefix orange-text text-darken-3"></i>
-          <input id="sim_name" name="sim_name" type="text" minlength="2" maxlength="40" class="validate"
-            pattern="^[a-zA-Z0-9_ ]*$" required>
-          <label for="sim_name">Name of New Sim</label>
+<form>
+  <ul class="tutorial-menu collapsible">
+    <!-- 1a. Add Sim Name -->
+    <li>
+      <div class="tutorial-list row collapsible-header white-text text-shadow orange darken-4">
+        <div class="tutorial-choices col s11">
+          <i class="fas fa-portrait"></i>
+          <strong>Add New Sim Same</strong>
         </div>
-      </div>
-      <!-- Section Field -->
-      {% for i in range(1, 21) %}
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-file prefix orange-text text-darken-3"></i>
-          <textarea  id="header{{ i }}" name="header{{ i }}" type="input" minlength="3" maxlength="30" class="validate materialize-textarea"
-            pattern="^[a-zA-Z0-9_ ]*$"></textarea>
-          <label for="header{{ i }}">Section {{ i }} Name</label>
-          {% for j in range(1, 21) %}
-            <div class="input-field col s12 m6">
-              <i class="fas fa-cogs prefix orange-text text-darken-3"></i>
-              <textarea  id="parameter{{ i }}-{{ j }}" name="parameter{{ i }}-{{ j }}" type="input" minlength="3" maxlength="30" class="validate materialize-textarea"
-                pattern="^[a-zA-Z0-9_ ]*$"></textarea>
-              <label for="parameter{{ i }}-{{ j }}">Parameter {{ j }} Name</label>
-            </div>  
-          {% endfor %}
+        <div class="tutorial-choices col s1">
+          <i class="fas fa-caret-down"></i>
         </div>
+
       </div>
-      {% endfor %}
-      <!-- Save button -->
-      <div class="row">
-        <button type="submit" class="col s12 btn-large orange darken-4 text-shadow">
-          Save <i class="fas fa-sign-in-alt"></i>
-        </button>
+      <div class="collapsible-body">
+        <ul class="collapsible">
+          <div class="row">
+            <form id="add-new-sim" class="col s12" >
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="sim_name_lower" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Sim Name (in lowercase)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="sim_name_upper" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Sim Text (Capitalised version to be displayed to the user)</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </ul>
       </div>
+    </li>
 
-    </div>
-  </form>
-</div>
-
-
+    <!-- 1b. Add Sim Headings -->
+    
+      <li>
+        <div class="tutorial-list row collapsible-header white-text text-shadow orange darken-4">
+          <div class="tutorial-choices col s11">
+            <i class="fas fa-portrait"></i>
+            <strong>Add Sim Heading</strong>
+          </div>
+          <div class="tutorial-choices col s1">
+            <i class="fas fa-caret-down"></i>
+          </div>
+        </div>
+        <!-- Select related Sim -->
+        <div class="collapsible-body">
+          <ul class="collapsible">
+            <div class="row">
+              <form id="add-new-heading" class="col s12" >
+                <div class="row">
+                  <div class="input-field col s12">
+                    <select>
+                      <option value="" disabled selected>Select Sim Name</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label></label>
+                  </div>
+                  </div>
+                </div>
+                <!-- Heading Name and number -->
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="heading-name" name="heading-name" class="materialize-textarea"></textarea>
+                    <label for="heading-name">Enter Heading Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="heading-number" name="heading-number" class="materialize-textarea"></textarea>
+                    <label for="heading-number">Enter Heading Number</label>
+                  </div>
+                </div>
+                   
+              </form>
+            </div>
+            <!-- Add New Parameter -->
+            <li>
+              <div class="tutorial-list row collapsible-header white-text text-shadow orange darken-4">
+                <div class="tutorial-choices col s11">
+                  <i class="fas fa-portrait"></i>
+                  <strong>Add Parameter</strong>
+                </div>
+                <div class="tutorial-choices col s1">
+                  <i class="fas fa-caret-down"></i>
+                </div>
+              </div>
+              <!-- Select related Sim -->
+              <div class="collapsible-body">
+                <ul class="collapsible">
+                  <div class="row">
+                    <form id="add-new-heading" class="col s12" >
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <select>
+                            <option value="" disabled selected>Select Sim Name</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                          </select>
+                          <label></label>
+                        </div>
+                        </div>
+                      </div>
+                      <!-- Heading Name and number -->
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <textarea id="heading-name" name="heading-name" class="materialize-textarea"></textarea>
+                          <label for="heading-name">Enter Heading Name </label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <textarea id="heading-number" name="heading-number" class="materialize-textarea"></textarea>
+                          <label for="heading-number">Enter Order Number (dictates where parameter to be listed under heading)</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <textarea id="heading-number" name="heading-number" class="materialize-textarea"></textarea>
+                          <label for="heading-number">param_name_with_underscores</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <textarea id="heading-number" name="heading-number" class="materialize-textarea"></textarea>
+                          <label for="heading-number">Paramater Name as seen by User</label>
+                        </div>
+                      </div>
+                         
+                    </form>
+                  </div>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+      
+      <!-- Add a Parameter -->
+    
+      
+    
+  
+</ul>
+</form>
 
 
 
