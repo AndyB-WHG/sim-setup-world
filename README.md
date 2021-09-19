@@ -86,10 +86,11 @@ All of the features identified above are deemed to be of high or critical import
  - `Nav Bar` section placed prominently at the top of the page to inform user options.
  - Four Home Page 'cards' provide user with access to main site features (Find, Submit, Edit setups, Tutorials)
  - `'Filter' section` placed prominently at top of `Find`, `Submit` and `Edit` pages to speed user searches.
- - Complete list of all setups initially provided beneath the filter section 
- - ‘Google Map’ (Stage 2 development) to be listed below the Results Table marking the listed event locations on the map.  
- - ‘Local Attractions’ (Stage 3 development) to be listed beneath the Google Map.  
+ - Complete list of all setups initially provided beneath the filter section of the 'Find Setups' page.
+ - Complete list of all the user's previously submitted setups provided beneath the filter section of the `'Edit/Delete/My Setups'` page
+ - 'Collapsible' `tutorials` section gives users intuitive access to setup videos provided by experienced sim racers via YouTube.
  - Footer section at bottom of page displaying social media links to various websites including Twitter, Youtube, Instagram and Facebook.
+- `Admin` option appears in the Nav Bar when a user with Admin Rights logs in to the site. Admin rights give users the ability to edit and delete other user's setups and login details.
 
 <a name="skeleton"></a>
 ## 1.3. Skeleton
