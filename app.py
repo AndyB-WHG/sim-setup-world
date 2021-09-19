@@ -637,7 +637,7 @@ def manage_users_delete():
                 if check_password_hash(
                 session["password"], request.form.get("password")):
                     mongo.db.users.remove(existing_user)
-                    flash("User {} deleted".format(session["user"]))
+                    flash("User deleted")
                     return redirect(url_for('admin_tasks'))
 
                 else:
@@ -653,12 +653,11 @@ def manage_users_delete():
         return render_template("manage_users_delete.html")
 
     else:
-        flash("Please request 'Admin' rights in order to access" +
-              "this function")
+        flash("Please request 'Admin' rights in order to access this function")
         return redirect(url_for("home"))
 
 
-app.route("/manage_users_edit", methods=["GET", "POST"])
+@app.route("/manage_users_edit", methods=["GET", "POST"])
 def manage_users_edit():
     admin_type = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
@@ -668,7 +667,7 @@ def manage_users_edit():
             # check if user exists in 'sim_setup_world / users' database (MongoDB)
             existing_user = mongo.db.users.find_one(
                 {"username": request.form.get("username").lower()})
-            print(existing_user)
+            print("Existing User : ", existing_user)
             session["password"] = mongo.db.users.find_one(
                     {"username": session["user"]})["password"]
 
@@ -676,12 +675,13 @@ def manage_users_edit():
                 # check hashed password matches Admin's password
                 if check_password_hash(
                   session["password"], request.form.get("password")):
-                    return redirect(url_for('edit_user'))
+                    return render_template('edit_user.html',
+                                           existing_user=existing_user)
 
                 else:
                     # if password does not match
                     flash("Incorrect username and/or password")
-                    return redirect(url_for("manage_users_delete"))
+                    return redirect(url_for("manage_users_edit"))
 
             else:
                 # username doesn't exist
@@ -694,6 +694,32 @@ def manage_users_edit():
         flash("Please request 'Admin' rights in order to access" +
               "this function")
         return redirect(url_for("home"))
+
+
+@app.route("/edit_user/<user_id>", methods=["GET", "POST"])
+def edit_user(user_id):
+    admin_type = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
+    if admin_type is True:
+        flash("User is an Admin")
+        if request.method == "POST":
+            updated_details = {
+              "username": request.form.get("username").lower(),
+              "password": generate_password_hash(request.form.get("password")),
+              "admin": request.form.get("admin")
+            }
+            print("Updated details: ", updated_details)
+            print("User Id :", user_id)
+            mongo.db.user.update({"_id": ObjectId(user_id)}, updated_details)
+            flash("User Successfully Updated")
+            return render_template("admin_tasks.html")
+
+        return render_template("edit_user.html", existing_user=existing_user)
+
+    else:
+        flash("Please request 'Admin' rights in order to access" +
+              "this function")
+        return redirect(url_for("home"))    
 
 
 if __name__ == "__main__":
