@@ -86,7 +86,7 @@
           <td>{{ user_setup.Rating_out_of_5 }}</td> -->
           <td>{{ user_setup.date_created }}</td>
           <td><a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a></td>
-          <td><a href="{{ url_for('rate_setup', setup_id=user_setup._id) }}" class="btn-small orange accent-2">Rate</a></td>          
+              
         </tr>
       
       
@@ -133,7 +133,7 @@
       <tr>
         <td>
           <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
-          <a href="{{ url_for('rate_setup', setup_id=user_setup._id) }}" class="btn-small oran accent-2">Rate</a>
+         
         </td>       
       </tr>
       {% endfor %}
@@ -181,9 +181,7 @@
         <td>
           <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
         </td>
-        <td>
-          <a href="{{ url_for('rate_setup', setup_id=user_setup._id) }}" class="btn-small red accent-2">Rate</a>
-        </td>       
+      
       </tr>
       {% endfor %}
     </table>
