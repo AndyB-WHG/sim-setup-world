@@ -14,7 +14,8 @@ body {
 
 
 .callout {
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 500;
     /* text-align: center; */
     /* font-family: Play; */
     text-align: center;
@@ -121,10 +122,16 @@ footer i {
     padding-left: 6px;
 }
 
+.register-icon {
+    font-size: 30px !important;
+}
+
 .login-section {
     padding-top: 50px;
     padding-bottom: 50px;
 }
+
+
 
 .home-intro {
     
@@ -364,10 +371,12 @@ label {
 
 .mobile-admin-choices .card-title {
     font-weight: 400;
+    
 }
 
 .mobile-admin-choices .admin-card {
-    padding-left: 65px;
+    padding-left: 55px;
+    color: blanchedalmond !important;
 }
 
 .large-admin-page .card-action {
@@ -411,11 +420,20 @@ label {
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 970px) {
     .call-out {
         text-align: left;
         position: relative;
         left: 12px;
+    }
+    /* .callout {
+        font-size: 17px; */
+    }
+}
+
+@media (min-width: 1200px) {
+    .callout {
+        font-size: 20px;
     }
 }
 

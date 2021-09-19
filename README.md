@@ -97,7 +97,7 @@ All of the features identified above are deemed to be of high or critical import
   [Go to the top](#table-of-contents)
 
 [Balsamiq](https://balsamiq.com/) was used to create the following wireframes.  
-Three variations are provided as examples of differing screen size layouts, namely Mobile, Tablet and Desktop. 'Extended' versions of the mobile and tablet wireframes are provided in order to show the full scrollable content post Stage 3. 
+Three variations are provided as examples of differing screen size layouts, namely Mobile, Tablet and Desktop. 'Extended' versions of the mobile and tablet wireframes are provided in order to show the full scrollable content. 
 
 ### Wire-frames
 Web browser view
