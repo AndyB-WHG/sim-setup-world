@@ -1,3 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700|Prompt:100,200,300,400,500,600,700');
+
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
+
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Exo', sans-serif;
+}
+
+
+.callout {
+    font-size: 15px;
+    /* text-align: center; */
+    /* font-family: Play; */
+    text-align: center;
+}
+
+.callout-top {
+    margin-top: 3rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+}
+
 .footer-not-fixed-to-bottom {
     height: 8rem;
     /* background-color: #f54500; */
@@ -16,6 +46,12 @@
     color: cornsilk;
     text-align: center;
     box-shadow:  0px -1px 3px 0px rgba(0, 0, 0, 0.486);
+    
+}
+
+#padding-div {
+    height: 150px;
+
 }
 
 .social-media {
@@ -88,6 +124,10 @@ footer i {
 .login-section {
     padding-top: 50px;
     padding-bottom: 50px;
+}
+
+.home-intro {
+    
 }
 
 /* #hero-div {
@@ -271,10 +311,17 @@ label {
 }
 
 .edit-setup-directions {
-    color:rgb(233, 99, 50);
+    /* color:rgb(233, 99, 50); */
     padding-bottom: 20px;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.151);
+    /* text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.151); */
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.edit-setup-directions-small {
     font-weight: 500;
+    font-size: 15px;
+    padding-bottom: 15px;
 }
 
 #users-setup-list div {

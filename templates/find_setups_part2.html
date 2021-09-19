@@ -1,8 +1,13 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
-<h3 class="centered page-title submit-title">Find A Setup</h3>
+<h3 class="centered page-title submit-title">Find a Setup</h3>
+
+<h5 class="centered edit-setup-directions">World class setups ready to install!</h5>
+
+<h6 class="centered edit-setup-directions-small">Choose from the list at the bottom of the page or narrow the selection using the filter below : </h6>
+
 
 <div class="row card-panel grey lighten-5">
   <form class="col s12" method="POST" action="{{ url_for('find_setups_part2') }}">

@@ -15,13 +15,13 @@
 {% endif %}
 
 <div>
-  <h5>Our goal is to make you quicker, more consistent and help you on your way to racing glory.</h5> 
-  <h5>Choose from setups for ACC, iRacing, GT Sport and Project Cars 2</h5>
-  <h5 class="centered home-intro">Or visit our 'Tutorials' zone and learn to how to set up your car like a Pro</h5>
-  <h5>Whatever you need we have it all here at Sim Racing World</h5>
+  <h5 class="callout-top">Our goal at Sim Setup World is to make you quicker, more consistent and help you on your way to racing glory.</h5> 
+  <h5 class="callout">Choose from setups for ACC, iRacing, GT Sport and Project Cars 2</h5>
+  <h5 class="callout">Or visit our 'Tutorials' zone and learn to how to set up your car like a Pro</h5>
+  <h5 class="callout">Whatever you need we have it all here at Sim Racing World</h5>
 
-  <h5 class="centered">Are you a setup Pro with a killer setup to share?</h5>
-  <h5 class="centered">Want to learn how to setup with the best?</h5>
+  <h5 class="callout">And if you're already a Pro, why not show your stuff and post your setups for everyone to try?</h5>
+
 
 
 </div>
@@ -108,7 +108,7 @@
               <p>Try a setup from our database. Just enter your sim, car and track and take your choice.</p>
             </div>
             <div class="card-action">
-              <a href="#">Find Setup</a>
+              <a href="{{ url_for('find_setups_part1') }}">Find Setup</a>
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@
                 <p>Make your changes here</p>
             </div>
             <div class="card-action">
-              <a href="#">Edit / Delete Setup</a>
+              <a href="{{ url_for('my_setups_part1') }}">Edit / Delete Setup</a>
             </div>
           </div>
         </div>
@@ -160,7 +160,7 @@
               <p>Learn everything you need to know about the art of car setup using these handy YouTube guides.</p>
             </div>
             <div class="card-action">
-              <a href="#">Setup Tutorials</a>
+              <a href="{{ url_for('get_tutorials') }}">Setup Tutorials</a>
             </div>
           </div>
         </div>
