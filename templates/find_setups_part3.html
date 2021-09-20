@@ -12,6 +12,8 @@
 <div class="row card-panel grey lighten-5">
   <form id="submit-setup-form" class="col s12" method="POST" action="{{ url_for('find_setups_part3') }}">
 
+    <!-- Sim, Car and Track names injected here  -->
+
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
@@ -52,9 +54,10 @@
             <th>Lap Time</th>
             <th>Sim Name</th>
             <th>Created By</th>
-            <!-- <th>Rating</th>
-            <th>Date</th> -->
           </tr>
+
+          <!-- Loop through user setups to generate a table for the user to choose from (Large Screens) -->
+
           {% for user_setup in user_setups %}
           <tr>
             <td>{{ user_setup.car_name }}</td>
@@ -62,22 +65,10 @@
             <td>{{ user_setup.Fastest_Lap }}</td>
             <td>{{ user_setup.sim_name }}</td>
             <td>{{ user_setup.created_by }}</td>
-            <!-- <td>{{ user_setup.Rating_out_of_5 }}</td> -->
             <td>{{ user_setup.date_created }}</td>
-            <!-- <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}"
-                class="btn-small light-blue accent-4">Edit</a></td> -->
             <td><a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a></td>
-            <!-- <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small red accent-2">Delete</a></td> -->
           </tr>
 
-
-          <!-- <tr>
-          <td>
-            <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a>
-            <a class="btn-small dark-green accent-4">View</a>
-            <a class="btn-small red accent-2">Delete</a>
-          </td>       
-        </tr> -->
           {% endfor %}
         </table>
 
@@ -89,36 +80,25 @@
             <th>Track</th>
             <th>Lap Time</th>
             <th>Sim Name</th>
-            <!-- <th>Type</th>
-            <th>Rating</th> -->
-            <!-- <th>Last Save Date</th> -->
           </tr>
+
+          <!-- Loop through user setups to generate a table for the user to choose from (Medium Screens) -->
+
           {% for user_setup in user_setups %}
 
-
-
-          </tr>
           <tr>
             <td>{{ user_setup.car_name}}</td>
             <td>{{ user_setup.track_name }}</td>
             <td>{{ user_setup.Fastest_Lap }}</td>
             <td>{{ user_setup.sim_name }}</td>
-            <!-- <td>{{ user_setup.Setup_Type }}</td>
-            <td>{{ user_setup.Rating_out_of_5 }}</td> -->
-            <!-- <td>{{ user_setup.date_created }}</td> -->
-
-            <!-- <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a></td>
-        <td><a class="btn-small dark-green accent-4">View</a></td>
-        <td><a class="btn-small red accent-2">Delete</a></td>           -->
           </tr>
+          
           <tr>
             <td>
-              <!-- <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}"
-                class="btn-small light-blue accent-4">Edit</a> -->
               <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
-              <!-- <a href="{{ url_for('delete_setup', setup_id=user_setup._id) }}" class="btn-small red accent-2">Delete</a> -->
             </td>
           </tr>
+
           {% endfor %}
         </table>
 
@@ -129,46 +109,26 @@
             <th>Car</th>
             <th>Track</th>
             <th>Lap Time</th>
-            <!-- <th>Sim Name</th> -->
-            <!-- <th>Type</th> -->
-            <!-- <th>Rating</th> -->
-            <!-- <th>Last Save Date</th> -->
           </tr>
+
           {% for user_setup in user_setups %}
 
+          <!-- Loop through user setups to generate a table for the user to choose from (Small Screens) -->
 
+            <tr>
+              <td>{{ user_setup.car_name}}</td>
+              <td>{{ user_setup.track_name }}</td>
+              <td>{{ user_setup.Fastest_Lap }}</td>
+            </tr>
 
-          </tr>
-          <tr>
-            <td>{{ user_setup.car_name}}</td>
-            <td>{{ user_setup.track_name }}</td>
-            <td>{{ user_setup.Fastest_Lap }}</td>
-            <!-- <td>{{ user_setup.sim_name }}</td> -->
-            <!-- <td>{{ user_setup.Setup_Type }}</td> -->
-            <!-- <td>{{ user_setup.Rating_out_of_5 }}</td> -->
-            <!-- <td>{{ user_setup.date_created }}</td> -->
+            <tr>
+              <td>
+                <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
+              </td>
+            </tr>
 
-            <!-- <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a></td>
-        <td><a class="btn-small dark-green accent-4">View</a></td>
-        <td><a class="btn-small red accent-2">Delete</a></td>           -->
-          </tr>
-          <tr>
-            <!-- <td>
-              <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}"
-                class="btn-small light-blue accent-4">Edit</a>
-            </td> -->
-            <td>
-              <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
-            </td>
-            <!-- <td>
-              <a href="{{ url_for('delete_setup', setup_id=user_setup._id) }}" class="btn-small red accent-2">Delete</a>
-            </td> -->
-          </tr>
           {% endfor %}
         </table>
-
-
-
     </section>
   </form>
 </div>

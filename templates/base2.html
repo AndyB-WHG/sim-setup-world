@@ -17,8 +17,8 @@
 </head>
 
 <body>
-
     <header>
+          <!-- Navbar section -->
         <nav class="nav-extended text-shadow orange darken-2">
             <div class="nav-wrapper">
                 <a href="{{ url_for('home') }}" class="brand-logo">Sim Setup World</a>
@@ -41,7 +41,6 @@
                         <li><a href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
                 </ul>
-               
             </div>
 
             <div>
@@ -52,7 +51,7 @@
                 <h5 class="call-out">Unleash your speed!</h5>
             </div>
         </nav>
-
+        <!-- Sidenav for smaller devices -->
         <ul class="sidenav" id="mobile-demo">
             <li>
                 <h4 class="center-align orange-text text-darken-3">Sim Setup World</h4>
@@ -73,7 +72,6 @@
                 <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
         </ul>
-        
     </header>
 
     <div class="main-background">
@@ -93,13 +91,11 @@
             {% endwith %}
         </section>
 
-        
-
+        <!-- Main section - other pages injected here -->
         <main class="container">
             {% block content %}
             {% endblock %}
         </main>
-
     </div>
 
     <footer class="footer-fixed-to-bottom text-shadow orange darken-2">

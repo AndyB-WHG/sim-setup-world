@@ -11,6 +11,7 @@
 <div class="row card-panel grey lighten-5">
   <form class="col s12" method="POST" action="{{ url_for('find_setups_part1') }}">
 
+    <!-- Loop through list of sims retrived from Database and populate a 'Select' dropdown -->
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
@@ -24,39 +25,34 @@
       </div>
     </div>
 
-
+    <!-- Placeholder visuals for Car and Track selections - appear on screen but not active until next page is rendered -->
     <div class="row">
       <div class="input-field col s12">
         <i class="fas fa-car prefix orange-text text-darken-4"></i>
         <select id="car_name" class="validate">
-          
         </select>
         <label for="car_name"></label>
       </div>
     </div>
 
-
     <div class="row">
       <div class="input-field col s12">
         <i class="fas fa-globe-americas prefix orange-text text-darken-4"></i>
         <select id="track_name" class="validate">
-          
         </select>
         <label for="track_name"></label>
       </div>
     </div>
 
     <div id="submit-setup-button-div" class="row">
-      
     </div>
-
     <div id="clear-selection-button-div" class="row">
-
     </div>
 
   </form>
-
 </div>
+
+<!-- Initial list of all current user setups -->
 
 <section id="user-setups_list"> 
   <div>
@@ -64,6 +60,7 @@
   </div>  
 
   <div id="users-setup-list" class="row card-panel grey lighten-5">
+
     <!-- User Setup List Headings -->
 
     <!-- Table 1 - Large Screens  -->
@@ -74,31 +71,20 @@
         <th>Track</th>
         <th>Lap Time</th>
         <th>Sim Name</th>
-        <!-- <th>Type</th>
-        <th>Rating</th> -->
         <th>Date</th>
       </tr>
+
+      <!-- Loop through all setups and display details in a table (Large Screens)-->
       {% for user_setup in user_setups %}
         <tr>
           <td>{{ user_setup.car_name }}</td>
           <td>{{ user_setup.track_name }}</td>
           <td>{{ user_setup.Fastest_Lap }}</td>
           <td>{{ user_setup.sim_name }}</td>
-          <!-- <td>{{ user_setup.Setup_Type }}</td>
-          <td>{{ user_setup.Rating_out_of_5 }}</td> -->
           <td>{{ user_setup.date_created }}</td>
           <td><a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a></td>
-              
         </tr>
-      
-      
-        <!-- <tr>
-          <td>
-            <a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a>
-            <a class="btn-small dark-green accent-4">View</a>
-            <a class="btn-small red accent-2">Delete</a>
-          </td>       
-        </tr> -->
+
       {% endfor %}
     </table>
 
@@ -110,34 +96,21 @@
         <th>Track</th>
         <th>Lap Time</th>
         <th>Sim Name</th>
-        <!-- <th>Type</th>
-        <th>Rating</th> -->
-        <!-- <th>Last Save Date</th> -->
       </tr>
+
       {% for user_setup in user_setups %}
-     
-        
-        
-      </tr>
-      <tr>
-        <td>{{ user_setup.car_name}}</td>
-        <td>{{ user_setup.track_name }}</td>
-        <td>{{ user_setup.Fastest_Lap }}</td>
-        <td>{{ user_setup.sim_name }}</td>
-        <!-- <td>{{ user_setup.Setup_Type }}</td>
-        <td>{{ user_setup.Rating_out_of_5 }}</td> -->
-        <!-- <td>{{ user_setup.date_created }}</td> -->
-        
-        <!-- <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a></td>
-        <td><a class="btn-small dark-green accent-4">View</a></td>
-        <td><a class="btn-small red accent-2">Delete</a></td>           -->
-      </tr>
-      <tr>
-        <td>
-          <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
-         
-        </td>       
-      </tr>
+        <!-- Loop through all setups and display details in a table (medium screens)-->
+        <tr>
+          <td>{{ user_setup.car_name}}</td>
+          <td>{{ user_setup.track_name }}</td>
+          <td>{{ user_setup.Fastest_Lap }}</td>
+          <td>{{ user_setup.sim_name }}</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
+          </td>       
+        </tr>
       {% endfor %}
     </table>
 
@@ -145,56 +118,34 @@
 
     <table id="my-setups-small-screen">
       <colgroup>
-        <col span="" style="" width="10%">
-        <col span="" style="" width="5%">
-        <col span="" style="" width="5%">
-        <col span="" style="" width="20%">
-        
-        <!-- <col style="background-color:yellow" width="33%"> -->
+        <col width="10%">
+        <col width="5%">
+        <col width="5%">
+        <col width="20%">
       </colgroup>
       <tr>
         <th>Car</th>
         <th>Track</th>
         <th>Lap Time</th>
-        <!-- <th>Sim Name</th> -->
-        <!-- <th>Type</th> -->
-        <!-- <th>Rating</th> -->
-        <!-- <th>Last Save Date</th> -->
       </tr>
+
+      <!-- Loop through all setups and display details in a table (small screens)-->
       {% for user_setup in user_setups %}
-     
-        
-        
-      </tr>
-      <tr>
-        <td>{{ user_setup.car_name}}</td>
-        <td>{{ user_setup.track_name }}</td>
-        <td>{{ user_setup.Fastest_Lap }}</td>
-        <!-- <td>{{ user_setup.sim_name }}</td> -->
-        <!-- <td>{{ user_setup.Setup_Type }}</td> -->
-        <!-- <td>{{ user_setup.Rating_out_of_5 }}</td> -->
-        <!-- <td>{{ user_setup.date_created }}</td> -->
-        
-        <!-- <td><a href="{{ url_for('edit_setup', setup_id=user_setup._id) }}" class="btn-small light-blue accent-4">Edit</a></td>
-        <td><a class="btn-small dark-green accent-4">View</a></td>
-        <td><a class="btn-small red accent-2">Delete</a></td>           -->
-      </tr>
-      <tr>
-        <td>
-          <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
-        </td>
-      
-      </tr>
+
+        <tr>
+          <td>{{ user_setup.car_name}}</td>
+          <td>{{ user_setup.track_name }}</td>
+          <td>{{ user_setup.Fastest_Lap }}</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
+          </td>
+        </tr>
+
       {% endfor %}
     </table>
-
   </div>
-
 </section>
-
-
-
-
-
 
 {% endblock %}

@@ -48,8 +48,6 @@
               {% if parameter.param == "Setup_Type" %}
                 {% for key in setup %}
                   {% if key == parameter.param %}
-            
-                  
 
                     <label>Setup Type</label>
                       <select class="browser-default">
@@ -59,7 +57,6 @@
                         <option value="3">Base</option>
                       </select>
 
-                
                   {% endif %}
                 {% endfor%}
               <!-- Set pattern requirements for Fastest Laptiime -->
@@ -73,6 +70,7 @@
                     </div>
                   {% endif %}
                 {% endfor%}
+
               <!-- Set requirements for 'Author Notes' section -->
 
               {% else %}
@@ -109,11 +107,8 @@
     </div>
     {% endfor %}
 
-
-
-
-    
     <!-- Submit button -->
+
     <div id="edit-page-button-section">
 
       <div class="row submit-button-div">
@@ -135,13 +130,7 @@
       </div>
 
     </div>
-
   </form>
 </div>
-
-
-
-
-
 
 {% endblock %}

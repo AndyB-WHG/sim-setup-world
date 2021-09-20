@@ -17,12 +17,11 @@
 </head>
 
 <body>
-
     <header>
+        <!-- Navbar section -->
         <nav class="nav-extended text-shadow orange darken-2">
             <div class="nav-wrapper">
                 <a href="{{ url_for('home') }}" class="brand-logo">Sim Setup World</a>
-                
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -41,7 +40,6 @@
                         <li><a href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
                 </ul>
-               
             </div>
 
             <div>
@@ -52,7 +50,7 @@
                 <h5 class="call-out">Unleash your speed!</h5>
             </div>
         </nav>
-
+        <!-- Sidenav for smaller devices -->
         <ul class="sidenav" id="mobile-demo">
             <li>
                 <h4 class="center-align orange-text text-darken-3">Sim Setup World</h4>
@@ -73,19 +71,7 @@
                 <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
         </ul>
-        
     </header>
-
-    <!-- <section id="hero-image" aria-label="Image of a sports car">
-        <div id="hero-div" class="container-fluid">           
-            <div class="callout">
-                <div class="spacer"></div>
-                <h1 class="text-uppercase">Unleash Your Speed</h1>
-                <div></div>
-                <p class="text-uppercase lead"></p>
-            </div>
-        </div>
-    </section> -->
 
     <div class="main-background">
 
@@ -103,9 +89,8 @@
             {% endif %}
             {% endwith %}
         </section>
-
         
-
+        <!-- Main section - other pages injected here -->
         <main class="container">
             {% block content %}
             {% endblock %}
