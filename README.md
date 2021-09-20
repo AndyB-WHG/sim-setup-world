@@ -1,4 +1,4 @@
-# 'Sports Event Planner' website
+# 'Sim Setup World' website
 
 ## Introduction
 
@@ -12,7 +12,7 @@ A live website can be found [here]( https://andyb-whg.github.io/....../).
 
 
 ## Table of Contents
-------
+
 - [1. UX](#ux)
   * [1.1. Strategy](#strategy)
     - [Project Goals](#project-goals)
@@ -101,30 +101,35 @@ Most of the features identified above are deemed to be of high or critical impor
 Three variations are provided as examples of differing screen size layouts, namely Mobile, Tablet and Desktop. 'Extended' versions of some of the mobile and tablet wireframes are provided in order to show the full scrollable content. 
 
 ## Wire-frames
----
-**'Home' page**
+
+[Link to all wireframes created for this project]()
+
+**'Home' page (Mobile version)**
 
 ![Mobile Wireframe](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/10.%20Home%20Page%20-%20wireframe%20-%20Mobile%20version.PNG)
 
-
+**'Home' page (Tablet version)**
 
 ![Tablet Wireframes](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/10.%20Home%20Page%20-%20wireframe%20-%20Tablet%20version.PNG)
 
+**'Home' page (Desktop version)**
 
 ![Desktop Wireframes](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/10.%20Home%20Page%20-%20wireframe%20-%20Desktop%20version.PNG)
 
 
-**'Find A Setup' page 1 - Initial search**
+**'Find A Setup' page 1 - Initial search (Tablet Version)**
 
-![Tablet Wireframes](![Mobile Wireframes](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/30.%20'Find%20a%20Setup'%20Part%201%20-%20Initial%20Search%20Choices%20-%20wireframe%20-%20Tablet%20version.PNG))
+![Mobile Wireframes](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/30.%20'Find%20a%20Setup'%20Part%201%20-%20Initial%20Search%20Choices%20-%20wireframe%20-%20Tablet%20version.PNG))
 
-**'Find A Setup' page 2 - Results list**
+**'Find A Setup' page 2 - Results list (Tablet Version)**
 
-![Tablet Wireframes](![Mobile Wireframes](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/30.%20'Find%20a%20Setup'%20Part%202%20-%20The%20Results%20Table%20-%20wireframe%20-%20Tablet%20version.PNG))
+![Mobile Wireframes](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/30.%20'Find%20a%20Setup'%20Part%202%20-%20The%20Results%20Table%20-%20wireframe%20-%20Tablet%20version.PNG))
 
-**'Find A Setup' page 3 - Viewing the setup parameters**
+**'Find A Setup' page 3 - Viewing the setup parameters (Tablet Version)**
 
-![Tablet Wireframes](![Mobile Wireframes](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/30.%20'Find%20a%20Setup'%20Part%203%20-%20Viewing%20the%20Setup%20-%20wireframe%20-%20Tablet%20version.PNG))
+![Mobile Wireframes](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/30.%20'Find%20a%20Setup'%20Part%203%20-%20Viewing%20the%20Setup%20-%20wireframe%20-%20Tablet%20version.PNG))
+
+**'Find A Setup' page 3 - Viewing the setup parameters (Tablet Version)**
 
 
 
