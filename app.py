@@ -23,6 +23,7 @@ mongo = PyMongo(app)
 def home():
     return render_template("home.html")
 
+
 # get data to inject into 'Tutorials' page
 @app.route("/get_tutorials")
 def get_tutorials():
@@ -238,9 +239,11 @@ def my_setups_part1():
                 # lists for the sim in question.
                 sim_name = request.form["sim_name"]
                 cars = list(mongo.db.car_list.find(
-                    {"sim_name": request.form.get("sim_name")}).sort("car_name"))
+                    {"sim_name": request.form.get("sim_name")}).
+                    sort("car_name"))
                 tracks = list(mongo.db.tracks.find(
-                    {"sim_name": request.form.get("sim_name")}).sort("track_name"))
+                    {"sim_name": request.form.get("sim_name")}).
+                    sort("track_name"))
                 # Inject relevant cars and tracks and render on page 2 for user
                 # to select from.
                 return render_template(
@@ -309,7 +312,8 @@ def edit_setup(setup_id):
                                 {"sim_name": sim_name}).sort("order_number"))
                 update_dict = {}
                 dateTimeObj = datetime.now()
-                # the following line of code borrowed from "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+                # the following line of code borrowed from
+                # "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
                 # to get the current date and time.
                 timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
                 print('Current Timestamp PT6 : ', timestampStr)
@@ -339,7 +343,7 @@ def edit_setup(setup_id):
             return render_template("edit_setup.html",
                                    setup=setup, headers=headers,
                                    setup_parameters=setup_parameters)
-    
+
     # If user not logged in flas the following message
     except KeyError:
         flash("Please login to edit your setups")
@@ -440,14 +444,19 @@ def admin_tasks():
         return redirect(url_for("home"))
 
 
+# Allow Admin User to view, edit or delete any setup on the database.
+# Part 1 : load Initial page and unfiltered setup list
 @app.route("/manage_setups_part1/", methods=["GET", "POST"])
 def manage_setups_part1():
     if request.method == "POST":
+        # If user selects a Sim to filter on, find relevant cars and tracks
         sim_name = request.form["sim_name"]
         cars = list(mongo.db.car_list.find(
             {"sim_name": request.form.get("sim_name")}).sort("car_name"))
         tracks = list(mongo.db.tracks.find(
             {"sim_name": request.form.get("sim_name")}).sort("track_name"))
+        # Reload page to give user choice of cars and tracks for
+        # the chosen sim.
         return render_template(
             "manage_setups_part2.html",
             sim_name=sim_name, cars=cars, tracks=tracks)
@@ -465,6 +474,8 @@ def manage_setups_part1():
         return redirect(url_for("home"))
 
 
+# Allow Admin User to view, edit or delete any setup on the database.
+# Part 2:  Re-render page  with car and track lists.
 @app.route("/manage_setups_part2", methods=["GET", "POST"])
 def manage_setups_part2():
     admin_type = mongo.db.users.find_one(
@@ -472,20 +483,14 @@ def manage_setups_part2():
     if admin_type is True:
         flash("User is an Admin")
         if request.method == "POST":
+            # Once user has chosen car and track and has clicked 'Find Setups'
+            # generate a filtered list and reload the page with the results.
             sim_name = request.form.get("sim_name")
-            print("210: Part 2: Sim Name is: ", sim_name)
             car_name = request.form.get("car_name")
-            print("220: Part 2: Car Name is: ", car_name)
             track_name = request.form.get("track_name")
-            print("230: Part 2: Track Name is: ", track_name)
-            headers = list(mongo.db.sim_headings.find({"sim_name": sim_name})
-                                                .sort("heading_number"))
             user_setups = list(mongo.db.setups.find(
                             {"sim_name": sim_name, "car_name": car_name})
                            .sort("_id"))
-
-            # Once user has selected both a 'Car' and 'Track', render a page of
-            # required parameters for the sim in question.
             if track_name and car_name:
                 print("Ending Part 2 and starting Part 3")
                 return render_template(
@@ -496,6 +501,7 @@ def manage_setups_part2():
             else:
                 flash("Please select both a 'Car Name' and a 'Track Name")
 
+        # Render page with car and track selections
         cars = list(mongo.db.car_list.find(
             {"sim_name": request.form.get("sim_name")}).sort(
                 "car_name"))
@@ -503,7 +509,7 @@ def manage_setups_part2():
             {"sim_name": request.form.get("sim_name")}).sort(
                 "track_name"))
         print("180: Car and Track options lists loaded - user needs" +
-            " to select car and track")
+              " to select car and track")
         return render_template(
             "manage_setups_part2.html", sim_name=sim_name, cars=cars,
             tracks=tracks)
@@ -514,6 +520,8 @@ def manage_setups_part2():
         return redirect(url_for("home"))
 
 
+# Allow Admin User to view, edit or delete any setup on the database.
+# Part 3: Render filtered list with view, edit and delete buttons.
 @app.route("/manage_setups_part3", methods=["GET", "POST"])
 def manage_setups_part3():
     if request.method == "POST":
@@ -522,18 +530,15 @@ def manage_setups_part3():
             {"username": session["user"]})["admin"]
         if admin_type is True:
             sim_name = request.form.get("sim_name")
-            print("Part 3 : ", sim_name)
             car_name = request.form.get("car_name")
-            print("Part 3 : ", car_name)
             track_name = request.form.get("track_name")
-            print("Part 3 : ", track_name)
             sims = list(mongo.db.sims.find().sort("sim_name"))
             user_setups = list(mongo.db.setups.find(
                 {"sim_name": sim_name,
-                    "car_name": car_name, "track_name": track_name}).sort("_id"))
-            print("user_setups : ", user_setups)
+                    "car_name": car_name, "track_name": track_name})
+                    .sort("_id"))
             return render_template("manage_setups_part3.html",
-                                    sims=sims, user_setups=user_setups)
+                                   sims=sims, user_setups=user_setups)
 
     else:
         flash("Please request 'Admin' rights in order to access" +
@@ -541,30 +546,28 @@ def manage_setups_part3():
         return redirect(url_for("home"))
 
 
+# Allow 'Admin Rights' user to amend any setup in the database.
 @app.route("/edit_setup_admin/<setup_id>", methods=["GET", "POST"])
 def edit_setup_admin(setup_id):
     admin_type = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
     if admin_type is True:
         if request.method == "POST":
+            # Create a Dictionary from input field values on the
+            # 'Edit Setup' page.
             sim_name = request.args.get('sim_name', None)
             car_name = request.args.get('car_name', None)
             track_name = request.args.get('track_name', None)
             author = request.args.get('author', None)
-            print("Part 6 : ", sim_name)
-            print("Part 6 : ", car_name)
-            print("Part 6 : ", track_name)
             param_dict_list = list(mongo.db.sim_settings_parameters.find(
                             {"sim_name": sim_name}).sort("order_number"))
-            print("Part 6 Parameters : ", param_dict_list)
-            print("Length of Parameters List is : ", len(param_dict_list))
             update_dict = {}
             dateTimeObj = datetime.now()
             # the following line of code borrowed from
             # "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
             # to get the current date and time.
             timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
-            print('Current Timestamp PT6 : ', timestampStr)
+            # Save the dictionary to the database
             for param_dict in param_dict_list:
                 parameter_name = param_dict["param"]
                 update_dict[parameter_name] = request.form.get(parameter_name)
@@ -573,17 +576,15 @@ def edit_setup_admin(setup_id):
             update_dict["car_name"] = car_name
             update_dict["track_name"] = track_name
             update_dict["date_created"] = timestampStr
-            print(timestampStr)
             mongo.db.setups.update({"_id": ObjectId(setup_id)}, update_dict)
             flash("Setup Successfully Updated")
             return redirect(url_for("admin_tasks"))
 
+        # Load the chosen setup on the the screen.
         setup = mongo.db.setups.find_one({"_id": ObjectId(setup_id)})
-        print("400 : Setup = : ", setup)
         sim_name = setup["sim_name"]
-        print("410 : sim_name = : ", sim_name)
         headers = list(mongo.db.sim_headings.find({"sim_name": sim_name})
-                    .sort("heading_number"))
+                                            .sort("heading_number"))
         setup_parameters = list(mongo.db.sim_settings_parameters.find(
                             {"sim_name": sim_name}).sort("order_number"))
         return render_template("edit_setup_admin.html",
@@ -596,12 +597,12 @@ def edit_setup_admin(setup_id):
         return redirect(url_for("home"))
 
 
+# Allow 'Admin Rights' user to delete any setup in the database.
 @app.route("/delete_setup_admin/<setup_id>")
 def delete_setup_admin(setup_id):
     admin_type = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
     if admin_type is True:
-        print(setup_id)
         mongo.db.setups.remove({"_id": ObjectId(setup_id)})
         flash("Setup Successfully Deleted")
         return redirect(url_for("admin_tasks"))
@@ -614,7 +615,8 @@ def manage_users_delete():
     if admin_type is True:
         flash("User is an Admin")
         if request.method == "POST":
-            # check if user exists in 'sim_setup_world / users' database (MongoDB)
+            # check if user exists in 'sim_setup_world / users'
+            # database (ie. MongoDB)
             existing_user = mongo.db.users.find_one(
                 {"username": request.form.get("username").lower()})
             print(existing_user)
@@ -624,7 +626,7 @@ def manage_users_delete():
             if existing_user:
                 # check hashed password matches Admin's password
                 if check_password_hash(
-                session["password"], request.form.get("password")):
+                  session["password"], request.form.get("password")):
                     mongo.db.users.remove(existing_user)
                     flash("User deleted")
                     return redirect(url_for('admin_tasks'))
@@ -653,10 +655,10 @@ def manage_users_edit():
     if admin_type is True:
         flash("User is an Admin")
         if request.method == "POST":
-            # check if user exists in 'sim_setup_world / users' database (MongoDB)
+            # check if user exists in 'sim_setup_world / users'
+            # database (ie. MongoDB)
             existing_user = mongo.db.users.find_one(
                 {"username": request.form.get("username").lower()})
-            print("Existing User : ", existing_user)
             session["password"] = mongo.db.users.find_one(
                     {"username": session["user"]})["password"]
 
@@ -685,6 +687,7 @@ def manage_users_edit():
         return redirect(url_for("home"))
 
 
+# Allow 'Admin Rights' user to the edit or delete users from the database.
 @app.route("/edit_user/<user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
     admin_type = mongo.db.users.find_one(
@@ -692,23 +695,23 @@ def edit_user(user_id):
     if admin_type is True:
         flash("User is an Admin")
         if request.method == "POST":
+            # Details are amended on screen then saved to the database.
             updated_details = {
               "username": request.form.get("username").lower(),
               "password": generate_password_hash(request.form.get("password")),
               "admin": request.form.get("admin")
             }
-            print("Updated details: ", updated_details)
-            print("User Id :", user_id)
             mongo.db.user.update({"_id": ObjectId(user_id)}, updated_details)
             flash("User Successfully Updated")
             return render_template("admin_tasks.html")
 
-        return render_template("edit_user.html", existing_user=existing_user)
+        # Load the page
+        return render_template("edit_user.html")
 
     else:
         flash("Please request 'Admin' rights in order to access" +
               "this function")
-        return redirect(url_for("home"))    
+        return redirect(url_for("home"))
 
 
 if __name__ == "__main__":
