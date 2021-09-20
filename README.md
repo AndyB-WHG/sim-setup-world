@@ -424,7 +424,40 @@ GitHub pages was used to deploy the project. The following process was followed:
 
 # 8. End Product
 
-The following images are a selection of live screen shots taken directly from the site.  A larger collection of screen shots can be seen [here]()
+The following images are a selection of live screen shots taken directly from the site.  A larger collection of screen shots can be seen [here](https://github.com/AndyB-WHG/sim-setup-world/tree/main/documentation-assets/Live%20Screenshots).
+
+`'Home' page (Tablet Version)`
+
+![Home Page](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/1.%20Home%20Page%20-%20Tablet%20version.PNG)
+
+`'Find a Setup' page (Mobile Version)`
+
+![Find a Setup Page](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/2.%20Find%20Setups%20Page%20-%20Mobile%20version.PNG)
+
+`'Find a Setup' page - 'Results' section (Tablet Version)`
+
+![Find a Setup - Results Section](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/2.%20Find%20Setups%20Page%20-%20bottom%20section%20-%20Tablet%20version.PNG)
+
+`'View Setup' page - showing Headings and Parameter values (Desktop Version)`
+
+![View a Setup](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/6.%20View%20Setup%20Page%20-%20Desktop%20version.PNG)
+
+`'Tutorials' page (Mobile Version)`
+
+![Tutorials page](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/3.%20Tutorials%20Page%20-%20Mobile%20version.PNG)
+
+`'Tutorials' page (Tablet Version)`
+
+![Tutorials page](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/3.%20Tutorials%20Page%20-%20Tablet%20version.PNG)
+
+`'Login' page (Desktop Version)`
+
+![Tutorials page](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/7.%20Login%20Page%20-%20Desktop.PNG)
+
+
+
+
+
 
 # 9. Credits
   [Go to the top](#table-of-contents)
