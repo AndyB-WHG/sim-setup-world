@@ -39,7 +39,7 @@ A live website can be found [here]( https://andyb-whg.github.io/....../).
 
 ### Project Goal
 
-The subject of racing car setups is both expansive and complex.  Creating a setup which is both fast and easy to drive can be both time-consuming and immensely frastrating.  For those new to car setups or sim-racing generally, the options can seem overwhelming, and the effects of each setting diffult to understand. 
+The subject of racing car setups is both expansive and complex.  Creating a setup which is both fast and easy to drive can be both time-consuming and frastrating.  For those new to car setups or sim-racing generally, the options can seem overwhelming, and the effects of each setting difficult to understand. 
 
 The main aim of the site is to give users a quick and efficient way to find pre-made, fast and easy-to-handle car setups for the game and car of their choice.  Users can also submit their own setups for use by other racers.
 
@@ -327,6 +327,7 @@ The link takes the user to the 'Admin Tasks' page. The page is split into three 
 
 - [Font Awesome](https://fontawesome.com/) provided the various icons used within the site.
 
+<a name="testing"></a>
 
 # 4. Testing
   [Go to the top](#table-of-contents)
@@ -454,7 +455,9 @@ The following images are a selection of live screen shots taken directly from th
 
 ![Tutorials page](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/7.%20Login%20Page%20-%20Desktop.PNG)
 
+`'Register' page (Mobile Version)`
 
+![Register page](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/7.%20Register%20Page%20-%20Mobile.PNG)
 
 
 
@@ -463,6 +466,9 @@ The following images are a selection of live screen shots taken directly from th
   [Go to the top](#table-of-contents)
 
 ### Code
+* "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+
+
 
 * https://www.codeinwp.com/blog/fetch-api-tutorial-for-beginners/  :  main resource used whilst writing API Fetch() methods. 
 * https://css-tricks.com/using-fetch/  :  General coding advice and specific advice on handling Fetch() errors. 
