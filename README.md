@@ -424,7 +424,7 @@ GitHub pages was used to deploy the project. The following process was followed:
 
 # 8. End Product
 
-
+The following images are a selection of live screen shots taken directly from the site.  A larger collection of screen shots can be seen [here]()
 
 # 9. Credits
   [Go to the top](#table-of-contents)
