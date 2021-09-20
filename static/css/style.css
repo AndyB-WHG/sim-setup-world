@@ -114,8 +114,24 @@ footer i {
 
 /* ??? */
 
+
+#sim-name {
+    border-bottom: 10px;
+}
+
 .side-by-side {
     display:inline;
+}
+
+.selected-item {
+    width: 100%;
+    border-bottom: 5px;
+    margin-left: 3em;
+}
+
+.hide-button {
+    height: 0px;
+    width: 0px;
 }
 
 /* Font Awesome Icons */
@@ -203,7 +219,7 @@ option {
     color: rgb(233, 99, 50);
 }
 
-/* Submit Setup section */
+/* 'Submit Setup' section */
 
 .submit-title {
     padding-bottom: 1em;
@@ -212,21 +228,6 @@ option {
 
 .submit-icon {
     font-size: 20px;
-}
-
-.selected-item {
-    width: 100%;
-    border-bottom: 5px;
-    margin-left: 3em;
-}
-
-.hide-button {
-    height: 0px;
-    width: 0px;
-}
-
-#sim-name {
-    border-bottom: 10px;
 }
 
 .headings {
@@ -245,9 +246,13 @@ option {
     box-shadow: 2px 2px 2px rgb(0 0 0 / 50%);
 }
 
+/* 'Find Setups' section */
+
 .user-list-heading {
     width: 100%;
 }
+
+/* 'Submit Settings' page */
 
 #submit-setup-form > #parameters-section > label:before {
     font-size: 15px;
@@ -291,6 +296,8 @@ option {
   text-align: center;
 }
 
+/* 'Edit Setup - Search' page */
+
 .edit-setup-directions {
     padding-bottom: 30px;
     font-weight: 700;
@@ -307,13 +314,19 @@ option {
     display: inline-table;
 }
 
+/* 'View Setups' page */
+
 #view-setup-page-buttons {
     text-align: center;
 }
 
+/* Edit Setups - Editing Page */
+
 #edit-page-button-section {
     text-align: center;
 }
+
+/* 'Admin Rights user' section */
 
 .admin-icons {
     font-size: 3rem;
@@ -359,6 +372,8 @@ option {
     padding-left: 20px;
     padding-right: 20px;
 }
+
+/* 'Responsive screen size' section */
 
 @media (min-width: 992px) {
     .brand-logo {
