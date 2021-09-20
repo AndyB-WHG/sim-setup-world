@@ -119,15 +119,15 @@ Three variations are provided as examples of differing screen size layouts, name
 
 **'Find A Setup' page 1 - Initial search (Tablet Version)**
 
-![Tablet Wireframe](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Wireframes/30.%20'Find%20a%20Setup'%20Part%201%20-%20Initial%20Search%20Choices%20-%20wireframe%20-%20Tablet%20version.PNG))
+![Tablet Wireframe](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Wireframes/30.%20'Find%20a%20Setup'%20Part%201%20-%20Initial%20Search%20Choices%20-%20wireframe%20-%20Tablet%20version.PNG)
 
 **'Find A Setup' page 2 - Results list (Tablet Version)**
 
-![Tablet Wireframe](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Wireframes/30.%20'Find%20a%20Setup'%20Part%202%20-%20The%20Results%20Table%20-%20wireframe%20-%20Tablet%20version.PNG))
+![Tablet Wireframe](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Wireframes/30.%20'Find%20a%20Setup'%20Part%202%20-%20The%20Results%20Table%20-%20wireframe%20-%20Tablet%20version.PNG)
 
 **'Find A Setup' page 3 - Viewing the setup parameters (Tablet Version)**
 
-![Tablet Wireframe](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Wireframes/30.%20'Find%20a%20Setup'%20Part%203%20-%20Viewing%20the%20Setup%20-%20wireframe%20-%20Tablet%20version.PNG))
+![Tablet Wireframe](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Wireframes/30.%20'Find%20a%20Setup'%20Part%203%20-%20Viewing%20the%20Setup%20-%20wireframe%20-%20Tablet%20version.PNG)
 
 **'Tutorials' page (Mobile Version)**
 
@@ -148,55 +148,29 @@ Three variations are provided as examples of differing screen size layouts, name
 ### Colours
 Colours used are:
 
-- #28a745 (Green) - used on buttons to compliment the grass within the Hero Image.
-- #393837 (Charcoal Grey) - implemented within the Table Header to blend with the Filter and Table text and to tie in with the darker section of the Hero Image but with a softer shade to be easier on the eye.  Also provides a clear differentiation between the filter and table sections.
+- #f57c00 (Orange) - main colour scheme of the site - used in headers and on various icons within the site.  Colour is part of the standard ['Materialize.com'](https://materializecss.com/) colour set.
+- #e65100 (Dark Orange) - used as a contrast within various pages to highlight 'action' buttons.  Also used within the footers of each page as using the same colour as the Header section produced an odd result in which the footer looked distinctly lighter than the header.
 
 
 ### Typography
-- 'Exo' : used on the majority of the site to provide a mordern, positive feel.
-- 'Play' : Filter Button font to provide contrast and interest against the Table section.
+- 'Exo' : used throughout the site to provide a mordern, positive feel.
 
 <a name="features"></a>
 # 2. Features
   [Go to the top](#table-of-contents)
 
 ### Header Section
-- Company Brand - placed prominently at top left.
-- Quick Search Input Box - prompts users to search for a team or competition of interest.  Aids first time visitors providing an easy, intuitive first step.
-- Quick Search button - highlighted in green for subconscious positive affirmation of use.
-- Loading GIF - appears during initial page load whilst suggestions are loaded from the linked API - suggestions then populate the Quick Search Input Box to help the user with potential searches.
+- Company Brand - placed prominently at top middle (Mobile and Tablet) and top left (Desktop).
+- Brand logo can be clicked from any page to return the user to the 'Home' page.
+- 'Burger' icon placed top right on Mobile and Tablet screens to simplify the look and feel of the menu section.  Links flow in from right hand side once clicked.
+- Standard 'Nav Bar' links are placed across the top right of the page on larger screen sizes for immediate access.
+- Links within the Nav Bar increase or decrease dependent upon whether the user is logged in or out, and, if logged in, whether the user is an 'Admin' super-user.
 
-### Hero Image Section
-- Emotive atmospheric image of a packed sports stadium used to invoke positivity, excitement and urgency.
-- 'Call-Out' message both informs the user of the website's purpose whilst promoting immediate action.
+### 
 
-### Filter Section
-
-* Seven filter buttons provide the ability to narrow and refine searches between  :
-  - Start Date
-  - End Date
-  - Sport
-  - Team / Competitor
-  - Competition
-  - Country
-
-* 'Start Filter' button - coloured green as per the Quick Search button to indicate positive use. Takes the input from the seven Filter Buttons and feeds the requirements to the 'PredictHQ' external API resource.
+### 
 
 ### Results Table Section
-
-- Seven Columns provide pertinent information to the user based on the search criteria provided :
-  - Event Title 	
-  - Start Date 
-  - End Date
-  - Place Name	
-  - Country	
-  - Type	
-  - Sub Type
-
-- Results are provided 10 rows at a time.
-- Pagination buttons are provided where the results yielded number greater than ten.  The user is able to move backwards and forwards as required.
-- Each line is highlighted in green as per the previous buttons, both to standardise the colour scheme and, for Developments Stages 2 and 3, to indicate that the line can be clicked to highlight and zoom in on the Google Map location.
-- 'Clear Filter' button : provides a simple, quick method to clear the filters ready for a subsequent search.
 
 ### Footer / Social Media Section
 
@@ -321,7 +295,10 @@ GitHub pages was used to deploy the project. The following process was followed:
   - Table rows do not highlight in green on older Apple products.
 
 <a name="credits"></a>
-# 8. Credits
+
+# 8. End Product
+
+# 9. Credits
   [Go to the top](#table-of-contents)
 
 ### Code
