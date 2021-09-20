@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700|Prompt:100,200,300,400,500,600,700');
+/* Site-wide general settings */
 
-/* @import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700|Prompt:100,200,300,400,500,600,700');
 
 * {
     padding: 0;
@@ -12,6 +12,17 @@ body {
     font-family: 'Exo', sans-serif;
 }
 
+/* Navbar and Logo */
+
+.logo2 {
+    display: none;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Callout section */
 
 .callout {
     font-size: 16px;
@@ -27,9 +38,26 @@ body {
     margin-bottom: 3rem;
 }
 
+
+.call-out {
+    text-align: center;
+    position: relative;
+    bottom: 20px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.page-title {
+    padding-top: 25px;
+    color: rgb(233, 99, 50);
+}
+
+/* Footer Section */
+
 .footer-not-fixed-to-bottom {
     height: 8rem;
-    /* background-color: #f54500; */
     color: cornsilk;
     width: 100%;
     box-shadow:  0px -1px 3px 0px rgba(0, 0, 0, 0.486);
@@ -41,26 +69,12 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    /* background-color: #f55a00; */
     color: cornsilk;
     text-align: center;
     box-shadow:  0px -1px 3px 0px rgba(0, 0, 0, 0.486);
 }
 
-#padding-div {
-    height: 150px;
-
-}
-
-.social-media {
-    text-align: center;
-    /* margin-top: 100px; */
-    /* margin-bottom: 50px; */
-    
-}
-
 footer li {
-    /* margin-top: 20px; */
     display: inline;
     text-align: center;
     margin: 25px;
@@ -84,31 +98,27 @@ footer i {
     padding-top: 35px;
 }
 
-/* .box-shadow {
-    box-shadow:  0px 9px 9px 8px rgb(44, 40, 40);
-} */
-
-
-
-.logo2 {
-    display: none;
+.social-media {
+    text-align: center;
 }
 
-.text-shadow {
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+#padding-div {
+    height: 150px;
 }
+
+/* flashed 'Flask' messages */
 
 .flashes h4 {
     line-height: 2;
 }
 
-.centered {
-    text-align: center;
-}
+/* ??? */
 
 .side-by-side {
     display:inline;
 }
+
+/* Font Awesome Icons */
 
 .fa-sign-in-alt:before, .fa-user-plus:before {
     font-size: 17px;
@@ -120,39 +130,20 @@ footer i {
     padding-left: 6px;
 }
 
+/* Register Page */
+
 .register-icon {
     font-size: 30px !important;
 }
+
+/* Login Page */
 
 .login-section {
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-
-/* #hero-div {
-    height: 35em;
-    width: 100%;
-}
-
-#hero-image {
-    display: block;
-    text-align: center;
-    height: 35em;
-    width: 100%;
-    background: url("/static/img/pexels-albin-berlin-919073-minified.jpg") no-repeat center center;
-    background-size: cover;
-} */
-
-/* .main-background {
-    background: url("/static/img/pexels-albin-berlin-919073-minified.jpg") no-repeat center center;
-    background-size: cover;
-} */
-
-.page-title {
-    padding-top: 25px;
-    color: rgb(233, 99, 50);
-}
+/* Home page section */
 
 .home-page-login {
     width: 100%;
@@ -165,6 +156,28 @@ footer i {
 .home-page-card-padding {
     padding-top: 45px;
 }
+
+.card-stacked {
+    width: 70%;
+    height: 15em;
+}
+
+.card-header {
+    padding-left: 25px;
+    font-size: 25px;
+}
+
+.card-title {
+    font-weight: 500;
+    position: relative;
+}
+
+.card {
+    display: inline;
+}
+
+
+/* Tutorials page */
 
 .tutorial-list {
     margin-bottom: 0px;
@@ -185,30 +198,12 @@ footer i {
     text-align: center;
 }
 
-.card-stacked {
-    width: 70%;
-    height: 15em;
-}
-
-.card-header {
-    padding-left: 25px;
-    font-size: 25px;
-}
-
-.card-title {
-    font-weight: 500;
-    position: relative;
-    /* top: 100px; */
-    /* text-decoration-color: darkorange; */
-}
-
-.card {
-    display: inline;
-}
-
+/* Setup 'Display' & 'Edit' pages */
 option {
     color: rgb(233, 99, 50);
 }
+
+/* Submit Setup section */
 
 .submit-title {
     padding-bottom: 1em;
@@ -223,12 +218,6 @@ option {
     width: 100%;
     border-bottom: 5px;
     margin-left: 3em;
-}
-
-.call-out {
-    text-align: center;
-    position: relative;
-    bottom: 20px;
 }
 
 .hide-button {
@@ -284,24 +273,16 @@ option {
     position: relative;
     right: 5rem;
     top: 1rem;
-    /* width: 100%;
-    border: auto;
-    display: block; */
 }
 
 .radio-width {
     margin-left: 3rem;
 }
 
-/* label {
-    font-style: ;
-} */
-
 .submit-button-div {
     margin-bottom: 1rem;
     display: inline-block;
     position: relative;
-
 }
 
 #submit-page-button-section {
@@ -311,9 +292,7 @@ option {
 }
 
 .edit-setup-directions {
-    /* color:rgb(233, 99, 50); */
     padding-bottom: 30px;
-    /* text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.151); */
     font-weight: 700;
     font-size: 20px;
 }
@@ -335,7 +314,6 @@ option {
 #edit-page-button-section {
     text-align: center;
 }
-
 
 .admin-icons {
     font-size: 3rem;
@@ -364,7 +342,6 @@ option {
 
 .mobile-admin-choices .card-title {
     font-weight: 400;
-    
 }
 
 .mobile-admin-choices .admin-card {
@@ -383,28 +360,6 @@ option {
     padding-right: 20px;
 }
 
-
-/* label::after {
-    font-size: large;
-} */
-
-/* #caret-placing-coaches:before {
-    margin-left: 360px;
-}
-
-#caret-placing-components:before {
-    margin-left: 400px;
-    
-} */
-
-/* @media (min-width: 820px) {
-    #quick-search-input-box {
-        width: 130%;
-        position: relative;
-        right: 100px;
-    }
-} */
-
 @media (min-width: 992px) {
     .brand-logo {
         text-align: left;
@@ -419,9 +374,6 @@ option {
         position: relative;
         left: 12px;
     }
-    /* .callout {
-        font-size: 17px; */
-    /* } */
 }
 
 @media (min-width: 1200px) {
@@ -434,24 +386,7 @@ option {
     nav .brand-logo {
         font-size: 1.7em;
     }
-    /* #caret-placing-coaches:before {
-        margin-left: 81px;
-    }
-    
-    #caret-placing-components:before {
-        margin-left: 120px;
-} */
 }
-
-/* @media (max-width: 390px) {
-    #caret-placing-coaches:before {
-        margin-left: 9px;
-    }
-    
-    #caret-placing-components:before {
-        margin-left: 50px;
-    }
-} */
 
 @media (max-width: 736px) {
     .call-out {
@@ -466,9 +401,6 @@ option {
     .tutorial-menu {
         font-size: 12px;
     }
-    /* #caret-placing-coaches:before {
-        margin-left: 15px;
-    } */
 }
 
 @media (max-width: 310px) {
@@ -544,8 +476,6 @@ option {
         margin-top: 0px;
         height: 30px;
         line-height: 30px;
-        /* margin: 0px; */
-        /* line-height: 15px; */
     }
     #edit-page-button-section {
         text-align: center;
@@ -571,4 +501,5 @@ option {
     }
     .input-field .validate {
         padding-top: 40px;
-}}
+    }
+}
