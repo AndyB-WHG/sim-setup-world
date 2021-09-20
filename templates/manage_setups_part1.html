@@ -14,7 +14,7 @@
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
-        <select id="sim_name" name="sim_name" class="validate" minlength="5" required>
+        <select id="sim_name" name="sim_name" class="validate" required>
           <option value="unselected" disabled selected>Select Sim</option>
           {% for sim in sims %}
             <option value="{{ sim.sim_name }}">{{ sim.sim_name }}</option>

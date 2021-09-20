@@ -11,7 +11,7 @@
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
         <input value="{{ setup.sim_name }}" type="text" class="validate" name="{{ setup.sim_name }}">
-        <label class="active" for="{{ setup.sim_name }}"></label>
+        <label class="active" for="{{ setup.sim_name }}"></label> 
       </div>
     </div>
 
@@ -19,7 +19,7 @@
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-car prefix orange-text text-darken-4 submit-icon"></i>
         <input value="{{ setup.car_name }}" type="text" class="validate" name="{{ setup.car_name }}">
-        <label class="active" for="{{ setup.car_name }}"></label>
+        <label class="active" for="{{ setup.car_name }}"></label> 
       </div>
     </div>
 
@@ -27,7 +27,7 @@
       <div class="input-field col s12">
         <i class="fas fa-globe-americas prefix orange-text text-darken-4"></i>
         <input value="{{ setup.track_name }}" type="text" class="validate" name="{{ setup.track_name }}">
-        <label class="active" for="{{ setup.track_name }}"></label>
+        <label class="active" for="{{ setup.track_name }}"></label> 
       </div>
     </div>
 
@@ -93,7 +93,7 @@
                   <div class="input-field col s6 l3">
                     <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
                     <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}"
-                      pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="validate" required>
+                      pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" class="validate" required>
                     <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
                     <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
                   </div>

@@ -67,7 +67,7 @@
                 {% for key in setup %}
                   {% if key == parameter.param %}
                     <div class="input-field col s6">
-                      <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
+                      <label class="label-size" for="{{ parameter.param }}">{{ parameter.text }}</label><br>
                       <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}"
                         pattern="^\d'\d\d.\d\d\d$" type="text" class="validate" required>
                     </div>
@@ -89,7 +89,7 @@
                 {% for key in setup %}
                   {% if key == parameter.param %}
                     <div class="input-field col s12">
-                      <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
+                      <label class="label-size" for="{{ parameter.param }}">{{ parameter.text }}</label><br>
                       <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" value="{{ setup[key] }}"
                         class="validate">
                     </div>
@@ -103,9 +103,9 @@
               {% for key in setup %}
                 {% if key == parameter.param %}
                   <div class="input-field col s6 l3">
-                    <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
+                    <label class="label-size" for="{{ parameter.param }}">{{ parameter.text }}</label><br>
                     <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}"
-                      pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="validate" required>
+                      pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" class="validate" required>
                     <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
                     <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
                   </div>
@@ -130,16 +130,16 @@
 
       <div class="row submit-button-div">
         <div class="col s12 center-align edit-page-buttons">
-          <button href="" type="submit" class="waves-effect btn-large light-blue">Restart</button>
+          <a href="{{ url_for('manage_setups_part1') }}" type="submit" class="waves-effect btn-large light-blue">Restart</a>
         </div>
       </div>
-
+    
       <div class="row submit-button-div">
         <div class="col s12 center-align edit-page-buttons">
-          <button type="submit" class="waves-effect btn-large light-blue">Cancel</button>
+          <a href="{{ url_for('admin_tasks') }}" type="submit" class="waves-effect btn-large light-blue">Cancel</a>
         </div>
       </div>
-
+    
     </div>
   </form>
 </div>

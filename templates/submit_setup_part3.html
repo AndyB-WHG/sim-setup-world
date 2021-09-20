@@ -10,7 +10,7 @@
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
-        <input value="{{ sim_name }}" type="text" class="validate" name="sim_name">
+        <input id="sim_name" value="{{ sim_name }}" type="text" class="validate" name="sim_name">
         <label class="active" for="sim_name"></label>
       </div>
     </div>
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-car prefix orange-text text-darken-4 submit-icon"></i>
-        <input value="{{ car_name }}" type="text" class="validate" name="car_name">
+        <input id="car_name" value="{{ car_name }}" type="text" class="validate" name="car_name">
         <label class="active" for="car_name"></label>
       </div>
     </div>
@@ -26,7 +26,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="fas fa-globe-americas prefix orange-text text-darken-4"></i>
-        <input value="{{ track_name }}" type="text" class="validate" name="track_name">
+        <input id="track_name" value="{{ track_name }}" type="text" class="validate" name="track_name">
         <label class="active" for="track_name"></label>
       </div>
     </div>
@@ -69,7 +69,7 @@
 
               {% elif parameter.param == "Fastest_Lap" %}
               <div class="input-field col s6">
-                <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
+                <label class="label-size" for="{{ parameter.param }}">{{ parameter.param }}</label><br>
                 <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}"
                   pattern="^\d'\d\d.\d\d\d$" type="text" class="validate" required>
               </div>
@@ -78,7 +78,7 @@
 
               {% else %}
               <div class="input-field col s12">
-                <label class="label-size" for="{{ parameter.param }} :">{{ parameter.param }}</label><br>
+                <label class="label-size" for="{{ parameter.param }}">{{ parameter.param }}</label><br>
                 <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text"
                   class="validate">
               </div>
@@ -88,9 +88,9 @@
 
             {% else %}
             <div class="input-field col s6 l3">
-              <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label>
+              <label class="label-size" for="{{ parameter.param }}">{{ parameter.text }}</label>
               <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}"
-                pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="validate param-input" required>
+                pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" class="validate param-input" required>
               <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
               <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
             </div>
@@ -112,7 +112,7 @@
 
       <div class="row submit-button-div">
         <div class="col s12 center-align">
-          <button href="{{ url_for('home') }}" type="submit" class="waves-effect btn-large light-blue">Cancel</button>
+          <a href="{{ url_for('home') }}" type="text/html" class="waves-effect btn-large light-blue">Cancel</a>
         </div>
       </div>
     </div>
