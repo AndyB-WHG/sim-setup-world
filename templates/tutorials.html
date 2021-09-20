@@ -18,10 +18,11 @@
                 <div class="tutorial-choices col s1">        
                     <i class="fas fa-caret-down"></i>
                 </div>
-
             </div>
+
             <div class="collapsible-body">
                 <ul class="collapsible">
+                    <!-- Loop through 'Coaches' to create a dropdown selection list -->
                     {% for coach in coaches %}
                     <li>
                         <div class="row tutorial-list collapsible-header white-text text-shadow orange darken-4">
@@ -33,28 +34,22 @@
                                 <i class="fas fa-caret-down"></i>
                             </div>
                         </div>
-                        <div class="collapsible-body">
 
+                        <div class="collapsible-body">
                             <ul class="collapsible">
+                                <!-- Loop through 'Tutorials' and add to dropdown selection list if relates to coach in question -->
                                 {% for tutorial in tutorials %}
-                                {% if tutorial.coach_name == coach.coach_name %}
-                                <li>
-                                    <a class="weblink collapsible-header white-text text-shadow orange darken-3"
-                                        href="{{ tutorial.web_address }}" target="_blank">
-                                        <i class="fab fa-youtube"></i>
-                                        <strong>{{ tutorial.component.capitalize() }}</strong><br>
-                                    </a>
-                                    <!-- <div class="collapsible-body">
-                                            <span>
-                                                <strong>{{ tutorial.component.capitalize() }}</strong><br>
-                                                <a class="weblink" href="{{ tutorial.web_address }}" target="_blank">{{ tutorial.web_address }}</a>
-                                            </span>
-                                        </div> -->
-                                </li>
-                                {% endif %}
+                                    {% if tutorial.coach_name == coach.coach_name %}
+                                    <li>
+                                        <a class="weblink collapsible-header white-text text-shadow orange darken-3"
+                                            href="{{ tutorial.web_address }}" target="_blank">
+                                            <i class="fab fa-youtube"></i>
+                                            <strong>{{ tutorial.component.capitalize() }}</strong><br>
+                                        </a>
+                                    </li>
+                                    {% endif %}
                                 {% endfor %}
                             </ul>
-
                         </div>
                     </li>
                     {% endfor %}
@@ -64,9 +59,6 @@
 
         <!-- 1b. Setup Guides by Component option -->
         <li>
-            
-            
-
             <div class="tutorial-list row collapsible-header white-text text-shadow orange darken-4 ">
                 <div class="tutorial-choices col s11">
                     <i class="fas fa-cogs"></i>
@@ -75,24 +67,20 @@
                 <div class="tutorial-choices col s1">        
                     <i class="fas fa-caret-down"></i>
                 </div>
-
             </div>
-
 
             <div class="collapsible-body">
                 <ul class="collapsible">
+                    <!-- Loop through car 'Components' to create a dropdown list based on those components -->
                     {% for component in components %}
-                    <li>
-                        <div class="collapsible-header white-text text-shadow orange darken-4">
-                            <i class="fas fa-caret-down"></i>
-                            <strong>{{ component.subject }}</strong><br>
-
-                        </div>
-                        <div class="collapsible-body">
-            
-                        </div>
-                    </li>
-
+                        <li>
+                            <div class="collapsible-header white-text text-shadow orange darken-4">
+                                <i class="fas fa-caret-down"></i>
+                                <strong>{{ component.subject }}</strong><br>
+                            </div>
+                            <div class="collapsible-body">
+                            </div>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>

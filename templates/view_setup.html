@@ -34,95 +34,85 @@
     <!-- Loop through Headings for the Chosen Sim/Game and display on screen, then within the headings loop through the parameters and display those -->
 
     {% for header in headers %}
-    <div class="row">
-      <div id="parameters-section" class="col s12">
-        <h4 class="headings">{{ header.heading }}</h4>
-      </div>
-
       <div class="row">
-      {% for parameter in setup_parameters %}
-      
-        {% if parameter.heading.lower() == header.heading.lower() %}
-          {% if parameter.param != "Rating_out_of_5" %}
-            {% if parameter.heading == "Stats" %}
-              {% if parameter.param == "Setup_Type" %}
-                {% for key in setup %}
-                  {% if key == parameter.param %}
-            
-                  
+        <div id="parameters-section" class="col s12">
+          <h4 class="headings">{{ header.heading }}</h4>
+        </div>
 
-                    <label>Setup Type</label>
-                      <select class="browser-default" readonly>
-                        <option value="{{ setup[key] }}" disabled selected>Select setup type</option>
-                        <option value="1">Qualifying</option>
-                        <option value="2">Race</option>
-                        <option value="3">Base</option>
-                      </select>
+        <div class="row">
+        {% for parameter in setup_parameters %}
+        
+          {% if parameter.heading.lower() == header.heading.lower() %}
+            {% if parameter.param != "Rating_out_of_5" %}
+              {% if parameter.heading == "Stats" %}
+                {% if parameter.param == "Setup_Type" %}
+                  {% for key in setup %}
+                    {% if key == parameter.param %}
+                      <label>Setup Type</label>
+                        <select class="browser-default" readonly>
+                          <option value="{{ setup[key] }}" disabled selected>Select setup type</option>
+                          <option value="1">Qualifying</option>
+                          <option value="2">Race</option>
+                          <option value="3">Base</option>
+                        </select>
+                    {% endif %}
+                  {% endfor%}
+                <!-- Set pattern requirements for Fastest Laptiime -->
+                {% elif parameter.param == "Fastest_Lap" %}
+                  {% for key in setup %}
+                    {% if key == parameter.param %}
+                      <div class="input-field col s6">
+                        <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
+                        <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}" readonly
+                          pattern="^\d'\d\d.\d\d\d$" type="text" class="" required>
+                      </div>
+                    {% endif %}
+                  {% endfor%}
 
-                
-                  {% endif %}
-                {% endfor%}
-              <!-- Set pattern requirements for Fastest Laptiime -->
-              {% elif parameter.param == "Fastest_Lap" %}
-                {% for key in setup %}
-                  {% if key == parameter.param %}
-                    <div class="input-field col s6">
-                      <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
-                      <input placeholder="eg. 1'52.333" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}" readonly
-                        pattern="^\d'\d\d.\d\d\d$" type="text" class="" required>
-                    </div>
-                  {% endif %}
-                {% endfor%}
+                <!-- Author Name -->
 
-               <!-- Author Name -->
+                  <div class="input-field col s12">
+                    <label class="label-size" for="{{ setup.created_by }}">Created By</label><br>
+                    <input placeholder="{{ setup.created_by }}" id="{{ setup.created_by }}" name="{{ setup.created_by }}" type="text" value="{{ setup.created_by }}"
+                      class="validate" readonly>
+                  </div>
 
+                <!-- Set requirements for 'Author Notes' section -->
 
-                <div class="input-field col s12">
-                  <label class="label-size" for="{{ setup.created_by }}">Created By</label><br>
-                  <input placeholder="{{ setup.created_by }}" id="{{ setup.created_by }}" name="{{ setup.created_by }}" type="text" value="{{ setup.created_by }}"
-                    class="validate" readonly>
-                </div>
+                {% else %}
+                  {% for key in setup %}
+                    {% if key == parameter.param %}
+                      <div class="input-field col s12">
+                        <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
+                        <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" value="{{ setup[key] }}" readonly
+                          class="">
+                      </div>
+                    {% endif %}
+                  {% endfor%}
+                {% endif %}
 
-              <!-- Set requirements for 'Author Notes' section -->
+              <!-- Set accepted pattern and HTML for all of the remaining parameters -->
 
               {% else %}
                 {% for key in setup %}
                   {% if key == parameter.param %}
-                    <div class="input-field col s12">
+                    <div class="input-field col s6 l3">
                       <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
-                      <input placeholder="Optional" id="{{ parameter.param }}" name="{{ parameter.param }}" type="text" value="{{ setup[key] }}" readonly
-                        class="">
+                      <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}" readonly
+                        pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="" required>
+                      <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
+                      <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
                     </div>
                   {% endif %}
-                {% endfor%}
+                {% endfor %}
               {% endif %}
-
-            <!-- Set accepted pattern and HTML for all of the remaining parameters -->
-
-            {% else %}
-              {% for key in setup %}
-                {% if key == parameter.param %}
-                  <div class="input-field col s6 l3">
-                    <label class="label-size" for="{{ parameter.param }} :">{{ parameter.text }}</label><br>
-                    <input placeholder="Awaiting Input" id="{{ parameter.param }}" name="{{ parameter.param }}" value="{{ setup[key] }}" readonly
-                      pattern="^[0-9]\d{0,1}(\.\d{1,2})?%?$" type="text" min="1" max="5" class="" required>
-                    <!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
-                    <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
-                  </div>
-                {% endif %}
-              {% endfor %}
             {% endif %}
           {% endif %}
-        {% endif %}
-      {% endfor %}
+        {% endfor %}
+        </div>
       </div>
-    </div>
     {% endfor %}
 
-
-
-
-    
     <!-- Submit button -->
     <div id="view-setup-page-buttons">
 
@@ -138,16 +128,8 @@
         </div>
       </div>
 
-      <div class="row submit-button-div">
-        <div class="col s12 center-align">
-          <a class="waves-effect btn-small light-blue">Rate</a>
-        </div>
-      </div>
-    
     </div>
-
   </form>
-
 </div>
 
 {% endblock %}

@@ -467,7 +467,8 @@ The following images are a selection of live screen shots taken directly from th
 
 ### Code
 * "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
-
+<!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
+              <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
 
 
 * https://www.codeinwp.com/blog/fetch-api-tutorial-for-beginners/  :  main resource used whilst writing API Fetch() methods. 
