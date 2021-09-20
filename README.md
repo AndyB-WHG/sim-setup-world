@@ -159,49 +159,175 @@ Colours used are:
 # 2. Features
   [Go to the top](#table-of-contents)
 
-### Header Section
+### 'Header' Section
 - Company Brand - placed prominently at top middle (Mobile and Tablet) and top left (Desktop).
 - Brand logo can be clicked from any page to return the user to the 'Home' page.
 - 'Burger' icon placed top right on Mobile and Tablet screens to simplify the look and feel of the menu section.  Links flow in from right hand side once clicked.
 - Standard 'Nav Bar' links are placed across the top right of the page on larger screen sizes for immediate access.
 - Links within the Nav Bar increase or decrease dependent upon whether the user is logged in or out, and, if logged in, whether the user is an 'Admin' super-user.
 
-### 
-
-### 
-
-### Results Table Section
-
-### Footer / Social Media Section
+### 'Footer / Social Media' Section
 
 The bottom of the page provides standard / expected social media links to popular platforms including Youtube, Twitter, Facebook and Instagram.
+
+### 'Home' Page
+
+* Split into five sections, each with a link to the main user sections of the site:
+
+  - 'Callout' section : welcomes the user to the site and explains the aims of the site and benefits for the user.
+
+  - Find a Setup  :  allows users to search for setups generally or for specific car/track combinations (login not required).
+
+  - Submit a Setup : allows users to submit their own setups for use by other users or as a database for personal use (login required).
+
+  - Edit / Delete a Setup : allows users to change or delete their own setups (log in required).
+
+  - Setup Tutorials : allows users to navigate to specific YouTube videos to study a wide variety of car setup topics (login not required).
+
+### 'Find a Setup' page
+
+* Split into three sections:
+  
+  - 'Instruction' section : guides the user as to how to search for a relevant setup.
+
+  - 'Filter' section : allows users to target specific setups based on : 
+  
+    - 'Sim'  -  user must choose one of four 'Sims' provided within a drop-down list (sims stored within a database - in this case [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE)).
+    - 'Car'  - user is provided with an appropriate list of cars for the sim chosen within a drop down list (cars stored within a database - in this case [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE)).
+    - 'Track'  - user is provided with an appropriate list of tracks for the sim chosen within a drop down list (tracks stored within a database - in this case [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE)).
+    
+
+  - 'Results' section : initially lists all setups in the database on page load.  Results are filtered accordingly should the user choose to enter parameters into the 'filter' section.
+
+    - Results are displayed with varying numbers of columns dependent upon screen size. 
+
+    - A 'View' button is given for each setup listed. Clicking the button takes the user to the setup display screen listing all the parameters and values the user will need to setup their chosen car.
+
+### 'Submit a Setup' page
+
+* Split into two sections:
+  
+  - 'Instruction' section : guides the user as to how to submit a setup.
+
+  - 'Filter' section : users are required to enter three necessary parameters in order to create the relevant 'Parameter Entry' page : 
+  
+    - 'Sim'  -  user must choose one of four 'Sims' provided within a drop-down list (sims stored within a database - in this case [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE)).
+    - 'Car'  - user is provided with an appropriate list of cars for the sim chosen within a drop down list (cars stored within a database - in this case [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE)).
+    - 'Track'  - user is provided with an appropriate list of tracks for the sim chosen within a drop down list (tracks stored within a database - in this case [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE)).
+
+  - Once the parameters are entered the user is presented with buttons to either Enter Settings, Restart or Cancel the Submission process.
+
+### 'My Setups' page
+
+* Split into three sections:
+  
+  - 'Instruction' section : guides the user as to how to search for a relevant setup.
+
+  - 'Filter' section : allows users to target specific setups based on : 
+  
+    - 'Sim'  -  user must choose one of four 'Sims' provided within a drop-down list (sims stored within a database - in this case [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE)).
+    - 'Car'  - user is provided with an appropriate list of cars for the sim chosen within a drop down list (cars stored within a database - in this case [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE)).
+    - 'Track'  - user is provided with an appropriate list of tracks for the sim chosen within a drop down list (tracks stored within a database - in this case [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE)).
+    
+
+  - 'Results' section : initially lists all of the `user's setups` in the database on page load.  Results are filtered accordingly should the user choose to enter parameters into the 'filter' section.
+
+    - Results are displayed with varying numbers of columns dependent upon screen size. 
+
+    - 'View', 'Edit' and 'Delete' button are provided for each setup listed. 
+
+### 'Tutorials' page
+
+- Split into two sections:
+
+  - Explanatory section at top guiding the user to click on a drop-down option.
+
+  - 'Collapsble' drop down section, split into two subsections:
+
+    - Full Setup Guides (By Coach) : leads to sub-sections for coaches and, in turn, to specific topics.  
+
+    - Guides by Component : leads to sub-sections for each car component and, in turn, to specific videos for each of those topics.
+  
+  Clicking on the video link opens a new tab and loads the related YouTube video for immediate viewing.
+
+### 'View Setup' Parameter page:
+
+After entering the necessary Sim, Car and Track requirements on the initial 'Find a Setup' page, the user is presented with a 'Setup Parameters' page. Here the user can view the parameters and their values for the chosen setup.  The fields displayed are dependent upon the 'Sim' in question, each sim having a different parameter set, contained within different 'heading sections'.  The Heading and Parameter reuirements being held within the MongoDB database.
+
+### 'Submit Setup' Parameter Entry page:
+
+After entering the necessary Sim, Car and Track requirements on the initial 'Submit a Setup' page, the user is presented with a 'Parameter Entry' page. Here the user enters the necessary parameter values in oder for the setup to be submitted.  The fields displayed are dependent upon the 'Sim' chosen by the user, each sim having a different parameter set, contained within different 'heading sections'.  The Heading and Parameter requirements being held within the MongoDB database.
+
+### 'Edit Setup' Parameter page:
+
+After entering the necessary Sim, Car and Track requirements on the initial 'My Setups' page, the user is presented with a 'Parameter Values' page. Here the user is presented with the current parameter values of the setup.  The user has the option to change any or all of the values displayed before either Saving, Restarting or Exiting (without saving) the setup. 
+
+### 'Admin Tasks' page:
+
+If the user has 'Admin Rights' he/she will have the option to click the 'Admin Tasks' click within the Navbar.
+
+The link takes the user to the 'Admin Tasks' page. The page is split into three section:
+
+  - Information section at top of page (beneath Navbar) confirming the user is an Admin Rights holder, plus a confirmation title of the current displayed page.
+
+  - 'Manage Setups' section : with an associated 'Start' button.
+
+  - 'Manage Users' page : with associated 'Edit' and 'Delete' buttons.
+
+  ### 'Manage Setups' page:
+
+  Users with Admin Rights have the option here to 'Edit', 'View' or 'Delete' setups for all users in the same way that Users may edit, view or delete their own setups.  (See 'My Setups' page info).
+
+  ### 'Edit Users' page:
+
+  Users with Admin Rights have the option to 'Edit' user account information. Namely:
+
+    - Change user's username
+    - Change user's password
+    - Change user's Admin Rights access
+
+  The users 'username' must first be enetered in the relevant field, together with the Admin's password to verify security clearance.
+
+  A second page is displayed once verfied, allowing the Admin to change the necessary details and save the new details to the database.
+
+  ### 'Delete Users' page:
+
+  Users with Admin Rights have the option to 'Delete' user accounts as required. 
+
+  The users 'username' must first be enetered in the relevant field, together with the Admin's password to verify security clearance.
+
+  Clicking the 'Delete' button will delete the user from the database should the username exist and the Admin password be correct.
 
 
 <a name="technologies-used"></a>
 # 3. Technologies Used
   [Go to the top](#table-of-contents)
 
-- [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5), [CSS3](https://en.wikipedia.org/wiki/CSS) and [Boostrap v.4.1](https://getbootstrap.com/docs/4.1/getting-started/introduction/) provide structure, styling and responsiveness to various viewports. 
+- [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5), [CSS3](https://en.wikipedia.org/wiki/CSS) and [Materialize.com](https://materializecss.com/) provide structure, styling and responsiveness to various viewports. 
 
 - [Balsamiq](https://balsamiq.com/) wireframes were used in the design and initial look of the site.
 
 - [Javascript](https://en.wikipedia.org/wiki/JavaScript) and [jQuery](https://en.wikipedia.org/wiki/JQuery) enable the site's user-interactivity functions.
 
-- The [PredictHQ.com](https://www.predicthq.com/?utm_campaign=Brand&utm_term=predicthq&utm_source=adwords&utm_medium=ppc&hsa_net=adwords&hsa_ver=3&hsa_grp=21054631146&hsa_tgt=kwd-922375241988&hsa_kw=predicthq&hsa_cam=339807546&hsa_ad=494263849564&hsa_src=g&hsa_acc=4773278510&hsa_mt=e&gclid=Cj0KCQjw_dWGBhDAARIsAMcYuJwqJuYQFVJoJ-D3d468HtAhRv5UgC78H6AQUcCC39L1yzf9OI8ZV-AaAt6TEALw_wcB) 'Events' and 'Places' API's provide the real-time data powering the Search and Results Table features.
+- The [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_emea_united_kingdom_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624581&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPPyEA76002qoMMPs1qMTTsGG4VWaeYOYpSQsFvWjNRipRQgTBoTBDRoClVMQAvD_BwE) website is used to store the following information:
+  - User setups 
+  - Sim data 
+  - Track data
+  - Parameter names 
+  - Parameter section headings
+  - Tutorial 'Coach' names
+  - Tutorial 'Component' data
+  - Tutorial 'Youtube links' data
 
 - The [Chrome](https://www.google.com/intl/en_uk/chrome/) web-browser was used to view and test the site through design and implementation.
 
 - The [Gitpod](https://www.gitpod.io/) IDE (integrated development environment) and [Github](https://github.com/Github) repository provided the platforms for developmernt and storage of the site.
 
-- [Google Fonts](https://fonts.google.com/) provided the 'Exo' and 'Play' fonts utilised within the site.
+- [Google Fonts](https://fonts.google.com/) provided the 'Exo' font utilised within the site.
+
+- [Font Awesome](https://fontawesome.com/) provided the various icons used within the site.
 
 
-
-
-
-
-
-<a name="testing"></a>
 # 4. Testing
   [Go to the top](#table-of-contents)
 
@@ -298,6 +424,8 @@ GitHub pages was used to deploy the project. The following process was followed:
 
 # 8. End Product
 
+
+
 # 9. Credits
   [Go to the top](#table-of-contents)
 
@@ -313,7 +441,6 @@ GitHub pages was used to deploy the project. The following process was followed:
 
 
 ### Content
-* API data :  https://www.predicthq.com/
 * Hero image provided by Riciardus from Pexels  :  [Stadium Image](https://www.pexels.com/photo/green-and-white-soccer-field-at-night-time-41257/)
 * Header picture of four devices for this README.md document  : [Am I Responsive](http://ami.responsivedesign.is/)
 * 'Social Media' icons in the footer section   :  [Font Awesome](https://fontawesome.com/)
