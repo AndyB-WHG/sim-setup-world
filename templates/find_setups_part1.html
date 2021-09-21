@@ -72,6 +72,7 @@
         <th>Lap Time</th>
         <th>Sim Name</th>
         <th>Date</th>
+        <th>Link</th>
       </tr>
 
       <!-- Loop through all setups and display details in a table (Large Screens)-->
@@ -96,6 +97,7 @@
         <th>Track</th>
         <th>Lap Time</th>
         <th>Sim Name</th>
+        <th>Link</th>
       </tr>
 
       {% for user_setup in user_setups %}
@@ -105,11 +107,12 @@
           <td>{{ user_setup.track_name }}</td>
           <td>{{ user_setup.Fastest_Lap }}</td>
           <td>{{ user_setup.sim_name }}</td>
-        </tr>
-        <tr>
           <td>
             <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
-          </td>       
+          </td> 
+        </tr>
+        <tr>
+                
         </tr>
       {% endfor %}
     </table>
@@ -117,12 +120,6 @@
     <!-- Table 3 - Small Screens -->
 
     <table id="my-setups-small-screen">
-      <colgroup>
-        <col width="10%">
-        <col width="5%">
-        <col width="5%">
-        <col width="20%">
-      </colgroup>
       <tr>
         <th>Car</th>
         <th>Track</th>

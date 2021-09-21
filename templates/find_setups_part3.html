@@ -17,7 +17,7 @@
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-gamepad prefix orange-text text-darken-4 submit-icon"></i>
-        <input id="sim_name" value="{{ sim_name }}" type="text" class="validate" name="sim_name">
+        <input value="{{ sim_name }}" type="text" class="validate" name="sim_name">
         <label class="active" for="sim_name"></label>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="row">
       <div class="input-field col s12 sim-selection">
         <i class="fas fa-car prefix orange-text text-darken-4 submit-icon"></i>
-        <input id="car_name" value="{{ car_name }}" type="text" class="validate" name="car_name">
+        <input value="{{ car_name }}" type="text" class="validate" name="car_name">
         <label class="active" for="car_name"></label>
       </div>
     </div>
@@ -33,7 +33,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="fas fa-globe-americas prefix orange-text text-darken-4"></i>
-        <input id="track_name" value="{{ track_name }}" type="text" class="validate" name="track_name">
+        <input value="{{ track_name }}" type="text" class="validate" name="track_name">
         <label class="active" for="track_name"></label>
       </div>
     </div>
@@ -113,19 +113,19 @@
 
           {% for user_setup in user_setups %}
 
-          <!-- Loop through user setups to generate a table for the user to choose from (Small Screens) -->
+          <!-- Loop through user setups to generate a table for the user to choose from (small screens) -->
 
-            <tr>
-              <td>{{ user_setup.car_name}}</td>
-              <td>{{ user_setup.track_name }}</td>
-              <td>{{ user_setup.Fastest_Lap }}</td>
-            </tr>
+          <tr>
+            <td>{{ user_setup.car_name}}</td>
+            <td>{{ user_setup.track_name }}</td>
+            <td>{{ user_setup.Fastest_Lap }}</td>
+          </tr>
 
-            <tr>
-              <td>
-                <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
-              </td>
-            </tr>
+          <tr>
+            <td>
+              <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
+            </td>
+          </tr>
 
           {% endfor %}
         </table>

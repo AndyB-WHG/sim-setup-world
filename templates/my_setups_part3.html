@@ -49,6 +49,9 @@
           <th>Lap Time</th>
           <th>Sim Name</th>
           <th>Date</th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
 
         {% for user_setup in user_setups %}
@@ -102,14 +105,12 @@
           <th>Car</th>
           <th>Track</th>
           <th>Lap Time</th>
-          <th>Sim Name</th>
         </tr>
         {% for user_setup in user_setups %}
           <tr>
             <td>{{ user_setup.car_name}}</td>
             <td>{{ user_setup.track_name }}</td>
             <td>{{ user_setup.Fastest_Lap }}</td>
-            <td>{{ user_setup.sim_name }}</td>
           </tr>
           <tr>
             <td>

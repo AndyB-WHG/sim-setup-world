@@ -350,34 +350,15 @@ Screen responsiveness testing was carried out using Google Chrome's Developer To
 
 ## Manual Testing
 
-* Site loads as expected on both Motorola and Sony mobile phone devices utilising the Android operating system, running the Chrome browser. 
+* Site loads as expected on Motorola mobile phone device utilising the Android operating system, running the Chrome browser. 
 
-* Site loads as expected on a PC utilising the Windows operating system.  Tested using Chrome, Firefox and Edge.  All load correctly and function identically.  On the Edge browser, however, the final column renders without any outline styling on those lines where the content is empty.  Does not affect functionality in any but doesn't look quite as nice as the Chrome/Firefox rendering.
-
-* Site loads as ecpected on an 2016 iPad Mini utilitsing the Safari browser. The table results do not highlight green when tapped as per newer devices however. This may be due to the age of the operating system so needs investigation.
+* Site loads as expected on a PC utilising the Windows operating system.  Tested using Chrome, Firefox and Edge.  All load correctly and function identically.  
 
 * Responsiveness :
   - The site is responsive to all break points and works as expected.
   
-* Quick Search Input Box : 
-  - 'Loading' message is replaced with prompt to type a team or competition as expected.  
-  - Box loads with 250 event suggestions as expected. User can type as required, and either select from the filtered/remaining options or ignore as desired.
 
-* Quick Search button :
-  - Button works as expected. Results are retrieved from the API and displayed in a table between the filter and footer sections of the page.
 
-* Filter buttons :
-  - 'Start Date' button - tested and works as expected.
-  - 'End Date' button - tested and works as expected.
-  - 'Filter by Sport' button - when tested, this button works when used in conjunction with other search criteria but does not work by itself.  Time constraints have left the bug unresolved for the time being.  The button does load preset sport options as designed, from which the user can select/ignore/type their own input.
-  - 'Team/Competitor' button - tested and and is not working at present. Time constraints have left the bug unresolved for the time being. Bug is suspected to be related to the 'search' string submitted to the API and is likely to be the same bug affecting the 'Filter by Competition' and 'Filter by City' buttons.
-  - 'Filter by Competition' button - tested and is not working at present. Time constraints have left the bug unresolved for the time being.
-  - 'Filter by Country' - tested and works as expected.  Preset country options load as designed, from which the user can select/ignore/type their own input.
-  - 'Filter by City' - tested and is not working at present. Bug is suspected to be related to the 'search' string submitted to the API and is likely to be the same bug affecting the 'Team/Competition' and 'Filter by Competition' buttons.
-  - 'Start Filter' - functions as expected. When clicked, the working search parameters are retrieved from the API and dsplayed in a table below the filter buttons.
-
-- Table rows
-  - Individual events highlight in green when selected on a touch screen or hovered over using a mouse.  Tested on a 2016 Apple iPad mini but this functionality was not present - possibly due to the age of the platform.
 
 * Footer Links :
   
