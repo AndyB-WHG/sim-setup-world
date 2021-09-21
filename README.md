@@ -356,10 +356,27 @@ Screen responsiveness testing was carried out using Google Chrome's Developer To
 
 * Responsiveness :
   - The site is responsive to all break points and works as expected.
-  
+  - The site responds well to device rotation and resizes as expected.
 
-
-
+* Navbar Links:
+  - All links function correctly across Mobile, Tablet and Desktop sizes.
+* Home Page 'card' links:
+  - Four 'cards' within the main section of the Home Page present the user with the main options for the site. Each card bears one link. Each link was found to be responding well on all screen sizes and across multiple browsers and a Motorola mobile phone running the Android operating system.
+* Filter Boxes:
+  - Filter selectors for sims, cars and tracks all function as intended with swift response times. Results Tables are generated quickly and render as designed.  The only small problem found was with iPad size Table output where the 'Edit', 'View' and 'Delete' buttons, whcich should be side by side, are rendering such that the 'Delete' button is below the first two buttons. This will need to addressed in the next update.
+* Register and Login buttons:
+  - The buttons, located on both the Home Page and the respective Register and Login pages work efficiently and as intended on all screen sizes and without issue.
+* Logout button
+  - The Navbar button was tested on multiple pages across by PC and mobile devices and found to be highly responsive and working as intended.
+* View, Edit and Delete buttons within Setup 'Results' tables:
+  - The various buttons found with the 'Find Setup', 'My Setups' and 'Manage Setups' screens were all found to be working as intended with excellent responses times and full functionality with regards to displayed results and updates to database information in respect of setup edits.  The 'Delete' buttons, similarly, were found to correctly result in records being deleted from the database.
+* Admin Tasks section:
+  - The Admin Tasks button within the Navbar was found to appear only when a user with Admin Rights was logged in. This as intended.
+  - The 'Manage Setups' button was found to be functioning correctly and efficiently. As stated previously, the Manage Setups results Table and filter section function correctly and in a swift and pleasing manner.
+  - All buttons within the section were found to function as intended.
+  - The 'Manage Users - Edit' button on Mobile devices was found to return the user to the 'Home Page'.  This has been rectified and is now functioning as intended.
+  - The 'Edit Users' page was found to be responsive and and accept requests to check for existing users and an Admin password. Upon submission of the updated user details, however, the new details were found not have been saved to the database. This bug will need to be rectified for the next update.
+  - The 'Manage Users - Delete' button was found to work as expected, with records being rmoved from the database as intended.
 * Footer Links :
   
     - Facebook - When selecting the Facebook icon, a new tab opens and redirects to the Facebook website. It worked as expected.
@@ -371,17 +388,23 @@ Screen responsiveness testing was carried out using Google Chrome's Developer To
 # 5. Development Cycle
   [Go to the top](#table-of-contents)
 
-- HTML  : Basic HTML framework was implemented first, following the layout created using the Wireframes. 
+Initial development of the site began with pen and paper and a basic outline of the pages required.  
+Inspiration was drawn both from my own keen interest in sim racing, and from Code Institutes own  'Task Manager' project found with the Full Stack Developer study materials.
 
-- CSS  : The Wireframes were used as a guide for the styling. Changes were made as development continued as it became apparent that some of the colours selected were too 'loud' and varied and therefore needed toning down a little.  
+To give a little variety to the project I decided initally to create two or three of the main page wireframes and then create the code for those pages before moving on to any further wireframe design. With hindsight, it may have been slightly more efficient to thoroughly desing everything in advance, but been less artisticly inclined than coding inclined, I felt it necessary to combime and blend the two disciplines to avoid any risk of running out of steam or enthusiasm.
 
-- Javascript : The Javascript segment has been by far the most challenging part of the development.  
+Wireframes in place, and with a few interesting pictures downloaded from Pexels the coding took shape fairly quickly to begin with. With the Home, Login and Register pages in places, the next phase of design was the Submit Setups page.
 
-  - API connectivty : it took some time to choose an appropriate API from which to export the data required.  Connecting to the API and understanding it's Endpoints was also a serious challange.  Roughly 10 days were spend experimenting with this process before an understading how to make things work became apparent.  The next challenge was to use Javascript to connect to the API.  I contacted the college (Code Institute) who advised to use a more modern method (Fetch) to connect with the data.  Again, it took several days to get this working, having first had to research the method using the educational web links provided by the college.  Perseverence won out and eventually got it working but at the cost of considerable time.
+This phase of the project presented some sizeable challenges, due mainly to the quantity of individual data points required to create a car setup (50+ in most cases). Manually hard coding the 'get requests' for such a high number of inputs was impractical. It therefore became apparent that the parameters for each sim would have to be stored in, and be generated from the database.  Creating the necessary requests via 'Flask', first to the filter section to extract the sim name, then to the database to retrieve the related cars and tracks, Headings and Parameters for the sim in question left me scatching my head for more than a few days.  The intricacies of Flask only becoming apparent as the days ticked on and I struggled to get to grips with the logic. In the end, the 'Submit Page' actually turned into three pages with the first giving input to the second, and the second to the third.
 
-  - Quick Search' input box pre-load:  Retrieving multiple data results in order to pre-populate the 'Quick Search' box was, again, a considerable challange.  I needed the Javascript to both render a Table of Results as soon as the page loaded whilst simultaneously calling on the API on multiple occasions to load a large selection of potential events into the Quick Search box for users to choose from if required.  Getting the code to run without errors presented a number of problems which took many days and hours to iron out.  Taking the input from the box to produce a result was reletively straightforward thankfully.
+Evemtually it started to click into place, and with a little encouragement and pointers in the right direction from my mentor, the main bulk of the project began to fall into place.  With the 'Submit Setups' page complete, the 'Find Setups' and 'My Setups' pages took shape fairly quicky, having the same basic structure and logic as the Submit Page section.
 
-  - Filter Buttons: The filter button inputs are used to generate a search string for submission to the API.  The time required to make previous features function properly left little time for resolving bugs and as a result a number of the buttons do not yet provide the required filtered results.  A Results Table is still generated, but is not norrowed down as much as is required.  
+The final 'coding' phase of the project was to construct the 'Admin Tasks' section - accsessible only by users with 'Admin Rights'.  This was relatively straightforward in comparison with the 'setups' section, with the 'Manage Setups' part based heavily on the 'Edit', 'View' and 'Delete' functions built previously for the 'Find Setups' and 'My Setups' pages.
+
+The only fly in the ointment is the 'Edit Users' section which to date works very nicely except for the fact that it doesn't save the updated details entered by the Admin User.  This will need to be ironed out prior to a future update.
+
+With all that in place it remained only to improve the Home Page imagery and tidy up the styling a little and the site was complete.  
+
 
 <a name="deployment"></a>
 # 6. Deployment
