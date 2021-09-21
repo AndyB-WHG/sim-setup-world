@@ -6,9 +6,9 @@ This website is aimed at virtual Racing Drivers, who race online via a variety o
 
 Car setup is vital in improving speed, handling and competitiveness. This website acts a respository for users' setups.  Users can view setups submitted by others, or submit their own creations. 
 
-A live website can be found [here]( https://andyb-whg.github.io/....../).
+A live website can be found [here](http://sim-setup-world-andyb.herokuapp.com/).
 
-![website preview](documentation-assets/Am-I-ResponsiveDesignScreenshot.PNG)
+![website preview](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/AmIResponsive-screenshot.PNG)
 
 
 ## Table of Contents
@@ -342,11 +342,13 @@ Screen responsiveness testing was carried out using Google Chrome's Developer To
 
 ### W3C Validator Tools
 
-[W3C HTML Validator](https://validator.w3.org/) tool used to validate HTML code.
+[W3C HTML Validator](https://validator.w3.org/) tool used to validate HTML code. A number of errors were raised in relation to Table Columns on the 'Find Setups' page, however the same code is used within the 'My Setups' page and does not produce any table errors so has been difficult to resolve thus far.
 
-[W3C CSS Validator](https://jigsaw.w3.org/css-validator/) tool used to validate CSS style code.
+[W3C CSS Validator](https://jigsaw.w3.org/css-validator/) tool used to validate CSS style code. Code was found to be free of errors.
 
-[JS Hint](https://jshint.com/) used to verify Javascript coding (is unable to verfiy jQuery sections however).
+[JS Hint](https://jshint.com/) used to verify Javascript coding (is unable to verfiy jQuery sections however).  Code was found to be free of errors, although there is very little Javascript or jQuery used within this project.
+
+[Extends Class](https://extendsclass.com/python-tester.html) used to verify Python Code.  The code was found to be free of errors.
 
 ## Manual Testing
 
