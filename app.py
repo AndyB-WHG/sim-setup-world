@@ -263,7 +263,7 @@ def my_setups_part1():
 
     # If user not logged in flash the following message
     except KeyError:
-        flash("Please login to submit a setup")
+        flash("Please login to Edit or Delete a setup")
         return redirect(url_for("home"))
 
 

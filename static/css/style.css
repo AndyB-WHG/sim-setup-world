@@ -514,6 +514,12 @@ footer i {
         padding-right: 4px;
         margin: 2px;
     }
+    .home-page-login {
+        font-size: 0.6rem;
+    }
+    .brand-logo {
+        font-size: 1.4rem !important;
+    }
 }
 
 @media (max-width: 450px) {
@@ -522,5 +528,27 @@ footer i {
     }
     .input-field .validate {
         padding-top: 40px;
+    }
+}
+
+
+@media (min-width: 325px) and (max-width: 400px) {
+    .home-page-login {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .brand-logo {
+        font-size: 1.6rem !important;
+    }
+}
+
+@media (max-width: 325px) {
+    .brand-logo {
+        font-size: 1.4rem !important;
+    }
+    .call-out {
+        font-size: 1.2rem !important;
     }
 }
