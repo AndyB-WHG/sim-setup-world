@@ -410,24 +410,33 @@ With all that in place it remained only to improve the Home Page imagery and tid
 # 6. Deployment
   [Go to the top](#table-of-contents)
 
-GitHub pages was used to deploy the project. The following process was followed:
+GitHub pages and Heroku were used to deploy the project. The following process was followed:
 
-1. Create a repository on GitHub.
-2. Create a workspace in Gitpod.
-3. Add/create files in Gitpod and push to Github following successive additions.
-4. Go to Github respository, click on Github Pages and create a live website
+## 6.1 Github Deployment 
+1. Logon to your Github account.
+2. Create a repository on GitHub.
+3. Create a workspace in Gitpod based the Code Institute template saved in Github.
+4. Add/create files in Gitpod then commit and push to Github following the same process after each successive piece of code is written, or files added.
+
+
+## 6.2 Heroku Deployment
+1. Login to your Heroku account
+2. Create a new app.
+3. Give the app a name and select your region the click 'create app'.
+4. Go to the 'Settings' section and click 'Reveal Config Vars'.
+5. Enter the security settings listed in your 'env.py' file.
+6. Go to the 'Deploy' section and link your Heroku account to your Github account (click the icon provided in the 'Deploment Method' section.)
+7. Enter any login details if requested and enter the name of your Github repository, then click search.
+8. In the search results click connect for the respository required.
+9. In the 'Manual Deploy' section at the bottom of the page, select the branch within which your project is located and click 'Deploy Branch'.
+10. Click 'Enable Automatic Deploys' if you wish to have your deployment update each time your Github account is updated.
 
 <a name="known-bugs"></a>
 # 7. Known Bugs
   [Go to the top](#table-of-contents)
 
-  - 'Team/Competitor', 'Filter by Competition' and 'Filter by City' buttons do not work at the present time.  
-
-  - 'Results Table' does not always load first time. Page refresh resolves this issue and does not happen again after that.
-
-  - Searching for a partial word/name in the Quick Search box does not yield any results. This is due to API constraints and requirements. A message advising as such to be added in a later update.
-
-  - Table rows do not highlight in green on older Apple products.
+  - 'Edit user' function allows an Admin User to find, select and update the details of any user in the system.  The changes are not saved to the database however, despite a 'Flash' message confirming the details have been updated.
+  - Within 'Tablet' screensizes, the initial 'My Setups' and 'Manage Setups' pages, the results table provides three action buttons (Edit, View and Delete), which should line up side by side.  The Delete button is displayed below the the Edit and View buttons however.
 
 <a name="credits"></a>
 
@@ -474,38 +483,30 @@ The following images are a selection of live screen shots taken directly from th
   [Go to the top](#table-of-contents)
 
 ### Code
-* "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
-<!-- note: validation pattern above copied from 'codeproject.com' :  https://www.codeproject.com/Questions/426944/regular-expression-which-allow-both-decimals-as-we -->
-              <!-- Allows numbers with or without decimal places between 0 and 99.99 -->
+* Input Validation patterns provided by https://www.codeproject.com/
 
+* Conversion of dates and times into strings gleaned from  https://thispointer.com/
 
-* https://www.codeinwp.com/blog/fetch-api-tutorial-for-beginners/  :  main resource used whilst writing API Fetch() methods. 
-* https://css-tricks.com/using-fetch/  :  General coding advice and specific advice on handling Fetch() errors. 
-* https://gomakethings.com/how-to-use-the-fetch-method-to-make-multiple-api-calls-with-vanilla-javascript/  :  further info regarding nesting Fetch methods.
-* https://learn.co/lessons/javascript-fetch  :  website suggested by CI tutor on the subject of the Fetch() method.
-* https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#body  :  a second website suggested by CI tutor on the subject of the Fetch() method.
-* https://www.w3schools.com/ :  general advice regarding JavaScript syntax.
-* https://jqueryui.com/autocomplete/  :   for basic coding in relation to the 'Autocomplete' function used to display potential selection options in the 'Quick Search' input box (Nav Bar section).
+* General advice regarding Python, HTML and CSS usage:  https://www.w3schools.com/ 
+
 
 
 ### Content
 
-F1 car Photo by <a href="https://unsplash.com/@chuttersnap?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">CHUTTERSNAP</a> on <a href="https://unsplash.com/s/photos/racing-car?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 
-F1 garage Photo by <a href="https://unsplash.com/@imchenyf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">YIFEI CHEN</a> on <a href="https://unsplash.com/s/photos/racing-incident?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+- F1 garage Photo by <a href="https://unsplash.com/@imchenyf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">YIFEI CHEN</a> on <a href="https://unsplash.com/s/photos/racing-incident?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
-Racer car crash Photo by <a href="https://unsplash.com/@abedismail?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Abed Ismail</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
       
-Ferarri F1 car Photo by <a href="https://unsplash.com/@kingy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Martin King</a> on <a href="https://unsplash.com/s/photos/racing-car?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+- Ferarri F1 car Photo by <a href="https://unsplash.com/@kingy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Martin King</a> on <a href="https://unsplash.com/s/photos/racing-car?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
-Degree Photo by <a href="https://unsplash.com/@zane404?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Zane Lee</a> on <a href="https://unsplash.com/s/photos/racing-car?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+- Degree Photo by 
+<a href="https://unsplash.com/@zane404?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Zane Lee</a> on <a href="https://unsplash.com/s/photos/racing-car?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
-Red Bull Photo by <a href="https://unsplash.com/@teapowered?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Patrick Robert Doyle</a> on <a href="https://unsplash.com/s/photos/racing-car?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+- Red Bull Photo by 
+<a href="https://unsplash.com/@teapowered?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Patrick Robert Doyle</a> on <a href="https://unsplash.com/s/photos/racing-car?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
-  
-  
-* Hero image provided by Riciardus from Pexels  :  [Stadium Image](https://www.pexels.com/photo/green-and-white-soccer-field-at-night-time-41257/)
 * Header picture of four devices for this README.md document  : [Am I Responsive](http://ami.responsivedesign.is/)
-* 'Social Media' icons in the footer section   :  [Font Awesome](https://fontawesome.com/)
+* 'Social Media' and button icons    :  [Font Awesome](https://fontawesome.com/)
+
 * README.md layout/template provided by a fellow student, iKelvvv, via Code Institute Mentor, Marcel Mulders  :  [iKelvvv README](https://github.com/iKelvvv/MS1)
