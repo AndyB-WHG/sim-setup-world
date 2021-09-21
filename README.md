@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This website is aimed at virtual Racing Drivers, who race online via a variety of titles such as iRacing, Gran Turismo Sport and Assetto Corsa.  
+This website is aimed at virtual Racing Drivers, who race online via a variety of titles such as iRacing, Gran Turismo Sport and Assetto Corsa Competizione.  
 
 Car setup is vital in improving speed, handling and competitiveness. This website acts a respository for users' setups.  Users can view setups submitted by others, or submit their own creations. 
 
@@ -39,7 +39,7 @@ A live website can be found [here](http://sim-setup-world-andyb.herokuapp.com/).
 
 ### Project Goal
 
-The subject of racing car setups is both expansive and complex.  Creating a setup which is both fast and easy to drive can be both time-consuming and frastrating.  For those new to car setups or sim-racing generally, the options can seem overwhelming, and the effects of each setting difficult to understand. 
+The subject of racing car setups is both expansive and complex.  Creating a setup which is both fast and easy to drive can be both time-consuming and frustrating.  For those new to car setups or sim-racing generally, the options can seem overwhelming, and the effects of each setting difficult to understand. 
 
 The main aim of the site is to give users a quick and efficient way to find pre-made, fast and easy-to-handle car setups for the game and car of their choice.  Users can also submit their own setups for use by other racers.
 
@@ -70,7 +70,7 @@ Provide a list of pre-made setups for the user to view | 5 | 5
 Quick Search function to enable users to filter setups by Sim, Car and Track  | 5| 5
 Responsive design | 5 | 5
 Simple 'submit setup' process for experienced racers | 5 | 5
-Tutorial Section for users looking to learn how to setup a car | 4 | 3
+Tutorial Section for users looking to learn how to set up a car | 4 | 3
 Rating feature to enable users to rate each other's setups | 3 | 3
 
 
@@ -309,6 +309,8 @@ The link takes the user to the 'Admin Tasks' page. The page is split into three 
 
 - [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5), [CSS3](https://en.wikipedia.org/wiki/CSS) and [Materialize.com](https://materializecss.com/) provide structure, styling and responsiveness to various viewports. 
 
+- [Python](https://www.python.org/) provides interactivity with the MongoDB database within which the site data is stored.
+
 - [Balsamiq](https://balsamiq.com/) wireframes were used in the design and initial look of the site.
 
 - [Javascript](https://en.wikipedia.org/wiki/JavaScript) and [jQuery](https://en.wikipedia.org/wiki/JQuery) enable the site's user-interactivity functions.
@@ -339,6 +341,8 @@ The link takes the user to the 'Admin Tasks' page. The page is split into three 
 ## Automated testing
 
 Screen responsiveness testing was carried out using Google Chrome's Developer Tools to ensure correct page loading on multiple devices including various mobile phone and tablet sizes.
+
+![Chrome Lighthouse Results:](https://github.com/AndyB-WHG/sim-setup-world/blob/main/documentation-assets/Live%20Screenshots/lighthouse-results.PNG)
 
 ### W3C Validator Tools
 
@@ -439,6 +443,7 @@ GitHub pages and Heroku were used to deploy the project. The following process w
 
   - 'Edit user' function allows an Admin User to find, select and update the details of any user in the system.  The changes are not saved to the database however, despite a 'Flash' message confirming the details have been updated.
   - Within 'Tablet' screensizes, the initial 'My Setups' and 'Manage Setups' pages, the results table provides three action buttons (Edit, View and Delete), which should line up side by side.  The Delete button is displayed below the the Edit and View buttons however.
+  - In 'iPad Pro' view the Navbar spreads across the majority of the top of the screen. it would be preferable to instead show the burger item but further investigations are neceessary to understand how to implement this.
 
 <a name="credits"></a>
 
