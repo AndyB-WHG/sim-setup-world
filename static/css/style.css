@@ -164,8 +164,9 @@ body {
 }
 
 .tutorials-callout {
-    font-size: 1.2em;
+    font-size: 1.3em;
     text-align: center;
+    font-weight: 500;
 }
 
 /* Setup 'Display' & 'Edit' pages */
@@ -518,7 +519,7 @@ footer i {
         font-size: 0.6rem;
     }
     .brand-logo {
-        font-size: 1.4rem !important;
+        font-size: 1.4rem !important;    /* !important necessary to over-ride 'Materialize' classes. */
     }
 }
 
@@ -540,16 +541,16 @@ footer i {
 
 @media (max-width: 370px) {
     .brand-logo {
-        font-size: 1.6rem !important;
+        font-size: 1.6rem !important;   /* !important necessary to over-ride 'Materialize' classes. */
     }
 }
 
 @media (max-width: 348px) {
     .brand-logo {
-        font-size: 1.4rem !important;
+        font-size: 1.4rem !important;   /* !important necessary to over-ride 'Materialize' classes. */
     }
     .call-out {
-        font-size: 1.2rem !important;
+        font-size: 1.2rem !important;   /* !important necessary to over-ride 'Materialize' classes. */
     }
 }
 
