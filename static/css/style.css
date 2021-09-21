@@ -102,7 +102,7 @@ body {
 /* Login Page */
 
 .login-section {
-    padding-top: 50px;
+    padding-top: 200px;
     padding-bottom: 50px;
 }
 
@@ -532,23 +532,30 @@ footer i {
 }
 
 
-@media (min-width: 325px) and (max-width: 400px) {
+@media (min-width: 349px) and (max-width: 400px) {
     .home-page-login {
         font-size: 0.8rem;
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 370px) {
     .brand-logo {
         font-size: 1.6rem !important;
     }
 }
 
-@media (max-width: 325px) {
+@media (max-width: 348px) {
     .brand-logo {
         font-size: 1.4rem !important;
     }
     .call-out {
         font-size: 1.2rem !important;
+    }
+}
+
+@media (min-width: 500px) {
+    .log-in-header {
+        padding-top: 70px;
+        padding-bottom: 40px;
     }
 }
