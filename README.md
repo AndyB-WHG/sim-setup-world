@@ -490,6 +490,9 @@ The following images are a selection of live screen shots taken directly from th
   [Go to the top](#table-of-contents)
 
 ### Code
+
+* Basic underlying code structure and use derived from the Code Institute 'Task Manager' mini project study materials. The basic code has been significantly built-upon and expended with substantial additional Python and CSS code added.
+
 * Input Validation patterns provided by https://www.codeproject.com/
 
 * Conversion of dates and times into strings gleaned from  https://thispointer.com/
