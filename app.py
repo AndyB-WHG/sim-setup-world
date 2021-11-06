@@ -402,8 +402,9 @@ def find_setups_part2():
         sim_name = request.form.get("sim_name")
         car_name = request.form.get("car_name")
         track_name = request.form.get("track_name")
-        user_setups = list(mongo.db.setups.find({"created_by": session["user"],
-                           "sim_name": sim_name, "car_name": car_name})
+        user_setups = list(mongo.db.setups.find({"sim_name": sim_name,
+                                                 "car_name": car_name,
+                                                 "track_name": track_name})
                            .sort("_id"))
         # Render the resulting list of setups to the screen
         if track_name and car_name:
@@ -717,4 +718,4 @@ def edit_user(user_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
