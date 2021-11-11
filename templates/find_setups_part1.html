@@ -85,7 +85,6 @@
           <td>{{ user_setup.date_created }}</td>
           <td><a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a></td>
         </tr>
-
       {% endfor %}
     </table>
 
@@ -111,9 +110,6 @@
             <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
           </td> 
         </tr>
-        <tr>
-                
-        </tr>
       {% endfor %}
     </table>
 
@@ -138,7 +134,10 @@
           <td>
             <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
           </td>
+          <td></td>
+          <td></td>
         </tr>
+        
 
       {% endfor %}
     </table>
