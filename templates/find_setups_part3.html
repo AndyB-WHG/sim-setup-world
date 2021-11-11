@@ -54,6 +54,8 @@
             <th>Lap Time</th>
             <th>Sim Name</th>
             <th>Created By</th>
+            <th>Last Updated</th>
+            <th>Link</th>
           </tr>
 
           <!-- Loop through user setups to generate a table for the user to choose from (Large Screens) -->
@@ -97,6 +99,9 @@
             <td>
               <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
             </td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
 
           {% endfor %}
@@ -125,6 +130,8 @@
             <td>
               <a href="{{ url_for('view_setup', setup_id=user_setup._id) }}" class="btn-small dark-green accent-4">View</a>
             </td>
+            <td></td>
+            <td></td>
           </tr>
 
           {% endfor %}
