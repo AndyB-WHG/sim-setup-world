@@ -82,7 +82,7 @@
                                 <ul class="collapsible">
                                     <!-- Loop through 'Tutorials' and add to dropdown selection list if relates to coach in question -->
                                     {% for tutorial in tutorials %}
-                                        {% if tutorial.component == component.subject.lower() %}
+                                        {% if tutorial.component.lower() == component.subject.lower() %}
                                         <li>
                                             <a class="weblink collapsible-header white-text text-shadow orange darken-3"
                                                 href="{{ tutorial.web_address }}" target="_blank">
