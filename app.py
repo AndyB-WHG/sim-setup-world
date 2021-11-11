@@ -1,3 +1,6 @@
+""" Main Application Subroutines """
+
+from datetime import datetime
 import os
 from flask import (
     Flask, flash, render_template,
@@ -7,7 +10,6 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
-from datetime import datetime
 
 
 app = Flask(__name__)
@@ -21,12 +23,14 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
+    """ Function to render Home Page """
     return render_template("home.html")
 
 
 # get data to inject into 'Tutorials' page
 @app.route("/get_tutorials")
 def get_tutorials():
+    """ Template to render Tutorials Page """
     tutorials = list(mongo.db.tutorials.find())
     coaches = list(mongo.db.coaches.find())
     components = list(mongo.db.components.find())
@@ -36,6 +40,7 @@ def get_tutorials():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """ Function to render 'Register New User' Page """
     if request.method == "POST":
         # check if username already exists in database
         existing_user = mongo.db.users.find_one(
@@ -54,11 +59,11 @@ def register():
             return redirect(url_for("register"))
 
         # insert new user into database
-        register = {
+        register_details = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
-        mongo.db.users.insert_one(register)
+        mongo.db.users.insert_one(register_details)
 
         # put the new user into a 'session' cookie
         session["user"] = request.form.get("username").lower()
@@ -71,6 +76,7 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """ Function to render Login Page """
     if request.method == "POST":
         # check if user exists in 'database
         existing_user = mongo.db.users.find_one(
@@ -102,6 +108,7 @@ def login():
 # display the user's profile page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """ Function to render User Profile Page """
     # grab the session user's username from the database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -114,6 +121,7 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
+    """ Template to render Logged Out Page """
     # remove user from session cookies
     flash("You have been logged out")
     session.pop("user")
@@ -122,6 +130,7 @@ def logout():
 
 @app.route("/submit_setup_part1", methods=["GET", "POST"])
 def submit_setup_part1():
+    """ Function to render initial 'Submit Setup' page """
     try:
         if session["user"]:
             if request.method == "POST":
@@ -157,6 +166,7 @@ def submit_setup_part1():
 # Submit car and track choices
 @app.route("/submit_setup_part2", methods=["GET", "POST"])
 def submit_setup_part2():
+    """ Function to render Page 2 of the Submit Setup process """
     if request.method == "POST":
         sim_name = request.form.get("sim_name")
         print("210: Part 2: Sim Name is: ", sim_name)
@@ -193,6 +203,7 @@ def submit_setup_part2():
 # Submit Parameters page
 @app.route("/submit_setup_part3", methods=["GET", "POST"])
 def submit_setup_part3():
+    """ Function to render Page 3 of the Submit Setup process """
     if request.method == "POST":
         # Take user's parameter inputs and save as a setup to the database.
         sim_name = request.form.get("sim_name")
@@ -205,12 +216,13 @@ def submit_setup_part3():
                            {"sim_name": sim_name}).sort("order_number"))
         print("Part 3 Parameters : ", param_dict_list)
         print("Length of Parameters List is : ", len(param_dict_list))
-        dateTimeObj = datetime.now()
+        date_time_obj = datetime.now()
         # the following line of code borrowed from
-        # "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+        # "https://thispointer.com/
+        # python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
         # to get the current date and time.
-        timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
-        print('Current Timestamp : ', timestampStr)
+        timestamp_str = date_time_obj.strftime("%Y %m %d - %H:%M:%S")
+        print('Current Timestamp : ', timestamp_str)
 
         # Create a dictionary from the user's parameter values
         setup_dict = {}
@@ -221,7 +233,7 @@ def submit_setup_part3():
         setup_dict["car_name"] = car_name
         setup_dict["track_name"] = track_name
         setup_dict["created_by"] = session["user"]
-        setup_dict["date_created"] = timestampStr
+        setup_dict["date_created"] = timestamp_str
 
         # Save the dictionary to the database
         mongo.db.setups.insert_one(setup_dict)
@@ -232,6 +244,7 @@ def submit_setup_part3():
 # Initial 'My Setups' page
 @app.route("/my_setups_part1/", methods=["GET", "POST"])
 def my_setups_part1():
+    """ Function to render Page 1 of the My Setups process """
     try:
         if session["user"]:
             if request.method == "POST":
@@ -270,6 +283,7 @@ def my_setups_part1():
 # 'My Setups' car and track selection.
 @app.route("/my_setups_part2", methods=["GET", "POST"])
 def my_setups_part2():
+    """ Function to render Page 2 of the My Setups process """
     # Take user's choice of car and track and retrieve relevant
     # setups from the database.
     if request.method == "POST":
@@ -293,6 +307,7 @@ def my_setups_part2():
 # Take variables injected from my_setups_page2 and generate filtered list.
 @app.route("/my_setups_part3", methods=["GET", "POST"])
 def my_setups_part3():
+    """ Function to render Page 3 of the My Setups process """
     if request.method == "POST":
         # Render the list using the variables received from my_setup_part2.
         return render_template("my_setups_part3.html")
@@ -300,6 +315,7 @@ def my_setups_part3():
 
 @app.route("/edit_setup/<setup_id>", methods=["GET", "POST"])
 def edit_setup(setup_id):
+    """ Function to render the Edit Setup page """
     try:
         if session["user"]:
             if request.method == "POST":
@@ -311,12 +327,13 @@ def edit_setup(setup_id):
                 param_dict_list = list(mongo.db.sim_settings_parameters.find(
                                 {"sim_name": sim_name}).sort("order_number"))
                 update_dict = {}
-                dateTimeObj = datetime.now()
+                date_time_obj = datetime.now()
                 # the following line of code borrowed from
-                # "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+                # "https://thispointer.com/
+                # python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
                 # to get the current date and time.
-                timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
-                print('Current Timestamp PT6 : ', timestampStr)
+                timestamp_str = date_time_obj.strftime("%Y %m %d - %H:%M:%S")
+                print('Current Timestamp PT6 : ', timestamp_str)
                 for param_dict in param_dict_list:
                     parameter_name = param_dict["param"]
                     update_dict[parameter_name] = request.form.get(
@@ -325,7 +342,7 @@ def edit_setup(setup_id):
                 update_dict["car_name"] = car_name
                 update_dict["track_name"] = track_name
                 update_dict["created_by"] = session["user"]
-                update_dict["date_created"] = timestampStr
+                update_dict["date_created"] = timestamp_str
                 # Save the Dictionary of edited data to the Database
                 mongo.db.setups.update({"_id": ObjectId(setup_id)},
                                        update_dict)
@@ -352,6 +369,7 @@ def edit_setup(setup_id):
 
 @app.route("/view_setup/<setup_id>", methods=["GET", "POST"])
 def view_setup(setup_id):
+    """ Function to render the View Setup page """
     # Find the chosen setup using the Setup Id number and render to the screen
     # using the relevant headers and paramters for the sim concerned.
     setup = mongo.db.setups.find_one({"_id": ObjectId(setup_id)})
@@ -367,6 +385,7 @@ def view_setup(setup_id):
 
 @app.route("/delete_setup/<setup_id>")
 def delete_setup(setup_id):
+    """ Function to render the Delete Setup page """
     # Delete the relevant setup denoted by the Setup ID number.
     mongo.db.setups.remove({"_id": ObjectId(setup_id)})
     flash("Setup Successfully Deleted")
@@ -375,6 +394,7 @@ def delete_setup(setup_id):
 
 @app.route("/find_setups_part1/", methods=["GET", "POST"])
 def find_setups_part1():
+    """ Function to render Page 1 of the Find Setups process """
     # Take the user's choice of sim and load the relevant cars and tracks
     # for that sim.
     if request.method == "POST":
@@ -397,6 +417,7 @@ def find_setups_part1():
 
 @app.route("/find_setups_part2", methods=["GET", "POST"])
 def find_setups_part2():
+    """ Function to render Page 2 of the Find Setups process """
     # Take the user's sim, car and track choices and create a list of results.
     if request.method == "POST":
         sim_name = request.form.get("sim_name")
@@ -417,6 +438,7 @@ def find_setups_part2():
 
 @app.route("/find_setups_part3", methods=["GET", "POST"])
 def find_setups_part3():
+    """ Function to render Page 3 of the Find Setups process """
     # Take users sim, car and track choices and create a filtered list
     # to display on screen
     if request.method == "POST":
@@ -433,6 +455,7 @@ def find_setups_part3():
 
 @app.route("/admin_tasks", methods=["GET", "POST"])
 def admin_tasks():
+    """ Function to render the Admin Tasks page """
     # Check user has 'Admin Rights'. If so, load the 'Admin Tasks' page.
     admin_type = mongo.db.users.find_one(
       {"username": session["user"]})["admin"]
@@ -449,6 +472,7 @@ def admin_tasks():
 # Part 1 : load Initial page and unfiltered setup list
 @app.route("/manage_setups_part1/", methods=["GET", "POST"])
 def manage_setups_part1():
+    """ Function to render Page 1 of the 'Admin' Manage Setups process """
     if request.method == "POST":
         # If user selects a Sim to filter on, find relevant cars and tracks
         sim_name = request.form["sim_name"]
@@ -479,6 +503,7 @@ def manage_setups_part1():
 # Part 2:  Re-render page  with car and track lists.
 @app.route("/manage_setups_part2", methods=["GET", "POST"])
 def manage_setups_part2():
+    """ Function to render Page 2 of the 'Admin' Manage Setups process """
     admin_type = mongo.db.users.find_one(
         {"username": session["user"]})["admin"]
     if admin_type is True:
@@ -525,6 +550,7 @@ def manage_setups_part2():
 # Part 3: Render filtered list with view, edit and delete buttons.
 @app.route("/manage_setups_part3", methods=["GET", "POST"])
 def manage_setups_part3():
+    """ Function to render Page 3 of the 'Admin' Manage Setups process """
     if request.method == "POST":
         print("Started Admin Part 3")
         admin_type = mongo.db.users.find_one(
@@ -550,6 +576,7 @@ def manage_setups_part3():
 # Allow 'Admin Rights' user to amend any setup in the database.
 @app.route("/edit_setup_admin/<setup_id>", methods=["GET", "POST"])
 def edit_setup_admin(setup_id):
+    """ Function to allow an Admin to edit any setup in the database """
     admin_type = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
     if admin_type is True:
@@ -563,11 +590,12 @@ def edit_setup_admin(setup_id):
             param_dict_list = list(mongo.db.sim_settings_parameters.find(
                             {"sim_name": sim_name}).sort("order_number"))
             update_dict = {}
-            dateTimeObj = datetime.now()
+            date_time_obj = datetime.now()
             # the following line of code borrowed from
-            # "https://thispointer.com/python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
+            # "https://thispointer.com/
+            # python-how-to-convert-datetime-object-to-string-using-datetime-strftime/"
             # to get the current date and time.
-            timestampStr = dateTimeObj.strftime("%Y %m %d - %H:%M:%S")
+            timestamp_str = date_time_obj.strftime("%Y %m %d - %H:%M:%S")
             # Save the dictionary to the database
             for param_dict in param_dict_list:
                 parameter_name = param_dict["param"]
@@ -576,7 +604,7 @@ def edit_setup_admin(setup_id):
             update_dict["sim_name"] = sim_name
             update_dict["car_name"] = car_name
             update_dict["track_name"] = track_name
-            update_dict["date_created"] = timestampStr
+            update_dict["date_created"] = timestamp_str
             mongo.db.setups.update({"_id": ObjectId(setup_id)}, update_dict)
             flash("Setup Successfully Updated")
             return redirect(url_for("admin_tasks"))
@@ -601,6 +629,7 @@ def edit_setup_admin(setup_id):
 # Allow 'Admin Rights' user to delete any setup in the database.
 @app.route("/delete_setup_admin/<setup_id>")
 def delete_setup_admin(setup_id):
+    """ Function to allow an Admin to delete any setup in the database """
     admin_type = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
     if admin_type is True:
@@ -611,6 +640,7 @@ def delete_setup_admin(setup_id):
 
 @app.route("/manage_users_delete", methods=["GET", "POST"])
 def manage_users_delete():
+    """ Function to allow an Admin to delete any user in the database """
     admin_type = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
     if admin_type is True:
@@ -651,6 +681,8 @@ def manage_users_delete():
 
 @app.route("/manage_users_edit", methods=["GET", "POST"])
 def manage_users_edit():
+    """ Function to allow an Admin to select any user
+        in the database for editing """
     admin_type = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
     if admin_type is True:
@@ -688,9 +720,10 @@ def manage_users_edit():
         return redirect(url_for("home"))
 
 
-# Allow 'Admin Rights' user to the edit or delete users from the database.
+# Allow 'Admin Rights' user to edit or delete users from the database.
 @app.route("/edit_user/<user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
+    """ Function to allow an Admin to edit any user in the database """
     admin_type = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
     if admin_type is True:
